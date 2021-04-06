@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     private float movementSpeed = 10.0f;
     private float turnSpeed;
     private float turnPlayer = 0.0f;
+    // Declare variable for jump force
+    public float jumpForce;
     // Declare variables for player input
     private float verticalInput;
     private float horizontalInput;
@@ -24,10 +26,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Call the Move method
         Move();
+        // Check if player and space bar is pressed and then call Jump method
+        if (gameObject.CompareTag("Player") & Input.GetKeyDown("space")) {
+            Jump();
+        }
     }
 
-    // Create function to move the player based on the key pressed
+    // Create method to move the player based on the key pressed
     private void Move()
     {
         // Set inputs to vertical and horizontal input
@@ -84,5 +91,12 @@ public class Movement : MonoBehaviour
                 transform.eulerAngles = playerTurnVector;
             }   
         }
+    }
+
+    // Create method to make the character jump when space is pressed
+    private void Jump()
+    {
+        Debug.Log("jump");
+        objectRB.AddForce(0, jumpForce, 0, ForceMode.Impulse);
     }
 }
