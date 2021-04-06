@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Declare variable for the player game object
-    GameObject player;
-    // Declare variable for the camera offset
-    Vector3 cameraOffset;
+    // Declare variable for the first person camera game object
+    private GameObject firstPersonCamera;
     // Start is called before the first frame update
     void Start()
     {
         // Set the player gameobject
-        player = GameObject.FindGameObjectWithTag("Player");
-        // Set the cameraOffset
-        cameraOffset = new Vector3(0.0f, 1.3f, 0.45f);
+        firstPersonCamera = GameObject.FindGameObjectWithTag("FPC");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    // Use a late update
+    private void LateUpdate()
+    {
         // Set the position of the camera to an offset of the player position
-        gameObject.transform.position = player.transform.position + cameraOffset;
+        gameObject.transform.position = firstPersonCamera.transform.position;
+        // Set the rotation of the camera to equal the rotation of the player
+        gameObject.transform.rotation = firstPersonCamera.transform.rotation;
     }
 }
