@@ -9,7 +9,9 @@ public class Movement : MonoBehaviour
     private float turnSpeed;
     private float turnPlayer = 0.0f;
     // Declare variable for jump force
-    public float jumpForce;
+    private float jumpForce = 5.0f;
+    // Declare variable for is grounded
+    public bool grounded; 
     // Declare variables for player input
     private float verticalInput;
     private float horizontalInput;
@@ -29,7 +31,7 @@ public class Movement : MonoBehaviour
         // Call the Move method
         Move();
         // Check if player and space bar is pressed and then call Jump method
-        if (gameObject.CompareTag("Player") & Input.GetKeyDown("space")) {
+        if (gameObject.CompareTag("Player") & Input.GetKeyDown("space") & grounded) {
             Jump();
         }
     }
@@ -96,7 +98,26 @@ public class Movement : MonoBehaviour
     // Create method to make the character jump when space is pressed
     private void Jump()
     {
-        Debug.Log("jump");
+        // Add upward force to the player rigidbody
         objectRB.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+    }
+
+    // Create collision methods to determine if the player is on the ground
+    private void OnCollisionExit(Collision collision)
+    {
+        // If the player is not colliding with the floor change grounded to false
+        if (gameObject.CompareTag("Player") & collision.gameObject.CompareTag("Floor"))
+        {
+            grounded = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the player is not colliding with the floor change grounded to false
+        if (gameObject.CompareTag("Player") & collision.gameObject.CompareTag("Floor"))
+        {
+            grounded = true;
+        }
     }
 }
