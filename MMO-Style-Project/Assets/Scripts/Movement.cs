@@ -38,10 +38,14 @@ public class Movement : MonoBehaviour
         // Set movement based on object
         if (gameObject.CompareTag("Player"))
         {
+            // Set vertical and horizontal movement
             Vector3 verticalMovement = new Vector3(0.0f, 0.0f, verticalInput);
             Vector3 horizontalMovement = new Vector3(horizontalInput, 0.0f, 0.0f);
-            // Move character based on input
-            transform.Translate(verticalMovement * Time.deltaTime * movementSpeed);
+            // Set to turn by mouse or horizontal key input
+            float mouseTurn = horizontalMouse * turnSpeed * Time.deltaTime;
+            float keyTurn = horizontalInput * turnSpeed * Time.deltaTime;
+            // Set player turn vector
+            Vector3 playerTurnVector = new Vector3(0.0f, turnPlayer, 0.0f);
             // Check which mouse button is pushed down to determine type of movement with horizontal input
             if (Input.GetMouseButton(0) & Input.GetMouseButton(1))
             {
@@ -52,18 +56,20 @@ public class Movement : MonoBehaviour
                 // Move player forward
                 transform.Translate(moveForward * Time.deltaTime * movementSpeed);
                 // Turn player based on horizontal mouse input
-                turnPlayer += horizontalMouse * turnSpeed * Time.deltaTime;
-                transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+                turnPlayer += mouseTurn;
+                transform.eulerAngles = playerTurnVector;
                 // Strafe charace side to side based on input
                 transform.Translate(horizontalMovement * Time.deltaTime * movementSpeed);
             }
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1) & !Input.GetMouseButton(0))
             {
                 // Set turnSpeed
                 turnSpeed = 300.0f;
+                // Move character based on input
+                transform.Translate(verticalMovement * Time.deltaTime * movementSpeed);
                 // Turn player based on horizontal mouse input
-                turnPlayer += horizontalMouse * turnSpeed * Time.deltaTime;
-                transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+                turnPlayer += mouseTurn;
+                transform.eulerAngles = playerTurnVector;
                 // Strafe charace side to side based on input
                 transform.Translate(horizontalMovement * Time.deltaTime * movementSpeed);
             } 
@@ -71,9 +77,11 @@ public class Movement : MonoBehaviour
             {
                 // Set turnSpeed
                 turnSpeed = 100.0f;
-                // Turn charatcter based on input
-                turnPlayer += horizontalInput * turnSpeed * Time.deltaTime;
-                transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+                // Move character based on input
+                transform.Translate(verticalMovement * Time.deltaTime * movementSpeed);
+                // Turn character based on input
+                turnPlayer += keyTurn;
+                transform.eulerAngles = playerTurnVector;
             }   
         }
     }
