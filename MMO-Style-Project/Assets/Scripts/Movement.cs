@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     // Declare variable for jump force
     private float jumpForce = 5.0f;
     // Declare variable for is grounded
-    public bool grounded; 
+    private bool grounded; 
     // Declare variables for player input
     private float verticalInput;
     private float horizontalInput;
