@@ -35,12 +35,21 @@ public class Movement : MonoBehaviour
         // Set movement based on object
         if (gameObject.CompareTag("Player"))
         {
-            Vector3 movement = new Vector3(0.0f, 0.0f, verticalInput);
+            Vector3 verticalMovement = new Vector3(0.0f, 0.0f, verticalInput);
+            Vector3 horizontalMovement = new Vector3(horizontalInput, 0.0f, 0.0f);
             // Move character based on input
-            transform.Translate(movement * Time.deltaTime * movementSpeed);
-            // Turn charatcter based on input
-            turnPlayer += horizontalInput * turnSpeed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+            transform.Translate(verticalMovement * Time.deltaTime * movementSpeed);
+            // Check if the left mouse button is pushed down to determine type of movement with horizontal input
+            if (Input.GetMouseButton(1))
+            {
+                // Strafe charace side to side based on input
+                transform.Translate(horizontalMovement * Time.deltaTime * movementSpeed);
+            } else
+            {
+                // Turn charatcter based on input
+                turnPlayer += horizontalInput * turnSpeed * Time.deltaTime;
+                transform.eulerAngles = new Vector3(0.0f, turnPlayer, 0.0f);
+            }   
         }
     }
 }
