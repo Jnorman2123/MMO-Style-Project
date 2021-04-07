@@ -5,9 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     // Declare a variable to determine if in first or third person
-    public bool firstPerson;
+    private bool firstPerson;
     // Declare variable for the first person camera game object
     public Transform firstPersonCamera;
+    // Declare a variable to determine if the firstPersonCamera is moving
+    public bool fpcMoving;
+    // Declare variable for position of the first person camera
+    private Vector3 fpcPos;
     // Declare variable for mouse scroll wheel input
     private float mouseScrollWheel;
     // Declare variable for camera move speed
@@ -17,7 +21,10 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set the cameraOffset variable
         cameraOffset = new Vector3(0, 0, 0);
+        // Set the initial position of the first person camera
+        fpcPos = firstPersonCamera.position;
     }
     // Update is called once per frame
     void Update()
@@ -27,12 +34,25 @@ public class CameraController : MonoBehaviour
     // Use a late update
     private void LateUpdate()
     {
-        // Call ZoomCamera method
-        ZoomCamera();
-        // Call the FollowPlayer method
-        FollowPlayer();
         // Call the IsFirstPerson method
         IsFirstPerson();
+        // Call the IsFPCMoving method
+        IsFPCMoving();
+        // Call ZoomCamera method
+        ZoomCamera();
+        
+        // If the firstPerson is true follow the player rotation else call TurnCamera
+        if (firstPerson)
+        {
+            // Set the position of the camera to an offset of the player position
+            transform.position = firstPersonCamera.position + cameraOffset;
+            // Call the FollowPlayerRotation method
+            FollowPlayerRotation();
+        } else 
+        {
+            // Call the TurnCamer method
+            TurnCamera();
+        }
     }
     // Method to zoom the camera in and out with the mouse wheel
     private void ZoomCamera()
@@ -51,13 +71,21 @@ public class CameraController : MonoBehaviour
     // Method to turn the camera
     private void TurnCamera()
     {
+        // Compute the position the object will reach
+        Vector3 desiredPosition = firstPersonCamera.rotation * (firstPersonCamera.position);
 
+        // Compute the direction the object will look at
+        Vector3 desiredDirection = Vector3.Project(firstPersonCamera.forward, (firstPersonCamera.position - desiredPosition).normalized);
+
+        // Rotate the object
+        transform.rotation = Quaternion.Slerp(firstPersonCamera.rotation, Quaternion.LookRotation(desiredDirection), Time.deltaTime * cameraMoveSpeed);
+
+        // Place the object to "compensate" the rotation
+        transform.position = firstPersonCamera.position - transform.forward * cameraOffset.magnitude;
     }
-    // Method to follow the player with camera
-    private void FollowPlayer()
-    {
-        // Set the position of the camera to an offset of the player position
-        transform.position = firstPersonCamera.position + cameraOffset;
+    // Method to follow the player rotation with camera
+    private void FollowPlayerRotation()
+    { 
         // Set the rotation of the camera to equal the rotation of the player
         transform.rotation = firstPersonCamera.rotation;
     }
@@ -70,6 +98,21 @@ public class CameraController : MonoBehaviour
         } else
         {
             firstPerson = false;
+        }
+    }
+    // Method to check if the first person camera is moving
+    private void IsFPCMoving()
+    {
+        // Declare a variable to calculate first person camera movement
+        Vector3 fpcMovement = firstPersonCamera.position - fpcPos;
+        fpcPos = firstPersonCamera.position;
+
+        if (fpcMovement.magnitude > 0.001f)
+        {
+            fpcMoving = true;
+        } else
+        {
+            fpcMoving = false;
         }
     }
 }
