@@ -16,14 +16,16 @@ public class MovementController : MonoBehaviour
     private float turnDirection;
     private Vector3 moveDirection;
     private Vector3 strafeDirection;
+    // Declare variable for the player rigidbody
+    private Rigidbody playerRB;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Call the Move method
         Move();
@@ -38,7 +40,7 @@ public class MovementController : MonoBehaviour
     private void Move()
     {
         // Set the moveInput variable to the vertical axis input
-        moveInput = Input.GetAxisRaw("Vertical");
+        moveInput = Input.GetAxisRaw("Vertical") * moveSpeed;
         // Check to see if the left and right buttons are both not being held
         if (Input.GetMouseButton(0) & Input.GetMouseButton(1))
         {
@@ -47,10 +49,10 @@ public class MovementController : MonoBehaviour
         } else
         {
             // Set the moveDirection based on the moveInput
-            moveDirection = new Vector3(0.0f, 0.0f, moveInput);           
+            playerRB.velocity = new Vector3(0.0f, 0.0f, moveInput);           
         }
         // Translate the player based on moveDirection
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        //transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
     // Method to strafe the character based on horizontal input when the right mouse is held down
     private void Strafe()
