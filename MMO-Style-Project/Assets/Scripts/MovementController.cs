@@ -37,12 +37,16 @@ public class MovementController : MonoBehaviour
     // Method to move the character based on vertical input
     private void Move()
     {
-        // Set the moveInput variable to the vertical axis input
-        moveInput = Input.GetAxisRaw("Vertical");
-        // Set the moveDirection based on the moveInput
-        moveDirection = new Vector3(0.0f, 0.0f, moveInput);
-        // Translate the player based on moveDirection
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        // Check to see if the left and right buttons are both not being held
+        if (!Input.GetMouseButton(0) & !Input.GetMouseButton(1))
+        {
+            // Set the moveInput variable to the vertical axis input
+            moveInput = Input.GetAxisRaw("Vertical");
+            // Set the moveDirection based on the moveInput
+            moveDirection = new Vector3(0.0f, 0.0f, moveInput);
+            // Translate the player based on moveDirection
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        }       
     }
     // Method to strafe the character based on horizontal input when the right mouse is held down
     private void Strafe()
