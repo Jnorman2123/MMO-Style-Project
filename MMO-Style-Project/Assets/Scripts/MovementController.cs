@@ -31,6 +31,8 @@ public class MovementController : MonoBehaviour
         Turn();
         // Call the Strafe method
         Strafe();
+        // Call the MouseMove method
+        MouseMove();
     }
     // Method to move the character based on vertical input
     private void Move()
@@ -79,6 +81,19 @@ public class MovementController : MonoBehaviour
         }
         // Turn the player based on turnDirection
         transform.eulerAngles = new Vector3(0.0f, turnDirection, 0.0f);
+    }
+    // Method to make the character move forward when both the right and left mouse buttons are being held
+    private void MouseMove()
+    {
+        // Check if both the right and left mouse buttons are being held and set the move direction to forward
+        if (Input.GetMouseButton(0) & Input.GetMouseButton(1))
+        {
+            // Set move direction to move forward
+            moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
+            // Translate the player based on moveDirection
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        }
+
     }
     // Method to make the character jump when space bar is pressed
     
