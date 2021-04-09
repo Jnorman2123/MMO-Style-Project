@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - FPC
+  - Wall
   layers:
   - Default
   - TransparentFX
