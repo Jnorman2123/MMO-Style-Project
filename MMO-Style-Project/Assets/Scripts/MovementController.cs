@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    // Declare variables for move input, turn input, and mouse x input
+    // Declare variables for move input, strafe input, turn input, and mouse x input
     private float moveInput;
     private float turnInput;
+    private float strafeInput;
     private float mouseXInput;
     // Declare variables for move speed and turn speed
     private float moveSpeed = 15f;
@@ -28,30 +29,32 @@ public class MovementController : MonoBehaviour
         Move();
         // Call the turn method
         Turn();
+        // Call the Strafe method
+        Strafe();
     }
     // Method to move the character based on vertical input
     private void Move()
     {
         // Set the moveInput variable to the vertical axis input
         moveInput = Input.GetAxisRaw("Vertical");
-        // Set the turnInput variable to the horizontal axis input
-        turnInput = Input.GetAxisRaw("Horizontal");
         // Set the moveDirection based on the moveInput
         moveDirection = new Vector3(0.0f, 0.0f, moveInput);
+        // Translate the player based on moveDirection
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+    }
+    // Method to strafe the character based on horizontal input when the right mouse is held down
+    private void Strafe()
+    {
+        // Set the turnInput variable to the horizontal axis input
+        strafeInput = Input.GetAxisRaw("Horizontal");
         // Set the strafeDirection based on the turnInput
-        strafeDirection = new Vector3(turnInput, 0.0f, 0.0f);
-        // Check if the right mouse button is clicked and make character strafe based on turnInput 
+        strafeDirection = new Vector3(strafeInput, 0.0f, 0.0f);
+        // Check if the right mouse button is clicked and make character strafe based on strafeInput 
         if (Input.GetMouseButton(1))
         {
-            // Translate the player side to side and forward back based on moveDirection and strafeDirection
+            // Translate the player side to side based on strafeDirection
             transform.Translate(strafeDirection * moveSpeed * Time.deltaTime);
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-        } else
-        {
-            // Translate the player based on moveDirection
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         }
-        
     }
     // Method to turn the character based on horizontal input
     private void Turn()
