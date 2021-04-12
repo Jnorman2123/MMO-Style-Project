@@ -312,6 +312,7 @@ Transform:
   m_Children:
   - {fileID: 450635164}
   - {fileID: 1903285202}
+  - {fileID: 1263210077}
   m_Father: {fileID: 1623193505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574,9 +575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0, z: -0}
-  m_XDamping: 1
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 1, z: -5}
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -599,7 +600,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -180
@@ -1153,8 +1154,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -1.4893008e-15, y: -0.9998346, z: -0.018189533, w: 1.1535938e-15}
-  m_LocalPosition: {x: 0, y: 2.5, z: -75}
+  m_LocalRotation: {x: 0.080420345, y: 0, z: 0, w: 0.996761}
+  m_LocalPosition: {x: 0, y: 3.5, z: -80}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1221,6 +1222,7 @@ GameObject:
   - component: {fileID: 1051825977}
   - component: {fileID: 1051825979}
   - component: {fileID: 1051825976}
+  - component: {fileID: 1051825980}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1240,6 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc8672e2ee37654486538e0e5e1fac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1051825980}
 --- !u!54 &1051825977
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1253,9 +1256,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 2
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!4 &1051825978
 Transform:
   m_ObjectHideFlags: 0
@@ -1284,6 +1287,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.5595202, z: 1}
   m_Center: {x: 0, y: 0.23959088, z: 0}
+--- !u!143 &1051825980
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1101260182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1464,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225483939}
-  m_LocalRotation: {x: -3.3880617e-11, y: 0.9998346, z: 0.018189492, w: 0.0000000018623373}
+  m_LocalRotation: {x: 0.080420345, y: 5.0472457e-15, z: -6.255751e-14, w: 0.9967611}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1577,7 +1598,7 @@ MonoBehaviour:
     m_MaxSpeed: 2
     m_AccelTime: 0.2
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: 0
@@ -1600,7 +1621,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -180
@@ -1622,15 +1643,15 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 5
+  m_BindingMode: 3
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 0
-    m_Radius: 0
-  - m_Height: 0
-    m_Radius: 0
-  - m_Height: 0
-    m_Radius: 0
+  - m_Height: 5
+    m_Radius: 5
+  - m_Height: 1
+    m_Radius: 5
+  - m_Height: -2
+    m_Radius: 5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1625786600}
@@ -1643,15 +1664,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263210075}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6666667, z: -3.3333335}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_Children:
   - {fileID: 1625786601}
   - {fileID: 1225483941}
   - {fileID: 1542036824}
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 58121407}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315064798
 GameObject:
@@ -1892,9 +1913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0, z: -0}
-  m_XDamping: 1
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 1, z: -5}
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -1917,7 +1938,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -180
@@ -2011,7 +2032,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542036822}
-  m_LocalRotation: {x: 1.509014e-15, y: 0.9993401, z: 0.03632496, w: -1.1796781e-15}
+  m_LocalRotation: {x: -0.062324412, y: 0.000000017306567, z: -0.0000000010806237,
+    w: -0.998056}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2179,7 +2201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625786599}
-  m_LocalRotation: {x: 1.2959536e-15, y: 1, z: -0.000000056044556, w: 0.000000029802326}
+  m_LocalRotation: {x: 0.09853762, y: 0.0000000042806607, z: -4.2386392e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2328,9 +2350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0, z: -0}
-  m_XDamping: 1
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 1, z: -5}
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -2353,7 +2375,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -180
