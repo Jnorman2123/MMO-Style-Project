@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 10.0f;
     private float turnSpeed = 150.0f;
     // Declare variables for gravity and jump force;
-    private float gravity = -10.0f;
+    private float gravity;
     private float jumpForce = 250.0f;
     // Declare variables for move, turn and strafe inputs
     private float moveInput;
@@ -127,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
         // Check to see if the player is on the ground
         if(!playerController.isGrounded)
         {
+            // Set the gravity
+            gravity = -10.0f;
             // Set the fallDirection
             fallDirection = transform.up * gravity;
             // Move the player based on the fallDirection and gravity
@@ -139,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
         // Check to see if the player is grounded and the space bar is pressed to allow jumping
         if (playerController.isGrounded & Input.GetKeyDown(KeyCode.Space)) 
         {
+            // Set the gravity
+            gravity = 0.0f;
             // Set the fallDirection
             fallDirection = transform.up * jumpForce;
             // Move the player based on the fallDirection
