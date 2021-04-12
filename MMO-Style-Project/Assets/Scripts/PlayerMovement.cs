@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     // Declare variables for move speed and turn speed
     private float moveSpeed = 10.0f;
     private float turnSpeed = 150.0f;
+    // Declare variables for gravity and vertical speed;
+    private float gravity = -10.0f;
+    private float verticalSpeed = 0.0f;
     // Declare variables for move, turn and strafe inputs
     private float moveInput;
     private float turnInput;
@@ -17,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Vector3 strafeDirection;
     private Vector3 turnDirection;
+    private Vector3 fallDirection;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         Turn();
         // Call the MouseTurn method
         MouseTurn();
+        // Call the Fall method
+        Fall();
     }
     // Create method for moving the player
     private void KeyMove()
@@ -112,5 +118,17 @@ public class PlayerMovement : MonoBehaviour
             // Rotate the player based on the turnDirection
             transform.Rotate(turnDirection);
         }       
+    }
+    // Create Fall method to simulate gravity
+    private void Fall()
+    {
+        // Check to see if the player is on the ground
+        if(!playerController.isGrounded)
+        {
+            // Set the fallDirection
+            fallDirection = transform.up * gravity;
+            // Move the player based on the fallDirection and gravity
+            playerController.Move(fallDirection * Time.deltaTime);
+        }
     }
 }
