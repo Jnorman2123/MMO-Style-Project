@@ -20,9 +20,10 @@ public class CameraController : MonoBehaviour
     public AxisState zAxis = new AxisState(0, 1, false, true, 50f, 0.1f, 0.1f, "Mouse ScrollWheel", false);
     // Declare variable for first person
     private bool firstPerson;
-    // Declare variable for the mouse wheel input and zoom direction
+    // Declare variable for the mouse wheel input, mouse x axis, and mouse y axis
     private float mouseWheelInput;
-    private Vector3 zoomDirection;
+    private float mouseX;
+    private float mouseY;
     void OnValidate()
     {
         minScale = Mathf.Max(0.01f, minScale);
@@ -57,6 +58,8 @@ public class CameraController : MonoBehaviour
         SwitchCamera();
         // Call the Zoom method
         Zoom();
+        // Call the LookUpDown method
+        LookUpDown();
     }
     // Create a method to switch the active camera
     private void SwitchCamera()
@@ -93,6 +96,19 @@ public class CameraController : MonoBehaviour
                 thirdPersonCamera.m_Orbits[i].m_Height = tpcOrbits[i].m_Height * scale;
                 thirdPersonCamera.m_Orbits[i].m_Radius = tpcOrbits[i].m_Radius * scale;
             }
+        }
+    }
+    // Create method to move the camera up and down in first person
+    private void LookUpDown()
+    {
+        // Check to see if in first person and the right mouse is being held
+        if (firstPerson & Input.GetMouseButton(1))
+        {
+            // Set mouseY to the mouse y axis
+            mouseY = Input.GetAxis("Mouse Y");
+            Debug.Log(mouseY);
+            // Rotate the firstPersonCamera based on the mouseY 
+            firstPersonCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.Value -= mouseY;     
         }
     }
     // Create method to return the tpcOrbits back to original position
