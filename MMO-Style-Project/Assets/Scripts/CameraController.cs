@@ -139,7 +139,7 @@ public class CameraController : MonoBehaviour
     {
         // Set the forwardInput to the vertical axis
         forwardInput = Input.GetAxisRaw("Vertical");
-        if (!firstPerson & forwardInput != 0.0f)
+        if (!firstPerson & Input.GetMouseButton(1))
         {
             thirdPersonCamera.m_XAxis.Value = 0.0f;
         }
