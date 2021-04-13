@@ -107,13 +107,17 @@ public class CameraController : MonoBehaviour
     // Create method to move the camera up and down in first person
     private void LookUpDown()
     {
+        // Set mouseY to the mouse y axis
+        mouseY = Input.GetAxis("Mouse Y");
         // Check to see if in first person and the right mouse is being held
         if (firstPerson & Input.GetMouseButton(1))
         {
-            // Set mouseY to the mouse y axis
-            mouseY = Input.GetAxis("Mouse Y");
             // Rotate the firstPersonCamera based on the mouseY 
             firstPersonCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.Value -= mouseY;     
+        } else if (!firstPerson & Input.GetMouseButton(1))
+        {
+            // Move up and down along the thirdPersonCamera orbit
+            thirdPersonCamera.m_YAxis.Value += mouseY/50;
         }
     }
     // Create method to move the thirdPersonCamera around the player
