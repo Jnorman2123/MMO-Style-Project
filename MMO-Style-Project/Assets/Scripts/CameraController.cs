@@ -60,6 +60,8 @@ public class CameraController : MonoBehaviour
         Zoom();
         // Call the LookUpDown method
         LookUpDown();
+        // Call the FreeLook method
+        FreeLook();
     }
     // Create a method to switch the active camera
     private void SwitchCamera()
@@ -106,9 +108,22 @@ public class CameraController : MonoBehaviour
         {
             // Set mouseY to the mouse y axis
             mouseY = Input.GetAxis("Mouse Y");
-            Debug.Log(mouseY);
             // Rotate the firstPersonCamera based on the mouseY 
             firstPersonCamera.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.Value -= mouseY;     
+        }
+    }
+    // Create method to move the thirdPersonCamera around the player
+    private void FreeLook()
+    {
+        // Check to see if in third person and the left mouse button is being held
+        if (!firstPerson & Input.GetMouseButton(0))
+        {
+            // Set mouseY and mouseX to each axis
+            mouseY = Input.GetAxis("Mouse Y")/50;
+            mouseX = Input.GetAxis("Mouse X") * 10;
+            // Rotate the camera around the player based on the mouseX and mouseY
+            thirdPersonCamera.m_YAxis.Value += mouseY;
+            thirdPersonCamera.m_XAxis.Value += mouseX;
         }
     }
     // Create method to return the tpcOrbits back to original position
