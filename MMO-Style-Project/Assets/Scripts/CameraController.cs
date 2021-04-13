@@ -24,6 +24,8 @@ public class CameraController : MonoBehaviour
     private float mouseWheelInput;
     private float mouseX;
     private float mouseY;
+    // Declare variable for forward input
+    private float forwardInput;
     void OnValidate()
     {
         minScale = Mathf.Max(0.01f, minScale);
@@ -62,6 +64,8 @@ public class CameraController : MonoBehaviour
         LookUpDown();
         // Call the FreeLook method
         FreeLook();
+        // Call the RecenterCamera method
+        RecenterCamera();
     }
     // Create a method to switch the active camera
     private void SwitchCamera()
@@ -124,6 +128,16 @@ public class CameraController : MonoBehaviour
             // Rotate the camera around the player based on the mouseX and mouseY
             thirdPersonCamera.m_YAxis.Value += mouseY;
             thirdPersonCamera.m_XAxis.Value += mouseX;
+        } 
+    }
+    // Create method to recent the third person camera on the player when moving
+    private void RecenterCamera()
+    {
+        // Set the forwardInput to the vertical axis
+        forwardInput = Input.GetAxisRaw("Vertical");
+        if (!firstPerson & forwardInput != 0.0f)
+        {
+            thirdPersonCamera.m_XAxis.Value = 0.0f;
         }
     }
     // Create method to return the tpcOrbits back to original position
