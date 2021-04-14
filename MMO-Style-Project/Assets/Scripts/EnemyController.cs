@@ -20,7 +20,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Call the Death method
+        Death();
     }
     // Create method to set the health of the enemy based on its type
     private void SetMaxHealth()
@@ -54,5 +55,14 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth -= damage;
         Debug.Log("Current health " + currentHealth);
+    }
+    // Create a method to destroy to object when health reaches zero
+    private void Death()
+    {
+        // Check to see if health is equal or less than zero and destroy to the object
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
