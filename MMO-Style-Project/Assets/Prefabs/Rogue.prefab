@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 1542379155821368510}
   m_Layer: 8
   m_Name: Rogue
-  m_TagString: Rogue
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

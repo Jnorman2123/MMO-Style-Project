@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3919148661253282213}
   m_Layer: 8
   m_Name: Captain
-  m_TagString: Captain
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

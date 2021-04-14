@@ -17,6 +17,8 @@ public class PlayerTargeting : MonoBehaviour
     {
         // Call the MouseTarget method
         MouseTarget();
+        // Call the ClearTarget method
+        ClearTarget();
     }
     // Create method that targets the object the player left clicks on
     private void MouseTarget()
@@ -31,10 +33,19 @@ public class PlayerTargeting : MonoBehaviour
             if (Physics.Raycast(ray, out hit, layerMask))
             {
                 target = (hit.transform.parent.gameObject);
+                Debug.Log("Targeting " + target.name);
             } else
             {
                 target = null;
             }
+        }
+    }
+    // Create method to clear the target
+    private void ClearTarget()
+    {
+        if (target != null & Input.GetKeyDown("escape"))
+        {
+            target = null;
         }
     }
 }
