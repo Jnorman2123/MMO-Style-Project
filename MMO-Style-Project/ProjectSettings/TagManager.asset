@@ -7,6 +7,12 @@ TagManager:
   - Floor
   - FPC
   - Wall
+  - Warrior
+  - Rogue
+  - Wizard
+  - Cleric
+  - Captain
+  - Key Master
   layers:
   - Default
   - TransparentFX
