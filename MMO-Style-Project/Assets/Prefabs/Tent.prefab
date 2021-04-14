@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5744272010250954435}
   - component: {fileID: 695100949470080737}
   - component: {fileID: 680810427874515625}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Post
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4212799275171504631}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 7547707180825576483}
   - component: {fileID: 1268998345264247905}
   - component: {fileID: 1735566248227836019}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 9178006012037203190}
   - component: {fileID: 5362096077894233634}
   - component: {fileID: 3435966492780394341}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Post
   m_TagString: Wall
   m_Icon: {fileID: 0}

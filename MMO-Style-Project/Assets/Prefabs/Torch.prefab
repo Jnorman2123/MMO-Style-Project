@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6446179384672414336}
   - component: {fileID: 3886274450393165733}
   - component: {fileID: 4734680295725734008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Torch
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8545666998188231374}
   - component: {fileID: 4106240289726950168}
   - component: {fileID: 1425397700177305770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Torch Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5399025272377308188}
   - component: {fileID: 7343030942099233632}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

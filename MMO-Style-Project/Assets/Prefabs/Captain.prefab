@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1726365246427804591}
   - component: {fileID: 1204067180981183010}
   - component: {fileID: 3919148661253282213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Captain
   m_TagString: Captain
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4170391686123852194}
   - component: {fileID: 4431994599674040651}
   - component: {fileID: 4631771103638470643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5036899300998772841}
   - component: {fileID: 4798676260113727458}
   - component: {fileID: 919085177617251271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 3169744644434905546}
   - component: {fileID: 5258515412341731586}
   - component: {fileID: 8396967565067527775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 7406517255221658525}
   - component: {fileID: 1612554985889482609}
   - component: {fileID: 5552549718944071172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

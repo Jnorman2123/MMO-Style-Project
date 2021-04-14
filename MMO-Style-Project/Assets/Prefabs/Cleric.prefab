@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5473380012919262}
   - component: {fileID: 320561229259524407}
   - component: {fileID: 8769665578803242895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3316354863820647379}
   - component: {fileID: 2974332467191052894}
   - component: {fileID: 1450269391890743555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cleric
   m_TagString: Cleric
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 6861932315640749025}
   - component: {fileID: 3428282827261206285}
   - component: {fileID: 8430133405929743992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1301107994439635382}
   - component: {fileID: 8145526071363119486}
   - component: {fileID: 5583129439166807587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 8941314440376246293}
   - component: {fileID: 8893225547244382110}
   - component: {fileID: 3833258446920115131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

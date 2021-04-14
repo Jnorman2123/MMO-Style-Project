@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1492833062889341754}
   - component: {fileID: 1438732343807578807}
   - component: {fileID: 8454886067955291855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wizard
   m_TagString: Wizard
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4225193310139277623}
   - component: {fileID: 4522537968767312350}
   - component: {fileID: 4829416319811637094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5090328663516449020}
   - component: {fileID: 4745247454817898359}
   - component: {fileID: 1117997511112461138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2936314232342296927}
   - component: {fileID: 5457003895766729111}
   - component: {fileID: 8631947255798126282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 7317205879363416840}
   - component: {fileID: 1522816999567701988}
   - component: {fileID: 5641969394566942353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

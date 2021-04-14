@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2341310324899634331}
   - component: {fileID: 2810521929642187536}
   - component: {fileID: 7591265183458844469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5649090196421242168}
   - component: {fileID: 3269991044655257072}
   - component: {fileID: 1229673933297058477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 239135379991619439}
   - component: {fileID: 8356528446873232259}
   - component: {fileID: 2924585357929487094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 6663248594751894864}
   - component: {fileID: 6348162276677940665}
   - component: {fileID: 2729167256169945857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 8245493213759117149}
   - component: {fileID: 8443436588112791248}
   - component: {fileID: 1542379155821368510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rogue
   m_TagString: Rogue
   m_Icon: {fileID: 0}

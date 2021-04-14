@@ -24,9 +24,11 @@ public class PlayerTargeting : MonoBehaviour
         // When the mouse is clicked on an object target it and log its tag
         if (Input.GetMouseButtonDown(0))
         {
+            // Set the layer mask to the targetable layer only
+            int layerMask = (1 << 8);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, layerMask))
             {
                 target = (hit.transform.parent.gameObject);
             } else
