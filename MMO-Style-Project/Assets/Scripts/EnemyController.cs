@@ -6,13 +6,15 @@ public class EnemyController : MonoBehaviour
 {
     // Declare variable for the enemy character controller
     public CharacterController enemyController;
-    // Declare variable for the enemy health
-    public int enemyHealth;
+    // Declare variables for the enemy max health and enemy current health
+    public int maxHealth;
+    public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
         // Call the SetEnemyHealth method
-        SetEnemyHealth();
+        SetMaxHealth();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -21,30 +23,36 @@ public class EnemyController : MonoBehaviour
         
     }
     // Create method to set the health of the enemy based on its type
-    private void SetEnemyHealth()
+    private void SetMaxHealth()
     {
         // Use a switch case statement to set the enemy health based on the enemy tag
-        string tag = gameObject.tag;
-        switch(tag)
+        string name = gameObject.name;
+        switch(name)
         {
             case "Warrior":
-                enemyHealth = 200;
+                maxHealth = 200;
                 break;
             case "Rogue":
-                enemyHealth = 175;
+                maxHealth = 175;
                 break;
             case "Wizard":
-                enemyHealth = 125;
+                maxHealth = 125;
                 break;
             case "Cleric":
-                enemyHealth = 150;
+                maxHealth = 150;
                 break;
             case "Captain":
-                enemyHealth = 250;
+                maxHealth = 250;
                 break;
             case "Key Master":
-                enemyHealth = 300;
+                maxHealth = 300;
                 break;
         }
+    }
+    // Create method to take damage based on the player attack damage
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Current health " + currentHealth);
     }
 }
