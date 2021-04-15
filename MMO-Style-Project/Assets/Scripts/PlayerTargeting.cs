@@ -32,8 +32,11 @@ public class PlayerTargeting : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, layerMask))
             {
-                target = (hit.transform.parent.gameObject);
-                Debug.Log("Targeting " + target.name + " " + target.tag);
+                if (!hit.transform.gameObject.CompareTag("Environment"))
+                {
+                    target = (hit.transform.parent.gameObject);
+                    Debug.Log("Targeting " + target.name + " " + target.tag);
+                }  
             } else
             {
                 target = null;
