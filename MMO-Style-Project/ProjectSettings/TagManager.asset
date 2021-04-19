@@ -5,15 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - FPC
   - Wall
-  - Warrior
-  - Rogue
-  - Wizard
-  - Cleric
-  - Captain
-  - Key Master
-  - Door
+  - Enemy
+  - Interactable
+  - Environment
   layers:
   - Default
   - TransparentFX

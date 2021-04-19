@@ -12,7 +12,7 @@ public class PlayerCombat : MonoBehaviour
     private GameObject playerTarget;
     // Declare variables for auto attacking and inAttackRange
     private bool autoAttacking;
-    private bool inAttackRange;
+    public bool inAttackRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,49 +48,92 @@ public class PlayerCombat : MonoBehaviour
             {
                 // Start the Attack coroutine
                 StartCoroutine("Attack");
+            } else
+            {
+                // Stop the Attack coroutine
+                StopCoroutine("Attack");
             }
         }
     }
     // Create method to determine if the player is in attack range
     private void InAttackRange()
     {
+        // Set the layer mask to the targetable layer only
+        int layerMask = (1 << 8);
         // Set the playerTarget to the game object benig targeted
         playerTarget = GetComponent<PlayerTargeting>().target;
-        RaycastHit hit;
-        // Use a raycast to determine if the player is in attack range of the target
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, attackRange))
+        if (playerTarget != null)
         {
-            if (!hit.transform.gameObject.CompareTag("Environment") & playerTarget != null)
+            RaycastHit hit;
+            // Use a raycast to determine if the player is in attack range of the target
+            if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, layerMask))
             {
-                if (hit.transform.parent.gameObject.name == playerTarget.name)
+                // Create variable for the game object of the hit parent
+                GameObject hitObject = hit.transform.parent.gameObject; 
+                // Check if the hitObject is an enemy and the current target of the player then set inAttackRange
+                if (hitObject.CompareTag("Enemy") & hitObject.name == playerTarget.name)
                 {
-                    Debug.Log(hit.transform.parent.gameObject.name + " is in attack range");
                     inAttackRange = true;
-                }
+                }      
+            }   else
+            {
+                inAttackRange = false;
             }
+        } else
+        {
+            inAttackRange = false;
         }
+        
     }
     // Create IEnum to attack with attackDelay
     IEnumerator Attack()
     {
-        // Set the playerTarget to the game object benig targeted
+        // Set the playerTarget to the game object being targeted
         playerTarget = GetComponent<PlayerTargeting>().target;
-        // If autoAttacking call the DamageTarget method after attackDelay
-        while (autoAttacking & playerTarget.GetComponent<EnemyController>().currentHealth > 0)
+        Debug.Log(playerTarget);
+        // Repeat while autoAttacking is true
+        while(autoAttacking)
         {
-            yield return new WaitForSeconds(attackDelay);
-            if (playerTarget.CompareTag("Enemy")) 
+            // If the playerTarget is equal to null log "You have no target."
+            if (playerTarget == null)
             {
-                Debug.Log("auto attacking");
-                DamageTarget();               
-            } else if (playerTarget.CompareTag("Player"))
-            {
-                Debug.Log("You can't attack yourself");
-            } else if (playerTarget = null)
-            {
-                Debug.Log("You have no target");
+                Debug.Log("You have no target.");
+                yield return new WaitForSeconds(attackDelay);
+            } else {
+                // Use a switch case statement to take certain action based on the playerTarget tag
+                string tag = playerTarget.gameObject.tag;
+                switch (tag)
+                {
+                    case "Player":
+                        Debug.Log("You can't attack yourself");
+                        yield return new WaitForSeconds(attackDelay);
+                        break;
+                    case "Interactable":
+                        Debug.Log("You cannot attack your current target.");
+                        yield return new WaitForSeconds(attackDelay);
+                        break;
+                    case "Enemy":
+                        if (!inAttackRange)
+                        {
+                            Debug.Log("You are too far away from your target.");
+                            yield return new WaitForSeconds(attackDelay);
+                        }
+                        else
+                        {
+                            Debug.Log("Auto Attacking");
+                            DamageTarget();
+                            if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
+                            {
+                                Debug.Log("Enemy defeated");
+                                StopCoroutine("Attack");
+                                playerTarget = null;
+                                autoAttacking = false;
+                            }
+                            yield return new WaitForSeconds(attackDelay);
+                        }
+                        break;
+                }
             }
-            
         }
     }
 }

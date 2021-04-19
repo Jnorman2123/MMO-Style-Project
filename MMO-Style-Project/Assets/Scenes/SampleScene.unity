@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 58097151}
   m_Layer: 0
   m_Name: Room 1 Right Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 63556898}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Floor
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 86597179}
   m_Layer: 0
   m_Name: Front Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 486474284}
   m_Layer: 0
   m_Name: Right Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 689504197}
   m_Layer: 0
   m_Name: Room 1 Left Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1546,11 +1546,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4305591654861333908, guid: e8be1eb55a5689943b0887877900224e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8be1eb55a5689943b0887877900224e, type: 3}
 --- !u!1 &963194225
@@ -1604,7 +1599,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
+  near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
   orthographic: 0
@@ -1631,8 +1626,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.02571269, y: -0.000000964114, z: 0.000000024798162, w: 0.9996694}
-  m_LocalPosition: {x: 0, y: 3.5, z: -95}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.75, z: -74.55}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1770,7 +1765,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976607, y: 0.000000017214433, z: -4.300767e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976607, y: 0.00000001725473, z: -4.3108567e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1790,6 +1785,7 @@ GameObject:
   - component: {fileID: 1051825980}
   - component: {fileID: 1051825976}
   - component: {fileID: 1051825977}
+  - component: {fileID: 1051825979}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1843,6 +1839,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051825979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c585eba09caae8249965032d2d8369b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &1051825980
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1875,7 +1883,7 @@ GameObject:
   - component: {fileID: 1101260183}
   m_Layer: 0
   m_Name: Room 1 Front Left Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2037,7 +2045,7 @@ GameObject:
   - component: {fileID: 1315064799}
   m_Layer: 0
   m_Name: Room 1 Front Right Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2260,7 +2268,7 @@ PrefabInstance:
     - target: {fileID: 4305591654861333908, guid: e8be1eb55a5689943b0887877900224e,
         type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8be1eb55a5689943b0887877900224e, type: 3}
@@ -2330,7 +2338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.0000009638107, z: -0.000000013013654, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.0000007058253, z: -0.0000000063784347, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2607,7 +2615,7 @@ GameObject:
   - component: {fileID: 1904617391}
   m_Layer: 0
   m_Name: Back Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2700,7 +2708,7 @@ GameObject:
   - component: {fileID: 1975091155}
   m_Layer: 0
   m_Name: Left Wall
-  m_TagString: Wall
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2849,7 +2857,7 @@ PrefabInstance:
     - target: {fileID: 4305591654861333908, guid: e8be1eb55a5689943b0887877900224e,
         type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8be1eb55a5689943b0887877900224e, type: 3}
@@ -3453,6 +3461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430856643401860851, guid: bf387588729d0bc4faf821834fd7b9ff,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7656881355279187172, guid: bf387588729d0bc4faf821834fd7b9ff,
         type: 3}

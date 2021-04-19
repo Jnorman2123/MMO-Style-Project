@@ -36,11 +36,12 @@ public class PlayerTargeting : MonoBehaviour
                 {
                     target = (hit.transform.parent.gameObject);
                     Debug.Log("Targeting " + target.name + " " + target.tag);
-                }  
-            } else
-            {
-                target = null;
-            }
+                }
+                else
+                {
+                    target = null;
+                }
+            } 
         }
     }
     // Create method to clear the target
