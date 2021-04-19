@@ -98,7 +98,6 @@ public class PlayerCombat : MonoBehaviour
             if (playerTarget == null)
             {
                 Debug.Log("You have no target.");
-                yield return new WaitForSeconds(attackDelay);
             } else {
                 // Use a switch case statement to take certain action based on the playerTarget tag
                 string tag = playerTarget.gameObject.tag;
@@ -106,17 +105,14 @@ public class PlayerCombat : MonoBehaviour
                 {
                     case "Player":
                         Debug.Log("You can't attack yourself");
-                        yield return new WaitForSeconds(attackDelay);
                         break;
                     case "Interactable":
                         Debug.Log("You cannot attack your current target.");
-                        yield return new WaitForSeconds(attackDelay);
                         break;
                     case "Enemy":
                         if (!inAttackRange)
                         {
                             Debug.Log("You are too far away from your target.");
-                            yield return new WaitForSeconds(attackDelay);
                         }
                         else
                         {
@@ -129,11 +125,11 @@ public class PlayerCombat : MonoBehaviour
                                 playerTarget = null;
                                 autoAttacking = false;
                             }
-                            yield return new WaitForSeconds(attackDelay);
                         }
                         break;
                 }
             }
+            yield return new WaitForSeconds(attackDelay);
         }
     }
 }

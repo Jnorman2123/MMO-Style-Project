@@ -10,13 +10,11 @@ public class EnemyController : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        // Call the SetEnemyHealth method
-        SetMaxHealth();
+        // Set the currentHealth to the maxHealth
         currentHealth = maxHealth;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -24,9 +22,9 @@ public class EnemyController : MonoBehaviour
         Death();
     }
     // Create method to set the health of the enemy based on its type
-    private void SetMaxHealth()
+    public void SetMaxHealth()
     {
-        // Use a switch case statement to set the enemy health based on the enemy tag
+        // Use a switch case statement to set the enemy health based on the enemy name
         string name = gameObject.name;
         switch(name)
         {

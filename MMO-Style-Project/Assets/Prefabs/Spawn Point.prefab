@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8433945523154913938}
   - component: {fileID: 23489421024266547}
   - component: {fileID: 3072264423466442347}
+  - component: {fileID: 2989332164591247707}
   m_Layer: 0
   m_Name: Spawn Point
   m_TagString: Untagged
@@ -79,3 +80,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2989332164591247707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826072992446889124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a3154891caa134cb62ef4e2897cbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawned: 0
+  enemies:
+  - {fileID: 8069920478278318186, guid: 5aac02bcd5d6c00489777b6e60f200bc, type: 3}
+  - {fileID: 4216498644367734313, guid: 0c010dd2f6599944db2db85daef75a87, type: 3}
+  - {fileID: 7417407029408352935, guid: aa58cf0f884b02c4dbc5e09cb804cf72, type: 3}
+  - {fileID: 15085034119962304, guid: d5e583dcbbec53742b5b6a45cbdeb4c5, type: 3}
+  - {fileID: 249743119782243925, guid: 3b62365b112ae97419960cb22a0e73f8, type: 3}
+  - {fileID: 7412631821416101601, guid: 20d032eae4bdae04fb2eccadead72f7b, type: 3}
