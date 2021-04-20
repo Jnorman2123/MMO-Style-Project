@@ -116,7 +116,6 @@ public class PlayerCombat : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Auto Attacking");
                             DamageTarget();
                             if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
                             {

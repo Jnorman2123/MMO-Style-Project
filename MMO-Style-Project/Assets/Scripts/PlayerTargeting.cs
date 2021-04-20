@@ -35,7 +35,7 @@ public class PlayerTargeting : MonoBehaviour
                 if (!hit.transform.gameObject.CompareTag("Environment"))
                 {
                     target = (hit.transform.parent.gameObject);
-                    Debug.Log("Targeting " + target.name + " " + target.tag);
+                    Debug.Log("Targeting " + target.name);
                 }
                 else
                 {
