@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         // Set the currentHealth to the maxHealth
         currentHealth = maxHealth;
@@ -28,22 +28,22 @@ public class EnemyController : MonoBehaviour
         string name = gameObject.name;
         switch(name)
         {
-            case "Warrior":
+            case "Warrior(Clone)":
                 maxHealth = 200;
                 break;
-            case "Rogue":
+            case "Rogue(Clone)":
                 maxHealth = 175;
                 break;
-            case "Wizard":
+            case "Wizard(Clone)":
                 maxHealth = 125;
                 break;
-            case "Cleric":
+            case "Cleric(Clone)":
                 maxHealth = 150;
                 break;
-            case "Captain":
+            case "Captain(Clone)":
                 maxHealth = 250;
                 break;
-            case "Key Master":
+            case "Key Master(Clone)":
                 maxHealth = 300;
                 break;
         }
