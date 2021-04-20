@@ -34,15 +34,15 @@ public class EnemyMovement : MonoBehaviour
         if (gameObject.GetComponent<EnemyController>().isPatrol == true)
         {
             enemyCharacterController.Move(transform.forward * moveSpeed * Time.deltaTime);
-        }
-        // If the enemy reaches the end points of its route it will stop, turn around and then begin moving again after a few seconds
-        if ((transform.position.x <= -15 & moveSpeed > 0.0f) || (transform.position.x >= 15 & moveSpeed > 0.0f))
-        {
-            moveSpeed = 0.0f;
-            transform.Rotate(turnDirection);
-            // Start the WaitToMove coroutine
-            StartCoroutine("WaitToMove");
-        }
+            // If the enemy reaches the end points of its route it will stop, turn around and then begin moving again after a few seconds
+            if ((transform.position.x <= -15 & moveSpeed > 0.0f) || (transform.position.x >= 15 & moveSpeed > 0.0f))
+            {
+                moveSpeed = 0.0f;
+                transform.Rotate(turnDirection);
+                // Start the WaitToMove coroutine
+                StartCoroutine("WaitToMove");
+            }
+        } 
     }
     // Create an ienumerator to wait a few seconds then move again
     IEnumerator WaitToMove()
