@@ -64,25 +64,52 @@ public class SpawnManager : MonoBehaviour
     {
         // Randomize the enemy that will spawn based on chance out of spawnRoll
         int spawnChance = Random.Range(spawnRollLow, spawnRollHigh);
-        if (spawnChance > 90)
+        if (gameObject.CompareTag("Regular Spawn Point") || gameObject.CompareTag("Patrol Spawn Point"))
         {
-            spawnNumber = 5;
-        } else if (spawnChance > 80 & spawnChance < 91)
+            if (spawnChance > 75)
+            {
+                spawnNumber = 3;
+            }
+            else if (spawnChance > 50 & spawnChance < 76)
+            {
+                spawnNumber = 2;
+            }
+            else if (spawnChance > 25 & spawnChance < 51)
+            {
+                spawnNumber = 1;
+            }
+            else if (spawnChance < 26)
+            {
+                spawnNumber = 0;
+            }
+        } else if (gameObject.CompareTag("Rare Spawn Point"))
         {
-            spawnNumber = 4;
-        } else if (spawnChance > 60 & spawnChance < 81)
-        {
-            spawnNumber = 3;
-        } else if (spawnChance > 40 & spawnChance < 61)
-        {
-            spawnNumber = 2;
-        } else if (spawnChance > 20 & spawnChance < 41)
-        {
-            spawnNumber = 1;
-        } else if (spawnChance < 21)
-        {
-            spawnNumber = 0;
+            if (spawnChance > 90)
+            {
+                spawnNumber = 5;
+            }
+            else if (spawnChance > 80 & spawnChance < 91)
+            {
+                spawnNumber = 4;
+            }
+            else if (spawnChance > 60 & spawnChance < 81)
+            {
+                spawnNumber = 3;
+            }
+            else if (spawnChance > 40 & spawnChance < 61)
+            {
+                spawnNumber = 2;
+            }
+            else if (spawnChance > 20 & spawnChance < 41)
+            {
+                spawnNumber = 1;
+            }
+            else if (spawnChance < 21)
+            {
+                spawnNumber = 0;
+            }
         }
+        
     }
     // Create a Coroutine to spawn a new enemy
     IEnumerator RespawnEnemy()
