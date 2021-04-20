@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - Interactable
   - Environment
+  - Door
+  - Regular Spawn Point
+  - Rare Spawn Point
+  - Patrol Spawn Point
   layers:
   - Default
   - TransparentFX

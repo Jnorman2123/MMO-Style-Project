@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Declare variable for the enemy character controller
-    public CharacterController enemyController;
     // Declare variables for the enemy max health and enemy current health
     public int maxHealth;
     public int currentHealth;
