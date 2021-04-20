@@ -12,6 +12,10 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemy;
     // Declare variable for respawn time
     private float respawnTime = 10.0f;
+    // Declare variables for random spawn roll and spawnNumber
+    private int spawnRollLow = 1;
+    private int spawnRollHigh = 100;
+    private int spawnNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +39,12 @@ public class SpawnManager : MonoBehaviour
     // Create a method to spawn an enemy if none is currently spawned
     private void SpawnEnemy()
     {
+        // Call the RandomizeEnemy method
+        RandomizeEnemy();
         // Set the spawn position
         Vector3 spawnPos = transform.position + new Vector3(0.0f, 1.0f, 0.0f);
         // If there is no enemy spawn one at the spawnPos
-        enemy = Instantiate(enemies[0], spawnPos, transform.rotation);
+        enemy = Instantiate(enemies[spawnNumber], spawnPos, transform.rotation);
         // Call the SetMaxHealth method
         enemy.GetComponent<EnemyController>().SetMaxHealth(); ;
     }
@@ -51,6 +57,31 @@ public class SpawnManager : MonoBehaviour
         } else
         {
             spawned = true;
+        }
+    }
+    // Create method to determine which enemy should spawn based on spawnRoll
+    private void RandomizeEnemy()
+    {
+        // Randomize the enemy that will spawn based on chance out of spawnRoll
+        int spawnChance = Random.Range(spawnRollLow, spawnRollHigh);
+        if (spawnChance > 90)
+        {
+            spawnNumber = 5;
+        } else if (spawnChance > 80 & spawnChance < 91)
+        {
+            spawnNumber = 4;
+        } else if (spawnChance > 60 & spawnChance < 81)
+        {
+            spawnNumber = 3;
+        } else if (spawnChance > 40 & spawnChance < 61)
+        {
+            spawnNumber = 2;
+        } else if (spawnChance > 20 & spawnChance < 41)
+        {
+            spawnNumber = 1;
+        } else if (spawnChance < 21)
+        {
+            spawnNumber = 0;
         }
     }
     // Create a Coroutine to spawn a new enemy
