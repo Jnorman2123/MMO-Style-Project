@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     // Declare variables for the enemy max health and enemy current health
     public int maxHealth;
     public int currentHealth;
+    // Declare variable for enemy is patrol
+    public bool isPatrol;
     // Start is called before the first frame update
     void Start()
     {
