@@ -7,12 +7,16 @@ public class PlayerController : MonoBehaviour
     // Declare variables for player current and max health
     public int currentHealth;
     public int maxHealth;
+    // Declare variable for the player ui window 
+    public GameObject playerUIWindow;
     // Start is called before the first frame update
     void Start()
     {
         // Set the max and current health
         maxHealth = 200;
         currentHealth = maxHealth;
+        // Call the SetMaxHealthBarValue method
+        playerUIWindow.GetComponent<PlayerWindowController>().SetMaxHealthBarValue();
     }
 
     // Update is called once per frame
