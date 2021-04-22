@@ -10,9 +10,13 @@ public class PlayerCombat : MonoBehaviour
     private float attackRange = 10.0f;
     // Declare variable for the player target
     private GameObject playerTarget;
+    // Declare variable for chat window ui
+    public GameObject chatUIWindow;
     // Declare variables for auto attacking and inAttackRange
     private bool autoAttacking;
     public bool inAttackRange;
+    // Declare variable for combat message
+    private string combatMessage;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,10 @@ public class PlayerCombat : MonoBehaviour
         playerTarget = GetComponent<PlayerTargeting>().target;
         // Call the enemy TakeDamage method with the damage 
         playerTarget.GetComponent<EnemyController>().TakeDamage(attackDamage);
+        // Set the combat message to reflect how much damage you deal to the enemy
+        combatMessage = "You hit " + playerTarget.name.Replace("(Clone)", "").Trim() + " for " + attackDamage + " points of damage!";
+        // Call the SetChatLogText method
+        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
     }
     // Create method to toggle auto attack
     private void AutoAttack()
@@ -42,14 +50,21 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetKeyDown("`"))
         {
             autoAttacking = !autoAttacking;
-            Debug.Log(autoAttacking);
             // Check to see if autoAttacking and start or stop the attack coroutine
             if (autoAttacking)
             {
+                // Set combat message to show you began attacking
+                combatMessage = "You have started auto attacking.";
+                // Call the SetChatLogText method
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                 // Start the Attack coroutine
                 StartCoroutine("Attack");
             } else
             {
+                // Set combat message to show you stop attacking
+                combatMessage = "You are no longer auto attacking.";
+                // Call the SetChatLogText method
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                 // Stop the Attack coroutine
                 StopCoroutine("Attack");
             }
@@ -90,36 +105,46 @@ public class PlayerCombat : MonoBehaviour
     {
         // Set the playerTarget to the game object being targeted
         playerTarget = GetComponent<PlayerTargeting>().target;
-        Debug.Log(playerTarget);
         // Repeat while autoAttacking is true
         while(autoAttacking)
         {
             // If the playerTarget is equal to null log "You have no target."
             if (playerTarget == null)
             {
-                Debug.Log("You have no target.");
+                combatMessage = "You have no target.";
+                // Call the SetChatLogText method
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             } else {
                 // Use a switch case statement to take certain action based on the playerTarget tag
                 string tag = playerTarget.gameObject.tag;
                 switch (tag)
                 {
                     case "Player":
-                        Debug.Log("You can't attack yourself");
+                        combatMessage = "You can't attack yourself";
+                        // Call the SetChatLogText method
+                        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                         break;
                     case "Interactable":
-                        Debug.Log("You cannot attack your current target.");
+                        combatMessage = "You cannot attack your current target.";
+                        // Call the SetChatLogText method
+                        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                         break;
                     case "Enemy":
                         if (!inAttackRange)
                         {
-                            Debug.Log("You are too far away from your target.");
+                            combatMessage = "You are too far away from your target.";
+                            // Call the SetChatLogText method
+                            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                         }
                         else
                         {
                             DamageTarget();
                             if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
                             {
-                                Debug.Log("Enemy defeated");
+                                combatMessage = "You have defeated " + playerTarget.name.Replace("(Clone)", "").Trim() + 
+                                                "\r\n You are no longer auto attacking."  ;
+                                // Call the SetChatLogText method
+                                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                                 StopCoroutine("Attack");
                                 playerTarget = null;
                                 autoAttacking = false;

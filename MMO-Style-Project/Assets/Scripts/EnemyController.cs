@@ -63,7 +63,6 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("Current health " + currentHealth);
     }
     // Create a method to test out targets using mana
     private void UseMana()

@@ -42,7 +42,7 @@ public class TargetWindowController : MonoBehaviour
             SetTargetText();
             // Call the DeactivateResourceBars method
             DeactivateResourceBars();
-            if (!playerTarget.CompareTag("Interactable"))
+            if (!playerTarget.CompareTag("Interactable") & !playerTarget.CompareTag("Player"))
             {
                 // Call the SetTargetMaxHealthBarValue
                 SetTargetMaxHealthBarValue();
