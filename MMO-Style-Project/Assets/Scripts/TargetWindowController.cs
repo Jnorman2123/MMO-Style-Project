@@ -39,8 +39,14 @@ public class TargetWindowController : MonoBehaviour
             SetTargetText();
             // Call the DeactivateResourceBars method
             DeactivateResourceBars();
-        }
-        
+            if (!playerTarget.CompareTag("Interactable"))
+            {
+                // Call the SetTargetHealthBarValue method
+                SetTargetHealthBarValue();
+                // Call the SetTargetManaBarValue method
+                SetTargetManaBarValue();
+            }
+        } 
     }
     // Create a method to set the text value of the target ui window based on player target
     private void SetTargetText()
@@ -63,10 +69,38 @@ public class TargetWindowController : MonoBehaviour
             targetManaBar.gameObject.SetActive(true);
         }
     }
+    // Create a method to set the health bar health to the player targets current health
+    private void SetTargetHealthBarValue()
+    {
+        // Set currentHealth to the player targets current health
+        currentHealthValue = playerTarget.GetComponent<EnemyController>().currentHealth;
+        // Set the targetHealthBar value to currentHealth
+        targetHealthBar.value = currentHealthValue;
+    }
     // Create a method to set the max value of the targetHealthBar to the maxHealth
-    private void SetTargetMaxHealthBarValue()
+    public void SetTargetMaxHealthBarValue()
     {
         // Set currentHealthValue to the targets current health
-        currentHealthValue = playerTarget.GetComponent<EnemyController>().currentHealth;
+        maxHealthValue = playerTarget.GetComponent<EnemyController>().maxHealth;
+        // Set the targetHealthBar max and current values to maxHealthValue
+        targetHealthBar.maxValue = maxHealthValue;
+        targetHealthBar.value = maxHealthValue;
+    }
+    // Create a method to set the mana bar value to the player targets current mana
+    private void SetTargetManaBarValue()
+    {
+        // Set currentMana to the players current mana
+        currentManaValue = playerTarget.GetComponent<EnemyController>().currentMana;
+        // Set the targetManaBar value to currentMana
+        targetManaBar.value = currentManaValue;
+    }
+    // Create a method to set the max value of the targetManaBar to the maxMana
+    public void SetTargetMaxManaBarValue()
+    {
+        // Set the max and current mana of the player target mana window
+        maxManaValue = playerTarget.GetComponent<EnemyController>().maxMana;
+        // Set the playerManaBar max and current values to maxMana
+        targetManaBar.maxValue = maxManaValue;
+        targetManaBar.value = maxManaValue;
     }
 }

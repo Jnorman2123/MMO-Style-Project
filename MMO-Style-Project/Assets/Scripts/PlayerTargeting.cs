@@ -40,6 +40,13 @@ public class PlayerTargeting : MonoBehaviour
                 {
                     target = (hit.transform.parent.gameObject);
                     Debug.Log("Targeting " + target.name);
+                    if (!target.CompareTag("Interactable"))
+                    {
+                        // Call the SetTargetMaxHealthBarValue
+                        targetUIWindow.GetComponent<TargetWindowController>().SetTargetMaxHealthBarValue();
+                        // Call the SetTargetMaxManaBarValue
+                        targetUIWindow.GetComponent<TargetWindowController>().SetTargetMaxManaBarValue();
+                    }
                 }
                 else
                 {

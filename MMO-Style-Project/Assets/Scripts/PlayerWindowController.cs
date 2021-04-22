@@ -8,6 +8,9 @@ public class PlayerWindowController : MonoBehaviour
 {
     // Declare variable for the player window ui text
     public TextMeshProUGUI playerNameText;
+    // Declare variables for the player health and mana bar text
+    public TextMeshProUGUI playerHealthBarText;
+    public TextMeshProUGUI playerManaBarText;
     // Declare variable for player name
     private string playerName = "Zidgog";
     // Declare variable for the player game object
@@ -34,6 +37,10 @@ public class PlayerWindowController : MonoBehaviour
         SetPlayerHealthBarValue();
         // Call the SetManaBarValue method
         SetPlayerManaBarValue();
+        // Call the SetPlayerHealthBarText method
+        SetPlayerHealthBarText();
+        // Call the SetPlayerManaBarText method
+        SetPlayerManaBarText();
     }
     // Create a method to set the health bar health to the players current health
     private void SetPlayerHealthBarValue()
@@ -68,5 +75,15 @@ public class PlayerWindowController : MonoBehaviour
         // Set the playerManaBar max and current values to maxMana
         playerManaBar.maxValue = maxManaValue;
         playerManaBar.value = maxManaValue;
+    }
+    // Create a method to set the player health bar text
+    private void SetPlayerHealthBarText()
+    {
+        playerHealthBarText.text = currentHealthValue + "/" + maxHealthValue;
+    }
+    // Create a method to set the player mana bar text
+    private void SetPlayerManaBarText()
+    {
+        playerManaBarText.text = currentManaValue + "/" + maxManaValue;
     }
 }
