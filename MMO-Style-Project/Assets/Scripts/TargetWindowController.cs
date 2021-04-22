@@ -16,6 +16,9 @@ public class TargetWindowController : MonoBehaviour
     // Declare variables for the target health and mana bar sliders
     public Slider targetHealthBar;
     public Slider targetManaBar;
+    // Declare variables for the target health and mana bar text
+    public TextMeshProUGUI targetHealthBarText;
+    public TextMeshProUGUI targetManaBarText;
     // Declare variables for current and max health and mana 
     private int maxHealthValue;
     private int currentHealthValue;
@@ -41,10 +44,18 @@ public class TargetWindowController : MonoBehaviour
             DeactivateResourceBars();
             if (!playerTarget.CompareTag("Interactable"))
             {
+                // Call the SetTargetMaxHealthBarValue
+                SetTargetMaxHealthBarValue();
+                // Call the SetTargetMaxManaBarValue
+                SetTargetMaxManaBarValue();
                 // Call the SetTargetHealthBarValue method
                 SetTargetHealthBarValue();
                 // Call the SetTargetManaBarValue method
                 SetTargetManaBarValue();
+                // Call the SetTargetHealthBarText method
+                SetTargetHealthBarText();
+                // Call the SetTargetManaBarText method
+                SetTargetManaBarText();
             }
         } 
     }
@@ -102,5 +113,15 @@ public class TargetWindowController : MonoBehaviour
         // Set the playerManaBar max and current values to maxMana
         targetManaBar.maxValue = maxManaValue;
         targetManaBar.value = maxManaValue;
+    }
+    // Create a method to set the target health bar text
+    private void SetTargetHealthBarText()
+    {
+        targetHealthBarText.text = currentHealthValue + "/" + maxHealthValue;
+    }
+    // Create a method to set the target mana bar text
+    private void SetTargetManaBarText()
+    {
+        targetManaBarText.text = currentManaValue + "/" + maxManaValue;
     }
 }
