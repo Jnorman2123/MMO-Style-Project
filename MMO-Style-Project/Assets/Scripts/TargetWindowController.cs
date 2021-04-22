@@ -24,11 +24,14 @@ public class TargetWindowController : MonoBehaviour
     {
         // Set the playerTarget
         playerTarget = player.GetComponent<PlayerTargeting>().target;
-        if (targetName != null)
+        if (playerTarget != null)
         {
             targetName = playerTarget.name;
+        } else
+        {
+            targetName = "";
         }
-        targetNameText.text = targetName;
+        targetNameText.text = targetName.Replace("(Clone)", "").Trim();
     }
     
 }
