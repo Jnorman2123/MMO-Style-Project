@@ -6,6 +6,8 @@ public class PlayerTargeting : MonoBehaviour
 {
     // Declare variable for target
     public GameObject target;
+    // Declare variable for the target ui window
+    public GameObject targetUIWindow;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class PlayerTargeting : MonoBehaviour
         MouseTarget();
         // Call the ClearTarget method
         ClearTarget();
+        // Call the ActivateTargetWindow method
+        ActivateTargetWindow();
     }
     // Create method that targets the object the player left clicks on
     private void MouseTarget()
@@ -50,6 +54,20 @@ public class PlayerTargeting : MonoBehaviour
         if (target != null & Input.GetKeyDown("escape"))
         {
             target = null;
+        }
+    }
+    // Create a method to only set the target window to active if the player has a valid target
+    private void ActivateTargetWindow()
+    {
+
+        // Set the window to inactive if there is no player target and active when player has a valid target
+        if (target != null)
+        {
+            targetUIWindow.gameObject.SetActive(true);
+        }
+        else
+        {
+            targetUIWindow.gameObject.SetActive(false);
         }
     }
 }
