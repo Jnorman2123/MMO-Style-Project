@@ -11,15 +11,15 @@ public class PlayerWindowController : MonoBehaviour
     // Declare variable for player name
     private string playerName = "Zidgog";
     // Declare variable for the player game object
-    public GameObject playerObj;
+    public GameObject player;
     // Declare variables for the player health and mana bar sliders
     public Slider playerHealthBar;
     public Slider playerManaBar;
     // Declare variables for current and max health and mana
-    private int maxHealth;
-    private int currentHealth;
-    private int maxMana;
-    private int currentMana;
+    private int maxHealthValue;
+    private int currentHealthValue;
+    private int maxManaValue;
+    private int currentManaValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,42 +31,42 @@ public class PlayerWindowController : MonoBehaviour
     void Update()
     {
         // Call the SetHealthBarValue method
-        SetHealthBarValue();
+        SetPlayerHealthBarValue();
         // Call the SetManaBarValue method
-        SetManaBarValue();
+        SetPlayerManaBarValue();
     }
     // Create a method to set the health bar health to the players current health
-    private void SetHealthBarValue()
+    private void SetPlayerHealthBarValue()
     {
         // Set currentHealth to the players current health
-        currentHealth = playerObj.GetComponent<PlayerController>().currentHealth;
+        currentHealthValue = player.GetComponent<PlayerController>().currentHealth;
         // Set the playerHealthBar value to currentHealth
-        playerHealthBar.value = currentHealth;
+        playerHealthBar.value = currentHealthValue;
     }
     // Create a method to set the max value of the playerHealthBar to the maxHealth
-    public void SetMaxHealthBarValue()
+    public void SetPlayerMaxHealthBarValue()
     {
         // Set the max and current health of the player health window
-        maxHealth = playerObj.GetComponent<PlayerController>().maxHealth;
+        maxHealthValue = player.GetComponent<PlayerController>().maxHealth;
         // Set the playerHealthBar max and current values to maxHealth
-        playerHealthBar.maxValue = maxHealth;
-        playerHealthBar.value = maxHealth;
+        playerHealthBar.maxValue = maxHealthValue;
+        playerHealthBar.value = maxHealthValue;
     }
     // Create a method to set the mana bar mana to the players current mana
-    private void SetManaBarValue()
+    private void SetPlayerManaBarValue()
     {
         // Set currentMana to the players current mana
-        currentMana = playerObj.GetComponent<PlayerController>().currentMana;
+        currentManaValue = player.GetComponent<PlayerController>().currentMana;
         // Set the playerManaBar value to currentMana
-        playerManaBar.value = currentMana;
+        playerManaBar.value = currentManaValue;
     }
     // Create a method to set the max value of the playerManaBar to the maxMana
-    public void SetMaxManaBarValue()
+    public void SetPlayerMaxManaBarValue()
     {
         // Set the max and current mana of the player mana window
-        maxMana = playerObj.GetComponent<PlayerController>().maxMana;
+        maxManaValue = player.GetComponent<PlayerController>().maxMana;
         // Set the playerManaBar max and current values to maxMana
-        playerManaBar.maxValue = maxMana;
-        playerManaBar.value = maxMana;
+        playerManaBar.maxValue = maxManaValue;
+        playerManaBar.value = maxManaValue;
     }
 }

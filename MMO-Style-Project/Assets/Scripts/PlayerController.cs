@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour
         maxMana = 100;
         currentMana = maxMana;
         // Call the SetMaxHealthBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetMaxHealthBarValue();
+        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxHealthBarValue();
         // Call the SetMaxManaBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetMaxManaBarValue();
+        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxManaBarValue();
     }
 
     // Update is called once per frame
