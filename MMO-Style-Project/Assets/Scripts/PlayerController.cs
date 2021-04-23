@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
     public int currentMana;
     public int maxMana;
+    // Declare variables for healthRegen and regenDelay
+    private int healthRegen;
+    private int regenDelay;
+    private bool isRegeningHealth;
     // Declare variables for player experience and player lvl
     public int currentExp;
     public int maxExp;
@@ -20,9 +24,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the max and current health
-        maxHealth = 200;
+        // Set the max and current health and healthRegen
+        maxHealth = 100;
         currentHealth = maxHealth;
+        healthRegen = 1;
+        regenDelay = 2;
+        isRegeningHealth = false;
         // Set the max and current mana
         maxMana = 100;
         currentMana = maxMana;
@@ -48,6 +55,11 @@ public class PlayerController : MonoBehaviour
         }
         // Call the LevelUp method
         LevelUp();
+        // Start the RegenHealth coroutine if the current health is less than the max health and not already regening
+        if (currentHealth < maxHealth & !isRegeningHealth)
+        {
+            StartCoroutine("RegenHealth");
+        }
     }
     // Create a method to damage the player to test the health bar
     public void TakeDamage(int damage)
@@ -63,7 +75,7 @@ public class PlayerController : MonoBehaviour
     public void GainExp()
     {
         // Gain exp
-        currentExp += 55;
+        currentExp += 10;
     }
     // Create a method to gain level when max exp is reached
     private void LevelUp()
@@ -73,11 +85,29 @@ public class PlayerController : MonoBehaviour
         {   
             int rollOverExp = currentExp - maxExp;
             playerLevel++;
-            maxExp *= 2;
+            maxExp += Mathf.RoundToInt(maxExp * 1.5f);
             currentExp = rollOverExp;
             string levelUpMessage = "Congratulations you are now level " + playerLevel + "!";
             // Display a message to show the player gained a level
             chatUIwindow.GetComponent<ChatWindowController>().SetChatLogText(levelUpMessage);
+        }
+    } // Create a coroutine to regen the health of the player over time
+    IEnumerator RegenHealth()
+    {
+        while (currentHealth < maxHealth)
+        {
+            isRegeningHealth = true;
+            currentHealth += healthRegen;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            } 
+            if (currentHealth == maxHealth)
+            {
+                StopCoroutine("RegenHealth");
+                isRegeningHealth = false;
+            }
+            yield return new WaitForSeconds(regenDelay);
         }
     }
 }
