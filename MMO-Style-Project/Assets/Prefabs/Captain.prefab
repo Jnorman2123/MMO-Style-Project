@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 3501328338575330981}
   - component: {fileID: 6032575361728020198}
   - component: {fileID: 6174709149778963188}
+  - component: {fileID: 6230431290651833614}
   m_Layer: 8
   m_Name: Captain Name Canvas
   m_TagString: Untagged
@@ -599,6 +600,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6230431290651833614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596772712039939281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39321b7d67b4a7041af22c0081edcd4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
 --- !u!1 &6137565192236986456
 GameObject:
   m_ObjectHideFlags: 0
