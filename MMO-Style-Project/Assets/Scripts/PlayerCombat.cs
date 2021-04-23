@@ -142,7 +142,10 @@ public class PlayerCombat : MonoBehaviour
                             if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
                             {
                                 combatMessage = "You have defeated " + playerTarget.name.Replace("(Clone)", "").Trim() + 
-                                                "\r\n You are no longer auto attacking."  ;
+                                                "\r\nYou have gained experience!" +
+                                                "\r\nYou are no longer auto attacking."  ;
+                                // Call the GainExp method from the player controller
+                                GetComponent<PlayerController>().GainExp();
                                 // Call the SetChatLogText method
                                 chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
                                 StopCoroutine("Attack");
