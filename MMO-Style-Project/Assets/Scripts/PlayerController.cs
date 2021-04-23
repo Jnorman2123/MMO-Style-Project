@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     public int currentExp;
     public int maxExp;
     public int playerLevel;
-    // Declare variables for the player ui window and chat ui window
+    // Declare variables for the player ui window, exp ui window, and chat ui window
     public GameObject playerUIWindow;
+    public GameObject expUIWindow;
     public GameObject chatUIwindow;
     // Start is called before the first frame update
     void Start()
@@ -25,14 +26,16 @@ public class PlayerController : MonoBehaviour
         // Set the max and current mana
         maxMana = 100;
         currentMana = maxMana;
-        // Call the SetMaxHealthBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxHealthBarValue();
-        // Call the SetMaxManaBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxManaBarValue();
         // Set the max and current exp and player level
         maxExp = 100;
         currentExp = 0;
         playerLevel = 1;
+        // Call the SetMaxHealthBarValue method
+        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxHealthBarValue();
+        // Call the SetMaxManaBarValue method
+        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxManaBarValue();
+        // Call the SetExpBarMaxValue method
+        expUIWindow.GetComponent<ExpWindowController>().SetExpBarMaxValue();
     }
 
     // Update is called once per frame
