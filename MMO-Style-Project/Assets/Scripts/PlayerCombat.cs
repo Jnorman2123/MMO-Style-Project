@@ -141,7 +141,7 @@ public class PlayerCombat : MonoBehaviour
                             DamageTarget();
                             if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
                             {
-                                combatMessage = "You have defeated " + playerTarget.name.Replace("(Clone)", "").Trim() + 
+                                combatMessage = "You have defeated " + playerTarget.name.Replace("(Clone)", "").Trim() + "!" + 
                                                 "\r\nYou have gained experience!" +
                                                 "\r\nYou are no longer auto attacking."  ;
                                 // Call the GainExp method from the player controller

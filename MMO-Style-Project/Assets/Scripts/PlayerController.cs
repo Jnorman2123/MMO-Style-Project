@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     public int currentExp;
     public int maxExp;
     public int playerLevel;
-    // Declare variable for the player ui window 
+    // Declare variables for the player ui window and chat ui window
     public GameObject playerUIWindow;
+    public GameObject chatUIwindow;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,18 +65,21 @@ public class PlayerController : MonoBehaviour
     public void GainExp()
     {
         // Gain exp
-        currentExp += 10;
+        currentExp += 55;
     }
     // Create a method to gain level when max exp is reached
     private void LevelUp()
     {
         // When max exp is reached gain a level, set a new maxExp and reset currentExp to the roll over exp
         if (currentExp >= maxExp)
-        {
+        {   
             int rollOverExp = currentExp - maxExp;
             playerLevel++;
             maxExp *= 2;
             currentExp = rollOverExp;
+            string levelUpMessage = "Congratulations you are now level " + playerLevel + "!";
+            // Display a message to show the player gained a level
+            chatUIwindow.GetComponent<ChatWindowController>().SetChatLogText(levelUpMessage);
         }
     }
 }
