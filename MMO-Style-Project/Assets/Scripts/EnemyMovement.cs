@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     private float moveSpeed;
     // Declare variable for the character controller
     public CharacterController enemyCharacterController;
+    // Declare variable for the player game object
+    private GameObject player;
     // Declare variable for turn direction
     private Vector3 turnDirection;
     // Declare variable for stationary time
@@ -16,14 +18,24 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         // Set the initial moveSpeed to walking speed
-        moveSpeed = 2.5f; 
+        moveSpeed = 2.5f;
+        // Set the player game object
+        player = GameObject.Find("Zidgog");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Call the Patrol method
-        Patrol();
+        
+        // Call the ChaseTarget method if the enemy has hate towards the player
+        if (GetComponent<EnemyController>().hate > 0)
+        {
+            ChaseTarget();
+        } else
+        {
+            // Call the Patrol method
+            Patrol();
+        }
     }
     // Create method to move the character if he is a patrol
     private void Patrol()
@@ -49,5 +61,14 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(stationaryTime);
         moveSpeed = 2.5f;
+    }
+    // Create method to make the enemy chase the target if he is aggro 
+    private void ChaseTarget()
+    {
+        // Set the MoveSpeed
+        moveSpeed = 10.0f;
+        // Have the enemy face the player and then move forward
+        transform.LookAt(player.transform);
+        enemyCharacterController.Move(transform.forward * moveSpeed * Time.deltaTime);
     }
 }

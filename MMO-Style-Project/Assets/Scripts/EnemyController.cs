@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public int currentHealth;
     public int maxMana;
     public int currentMana;
+    // Declare variable for hate and is aggro
+    public int hate;
+    public bool isAggro;
     // Declare variable for enemy is patrol
     public bool isPatrol;
     // Start is called before the first frame update
@@ -17,6 +20,9 @@ public class EnemyController : MonoBehaviour
         // Set the currentHealth to the maxHealth and currentMana to the maxMana
         currentHealth = maxHealth;
         currentMana = maxMana;
+        // Set hate to 0 and isAggro to false
+        hate = 0;
+        isAggro = false;
     }
     // Update is called once per frame
     void Update()
@@ -25,6 +31,8 @@ public class EnemyController : MonoBehaviour
         Death();
         // Call the UseMana method
         UseMana();
+        // Call the Aggro method
+        Aggro();
     }
     // Create method to set the health and mana of the enemy based on its type
     public void SetMaxHealthMana()
@@ -59,10 +67,12 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
-    // Create method to take damage based on the player attack damage
+    // Create method to take damage based on the player attack damage and gain hate
     public void TakeDamage(int damage)
     {
+        // Decrease health and increase hate by the damage taken
         currentHealth -= damage;
+        hate += damage;
     }
     // Create a method to test out targets using mana
     private void UseMana()
@@ -79,6 +89,17 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+    // Create a method to make the enemy aggro if he receives a hate gaining action
+    private void Aggro()
+    {
+        if (hate > 0)
+        {
+            isAggro = true;
+        } else
+        {
+            isAggro = false;
         }
     }
 }

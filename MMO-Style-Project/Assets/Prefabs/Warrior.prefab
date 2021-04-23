@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 8952291124249949213}
   - component: {fileID: 6651837660862639487}
   - component: {fileID: 4366948557963135469}
+  - component: {fileID: 7895497395886919439}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -578,6 +579,8 @@ MonoBehaviour:
   currentHealth: 0
   maxMana: 0
   currentMana: 0
+  hate: 0
+  isAggro: 0
   isPatrol: 0
 --- !u!114 &4366948557963135469
 MonoBehaviour:
@@ -592,6 +595,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 8952291124249949213}
+  player: {fileID: 0}
+--- !u!114 &7895497395886919439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069920478278318186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8309228320537320614
 GameObject:
   m_ObjectHideFlags: 0

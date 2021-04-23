@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1438732343807578807}
   - component: {fileID: 8454886067955291855}
   - component: {fileID: 7379378211180312993}
+  - component: {fileID: -1395835998409651256}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -72,6 +73,8 @@ MonoBehaviour:
   currentHealth: 0
   maxMana: 0
   currentMana: 0
+  hate: 0
+  isAggro: 0
   isPatrol: 0
 --- !u!114 &7379378211180312993
 MonoBehaviour:
@@ -86,6 +89,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 1438732343807578807}
+  player: {fileID: 0}
+--- !u!114 &-1395835998409651256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0
