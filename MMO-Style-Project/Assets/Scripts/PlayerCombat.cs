@@ -12,15 +12,18 @@ public class PlayerCombat : MonoBehaviour
     private GameObject playerTarget;
     // Declare variable for chat window ui
     public GameObject chatUIWindow;
-    // Declare variables for auto attacking and inAttackRange
+    // Declare variables for auto attacking and inAttackRange and inCombat
     private bool autoAttacking;
     public bool inAttackRange;
+    public bool inCombat;
     // Declare variable for combat message
     private string combatMessage;
     // Start is called before the first frame update
     void Start()
     {
+        // Set autoAttacking and inCombat to false at start
         autoAttacking = false;
+        inCombat = false;
     }
 
     // Update is called once per frame
@@ -138,6 +141,8 @@ public class PlayerCombat : MonoBehaviour
                         }
                         else
                         {
+                            // Set inCombat to true and call the DamageTarget method
+                            inCombat = true;
                             DamageTarget();
                             if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
                             {
@@ -151,6 +156,7 @@ public class PlayerCombat : MonoBehaviour
                                 StopCoroutine("Attack");
                                 playerTarget = null;
                                 autoAttacking = false;
+                                inCombat = false;
                             }
                         }
                         break;
