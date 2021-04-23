@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     public CinemachineFreeLook thirdPersonCamera;
     // Declare variable for the thirdPersonCamera orbits
     private CinemachineFreeLook.Orbit[] tpcOrbits;
+    // Declare variable for the chat Ui window and mouse over chat
+    public GameObject chatUIWindow;
     // Set the range and base value of the minimum and maximum orbit scale
     [Range(0.01f, 1f)]
     public float minScale = 0.5f;
@@ -93,7 +95,7 @@ public class CameraController : MonoBehaviour
     // Create method to zoom the thirdPersonCamera in and out
     private void Zoom()
     {
-        if (tpcOrbits != null & !firstPerson)
+        if (tpcOrbits != null & !firstPerson & !chatUIWindow.GetComponent<ChatWindowController>().mouseOver)
         {
             zAxis.Update(Time.deltaTime);
             float scale = Mathf.Lerp(minScale, maxScale, zAxis.Value);
@@ -124,7 +126,7 @@ public class CameraController : MonoBehaviour
     private void FreeLook()
     {
         // Check to see if in third person and the left mouse button is being held
-        if (!firstPerson & Input.GetMouseButton(0))
+        if (!firstPerson & Input.GetMouseButton(0) & !chatUIWindow.GetComponent<ChatWindowController>().mouseOver)
         {
             // Set mouseY and mouseX to each axis
             mouseY = Input.GetAxis("Mouse Y")/50;
