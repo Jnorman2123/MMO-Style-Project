@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     {
         
         // Call the ChaseTarget method if the enemy has hate towards the player
-        if (GetComponent<EnemyController>().hate > 0)
+        if (GetComponent<EnemyController>().isAggro)
         {
             ChaseTarget();
         } else
@@ -65,8 +65,17 @@ public class EnemyMovement : MonoBehaviour
     // Create method to make the enemy chase the target if he is aggro 
     private void ChaseTarget()
     {
-        // Set the MoveSpeed
-        moveSpeed = 10.0f;
+        // Set the distance between the enemy and the player
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        // Set the moveSpeed based on if the enemy is in attack range
+        if (distance <= GetComponent<EnemyCombat>().attackRange)
+        {
+            moveSpeed = 0.0f;
+        } else
+        {
+            // Set the MoveSpeed
+            moveSpeed = 8.0f;
+        }
         // Have the enemy face the player and then move forward
         transform.LookAt(player.transform);
         enemyCharacterController.Move(transform.forward * moveSpeed * Time.deltaTime);

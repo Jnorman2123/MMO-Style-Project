@@ -29,12 +29,10 @@ public class ChatWindowController : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseOver = true;
-        Debug.Log("mouse is over the chat window");
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         mouseOver = false;
-        Debug.Log("mouse is not over the chat window");
     }
     // Create method to set the chat log text
     public void SetChatLogText(string message)
