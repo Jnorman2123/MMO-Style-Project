@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     // Declare variable for move speed
-    private float moveSpeed;
+    private float enemyMoveSpeed;
     // Declare variable for the character controller
     public CharacterController enemyCharacterController;
     // Declare variable for the player game object
@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         // Set the initial moveSpeed to walking speed
-        moveSpeed = 2.5f;
+        enemyMoveSpeed = 2.5f;
         // Set the player game object
         player = GameObject.Find("Zidgog");
     }
@@ -45,11 +45,11 @@ public class EnemyMovement : MonoBehaviour
         // If the enemy is a patrol begin to move the character forward slowly
         if (gameObject.GetComponent<EnemyController>().isPatrol == true)
         {
-            enemyCharacterController.Move(transform.forward * moveSpeed * Time.deltaTime);
+            enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
             // If the enemy reaches the end points of its route it will stop, turn around and then begin moving again after a few seconds
-            if ((transform.position.x <= -15 & moveSpeed > 0.0f) || (transform.position.x >= 15 & moveSpeed > 0.0f))
+            if ((transform.position.x <= -15 & enemyMoveSpeed > 0.0f) || (transform.position.x >= 15 & enemyMoveSpeed > 0.0f))
             {
-                moveSpeed = 0.0f;
+                enemyMoveSpeed = 0.0f;
                 transform.Rotate(turnDirection);
                 // Start the WaitToMove coroutine
                 StartCoroutine("WaitToMove");
@@ -60,24 +60,22 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator WaitToMove()
     {
         yield return new WaitForSeconds(stationaryTime);
-        moveSpeed = 2.5f;
+        enemyMoveSpeed = 2.5f;
     }
     // Create method to make the enemy chase the target if he is aggro 
     private void ChaseTarget()
     {
-        // Set the distance between the enemy and the player
-        float distance = Vector3.Distance(transform.position, player.transform.position);
         // Set the moveSpeed based on if the enemy is in attack range
-        if (distance <= GetComponent<EnemyCombat>().attackRange)
+        if (GetComponent<EnemyCombat>().inAttackRange)
         {
-            moveSpeed = 0.0f;
+            enemyMoveSpeed = 0.0f;
         } else
         {
             // Set the MoveSpeed
-            moveSpeed = 8.0f;
+            enemyMoveSpeed = 8.0f;
         }
         // Have the enemy face the player and then move forward
         transform.LookAt(player.transform);
-        enemyCharacterController.Move(transform.forward * moveSpeed * Time.deltaTime);
+        enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
     }
 }

@@ -41,11 +41,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Call the TakeDamage method if the player presses the f key
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage();
-        }
         // Call the UseMana method if the player presses the g key
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -55,9 +50,9 @@ public class PlayerController : MonoBehaviour
         LevelUp();
     }
     // Create a method to damage the player to test the health bar
-    private void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        currentHealth -= 50;
+        currentHealth -= damage;
     }
     // Create method to simulate using mana to test mana bar
     private void UseMana()

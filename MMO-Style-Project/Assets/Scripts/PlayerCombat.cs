@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     // Declare variables for attack delay, attack damage, and attack range
-    private float attackDelay = 2.0f;
-    private int attackDamage = 50;
-    private float attackRange = 10.0f;
+    private float playerAttackDelay = 2.0f;
+    private int playerAttackDamage = 50;
+    private float playerAttackRange = 10.0f;
     // Declare variable for the player target
     private GameObject playerTarget;
     // Declare variable for chat window ui
@@ -37,9 +37,9 @@ public class PlayerCombat : MonoBehaviour
         // Set the playerTarget to the game object benig targeted
         playerTarget = GetComponent<PlayerTargeting>().target;
         // Call the enemy TakeDamage method with the damage 
-        playerTarget.GetComponent<EnemyController>().TakeDamage(attackDamage);
+        playerTarget.GetComponent<EnemyController>().TakeDamage(playerAttackDamage);
         // Set the combat message to reflect how much damage you deal to the enemy
-        combatMessage = "You hit " + playerTarget.name.Replace("(Clone)", "").Trim() + " for " + attackDamage + " points of damage!";
+        combatMessage = "You hit " + playerTarget.name.Replace("(Clone)", "").Trim() + " for " + playerAttackDamage + " points of damage!";
         // Call the SetChatLogText method
         chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
     }
@@ -81,7 +81,7 @@ public class PlayerCombat : MonoBehaviour
         {
             RaycastHit hit;
             // Use a raycast to determine if the player is in attack range of the target
-            if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, layerMask))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, playerAttackRange, layerMask))
             {
                 // Create variable for the game object of the hit parent
                 GameObject hitObject = hit.transform.parent.gameObject; 
@@ -156,7 +156,7 @@ public class PlayerCombat : MonoBehaviour
                         break;
                 }
             }
-            yield return new WaitForSeconds(attackDelay);
+            yield return new WaitForSeconds(playerAttackDelay);
         }
     }
 }
