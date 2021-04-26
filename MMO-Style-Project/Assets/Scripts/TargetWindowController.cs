@@ -62,6 +62,7 @@ public class TargetWindowController : MonoBehaviour
     // Create a method to set the text value of the target ui window based on player target
     private void SetTargetText()
     {
+        Debug.Log(playerTarget);
         // Set the targetName to the playerTarget name
         targetName = playerTarget.name;
         // Set the targetNameText to the target name with (Clone) removed
@@ -83,19 +84,38 @@ public class TargetWindowController : MonoBehaviour
     // Create a method to set the health bar health to the player targets current health
     private void SetTargetHealthBarValue()
     {
-        // Set currentHealth to the player targets current health
-        currentHealthValue = playerTarget.GetComponent<EnemyController>().currentHealth;
-        // Set the targetHealthBar value to currentHealth
-        targetHealthBar.value = currentHealthValue;
+        if (playerTarget == player)
+        {
+            // Set currentHealth to the player targets current health
+            currentHealthValue = player.GetComponent<PlayerController>().currentHealth;
+            // Set the targetHealthBar value to currentHealth
+            targetHealthBar.value = currentHealthValue;
+        } else
+        {
+            // Set currentHealth to the player targets current health
+            currentHealthValue = playerTarget.GetComponent<EnemyController>().currentHealth;
+            // Set the targetHealthBar value to currentHealth
+            targetHealthBar.value = currentHealthValue;
+        }  
     }
     // Create a method to set the max value of the targetHealthBar to the maxHealth
     public void SetTargetMaxHealthBarValue()
     {
-        // Set currentHealthValue to the targets current health
-        maxHealthValue = playerTarget.GetComponent<EnemyController>().maxHealth;
-        // Set the targetHealthBar max and current values to maxHealthValue
-        targetHealthBar.maxValue = maxHealthValue;
-        targetHealthBar.value = maxHealthValue;
+        if (playerTarget == player)
+        {
+            // Set maxHealth to the player targets max health
+            maxHealthValue = player.GetComponent<PlayerController>().maxHealth;
+            // Set the targetHealthBar value to currentHealth
+            targetHealthBar.maxValue = maxHealthValue;
+            targetHealthBar.value = maxHealthValue;
+        } else
+        {
+            // Set maxHealthValue to the targets max health
+            maxHealthValue = playerTarget.GetComponent<EnemyController>().maxHealth;
+            // Set the targetHealthBar max and current values to maxHealthValue
+            targetHealthBar.maxValue = maxHealthValue;
+            targetHealthBar.value = maxHealthValue;
+        }
     }
     // Create a method to set the mana bar value to the player targets current mana
     private void SetTargetManaBarValue()

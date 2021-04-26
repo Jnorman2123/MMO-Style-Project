@@ -2761,13 +2761,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905517814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1614837270}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3386,7 +3386,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976587, y: -0.0000000171943, z: 4.2945664e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976589, y: -0.000000017174184, z: 4.2895384e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3566,6 +3566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatUIWindow: {fileID: 975192266}
   inAttackRange: 0
+  inCombat: 0
 --- !u!143 &1051825980
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4619,7 +4620,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366502945}
-  m_LocalRotation: {x: -0.011353497, y: 5.3766475e-10, z: 6.1017697e-12, w: 0.99993557}
+  m_LocalRotation: {x: -0.011353497, y: -5.3766486e-10, z: -6.107769e-12, w: 0.99993557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5185,7 +5186,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.000000006403231, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064032712, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

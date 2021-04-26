@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
             playerLevel++;
             maxExp += Mathf.RoundToInt(maxExp * 1.5f);
             currentExp = rollOverExp;
+            currentHealth = maxHealth;
             string levelUpMessage = "Congratulations you are now level " + playerLevel + "!";
             // Display a message to show the player gained a level
             chatUIwindow.GetComponent<ChatWindowController>().SetChatLogText(levelUpMessage);
