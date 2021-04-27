@@ -34,56 +34,40 @@ public class PlayerWindowController : MonoBehaviour
     void Update()
     {
         // Call the SetHealthBarValue method
-        SetPlayerHealthBarValue();
-        // Call the SetManaBarValue method
-        SetPlayerManaBarValue();
-        // Call the SetPlayerHealthBarText method
-        SetPlayerHealthBarText();
-        // Call the SetPlayerManaBarText method
-        SetPlayerManaBarText();
+        SetPlayerResourceBarValues();
+        // Call the SetPlayerResourceBarText method
+        SetPlayerResourceBarText();
     }
-    // Create a method to set the health bar health to the players current health
-    private void SetPlayerHealthBarValue()
+    // Create a method to set the health  and mana bar values to the players current health and mana
+    private void SetPlayerResourceBarValues()
     {
         // Set currentHealth to the players current health
         currentHealthValue = player.GetComponent<HealthController>().currentHealth;
         // Set the playerHealthBar value to currentHealth
         playerHealthBar.value = currentHealthValue;
+        // Set currentMana to the players current mana
+        currentManaValue = player.GetComponent<ManaController>().currentMana;
+        // Set the playerManaBar value to currentMana
+        playerManaBar.value = currentManaValue;
     }
-    // Create a method to set the max value of the playerHealthBar to the maxHealth
-    public void SetPlayerMaxHealthBarValue()
+    // Create a method to set the max value of the player health and mana to current health and mana
+    public void SetPlayerMaxResourceBarValues()
     {
         // Set the max and current health of the player health window
         maxHealthValue = player.GetComponent<HealthController>().maxHealth;
         // Set the playerHealthBar max and current values to maxHealth
         playerHealthBar.maxValue = maxHealthValue;
         playerHealthBar.value = maxHealthValue;
-    }
-    // Create a method to set the mana bar mana to the players current mana
-    private void SetPlayerManaBarValue()
-    {
-        // Set currentMana to the players current mana
-        currentManaValue = player.GetComponent<PlayerController>().currentMana;
-        // Set the playerManaBar value to currentMana
-        playerManaBar.value = currentManaValue;
-    }
-    // Create a method to set the max value of the playerManaBar to the maxMana
-    public void SetPlayerMaxManaBarValue()
-    {
         // Set the max and current mana of the player mana window
-        maxManaValue = player.GetComponent<PlayerController>().maxMana;
+        maxManaValue = player.GetComponent<ManaController>().maxMana;
         // Set the playerManaBar max and current values to maxMana
         playerManaBar.maxValue = maxManaValue;
         playerManaBar.value = maxManaValue;
     }
-    // Create a method to set the player health bar text
-    private void SetPlayerHealthBarText()
+    // Create a method to set the player health and mana bar text
+    private void SetPlayerResourceBarText()
     {
         playerHealthBarText.text = currentHealthValue + "/" + maxHealthValue;
-    }
-    // Create a method to set the player mana bar text
-    private void SetPlayerManaBarText()
-    {
         playerManaBarText.text = currentManaValue + "/" + maxManaValue;
     }
 }

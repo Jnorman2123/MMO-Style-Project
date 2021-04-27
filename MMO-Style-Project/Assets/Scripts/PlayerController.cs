@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Declare variables for player current and max mana
-    public int currentMana;
-    public int maxMana;
     // Declare variables for player experience and player lvl
     public int currentExp;
     public int maxExp;
@@ -18,17 +15,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the max and current mana
-        maxMana = 100;
-        currentMana = maxMana;
         // Set the max and current exp and player level
         maxExp = 100;
         currentExp = 0;
         playerLevel = 1;
-        // Call the SetMaxHealthBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxHealthBarValue();
-        // Call the SetMaxManaBarValue method
-        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxManaBarValue();
+        // Call the SetMaxHealthManaBarValue method
+        playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxResourceBarValues();
         // Call the SetExpBarMaxValue method
         expUIWindow.GetComponent<ExpWindowController>().SetExpBarMaxValue();
     }
@@ -36,18 +28,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Call the UseMana method if the player presses the g key
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            UseMana();
-        }
         // Call the LevelUp method
         LevelUp();
-    }
-    // Create method to simulate using mana to test mana bar
-    private void UseMana()
-    {
-        currentMana -= 10;
     }
     // Create a method to gain experience
     public void GainExp()

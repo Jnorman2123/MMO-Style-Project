@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 7895497395886919439}
   - component: {fileID: -5592857780337946299}
   - component: {fileID: -6705431819571420605}
+  - component: {fileID: 1794942307325117180}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -577,8 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 0
-  currentMana: 0
   hate: 0
   isAggro: 0
   isPatrol: 0
@@ -637,6 +636,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc77d484067ac341aedf3c802bd3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMana: 0
+  maxMana: 0
+--- !u!114 &1794942307325117180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069920478278318186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c84c8ef3d3a8a42b292a1e09e54e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameCanvas: {fileID: 6536221612222299697}
+  nameText: {fileID: 5793829614146557812}
 --- !u!1 &8309228320537320614
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +664,6 @@ GameObject:
   - component: {fileID: 6536221612222299697}
   - component: {fileID: 4968334985348227570}
   - component: {fileID: 8539293281457655080}
-  - component: {fileID: 5626259167511812326}
   m_Layer: 8
   m_Name: Warrior Name Canvas
   m_TagString: Untagged
@@ -737,15 +751,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5626259167511812326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8309228320537320614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39321b7d67b4a7041af22c0081edcd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 158504419967808153}
   - component: {fileID: 2317363983008039900}
   - component: {fileID: -3429556486052941826}
+  - component: {fileID: 6687693098610071643}
   m_Layer: 8
   m_Name: Captain
   m_TagString: Enemy
@@ -71,8 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 0
-  currentMana: 0
   hate: 0
   isAggro: 0
   isPatrol: 0
@@ -131,6 +130,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc77d484067ac341aedf3c802bd3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMana: 0
+  maxMana: 0
+--- !u!114 &6687693098610071643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249743119782243925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c84c8ef3d3a8a42b292a1e09e54e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameCanvas: {fileID: 3501328338575330981}
+  nameText: {fileID: 5980735359924635156}
 --- !u!1 &2649832095695775733
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +572,6 @@ GameObject:
   - component: {fileID: 3501328338575330981}
   - component: {fileID: 6032575361728020198}
   - component: {fileID: 6174709149778963188}
-  - component: {fileID: 6230431290651833614}
   m_Layer: 8
   m_Name: Captain Name Canvas
   m_TagString: Untagged
@@ -645,18 +659,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6230431290651833614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5596772712039939281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39321b7d67b4a7041af22c0081edcd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6137565192236986456
 GameObject:
   m_ObjectHideFlags: 0
