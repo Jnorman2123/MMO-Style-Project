@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
         // If there is no enemy spawn one at the spawnPos
         enemy = Instantiate(enemies[spawnNumber], spawnPos, transform.rotation);
         // Call the SetMaxHealth method
-        enemy.GetComponent<EnemyController>().SetMaxHealthMana(); ;
+        enemy.GetComponent<HealthController>().SetMaxHealth(); ;
         // If the spawn point is a patrol spawn point tag the enemy that spawns there as a patrol
         if (gameObject.CompareTag("Patrol Spawn Point"))
         {

@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
         // Set the playerTarget to the game object benig targeted
         playerTarget = GetComponent<PlayerTargeting>().target;
         // Call the enemy TakeDamage method with the damage 
-        playerTarget.GetComponent<EnemyController>().TakeDamage(playerAttackDamage);
+        playerTarget.GetComponent<HealthController>().TakeDamage(playerAttackDamage);
         // Set the combat message to reflect how much damage you deal to the enemy
         combatMessage = "You hit " + playerTarget.name.Replace("(Clone)", "").Trim() + " for " + playerAttackDamage + " points of damage!";
         // Call the SetChatLogText method
@@ -144,7 +144,7 @@ public class PlayerCombat : MonoBehaviour
                             // Set inCombat to true and call the DamageTarget method
                             inCombat = true;
                             DamageTarget();
-                            if (playerTarget.GetComponent<EnemyController>().currentHealth <= 0)
+                            if (playerTarget.GetComponent<HealthController>().currentHealth <= 0)
                             {
                                 combatMessage = "You have defeated " + playerTarget.name.Replace("(Clone)", "").Trim() + "!" + 
                                                 "\r\nYou have gained experience!" +

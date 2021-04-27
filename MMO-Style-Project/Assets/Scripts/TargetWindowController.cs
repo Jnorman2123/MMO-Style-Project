@@ -90,7 +90,7 @@ public class TargetWindowController : MonoBehaviour
         } else
         {
             // Set currentHealth to the player targets current health
-            currentHealthValue = playerTarget.GetComponent<EnemyController>().currentHealth;
+            currentHealthValue = playerTarget.GetComponent<HealthController>().currentHealth;
         }
         // Set the targetHealthBar value to currentHealth
         targetHealthBar.value = currentHealthValue;
@@ -105,7 +105,7 @@ public class TargetWindowController : MonoBehaviour
         } else
         {
             // Set maxHealthValue to the targets max health
-            maxHealthValue = playerTarget.GetComponent<EnemyController>().maxHealth;
+            maxHealthValue = playerTarget.GetComponent<HealthController>().maxHealth;
         }
         // Set the targetHealthBar max and current values to maxHealthValue
         targetHealthBar.maxValue = maxHealthValue;

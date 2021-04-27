@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 1542379155821368510}
   - component: {fileID: 7616067916477874167}
   - component: {fileID: 8452049331246231454}
+  - component: {fileID: -6265091670737374777}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -689,8 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
   maxMana: 0
   currentMana: 0
   hate: 0
@@ -709,7 +708,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 8443436588112791248}
-  player: {fileID: 0}
 --- !u!114 &8452049331246231454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,3 +720,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAttackDamage: 0
+  enemyAttackDelay: 0
+  enemyAttackRange: 0
+  inAttackRange: 0
+--- !u!114 &-6265091670737374777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5238bc4fe64ce4b87e25f694d0c051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0

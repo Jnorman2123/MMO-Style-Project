@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1450269391890743555}
   - component: {fileID: -1511233414279379751}
   - component: {fileID: 1454687259173679622}
+  - component: {fileID: -2154396916944575294}
   m_Layer: 8
   m_Name: Cleric
   m_TagString: Enemy
@@ -162,8 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
   maxMana: 0
   currentMana: 0
   hate: 0
@@ -182,7 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 2974332467191052894}
-  player: {fileID: 0}
 --- !u!114 &1454687259173679622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +193,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAttackDamage: 0
+  enemyAttackDelay: 0
+  enemyAttackRange: 0
+  inAttackRange: 0
+--- !u!114 &-2154396916944575294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216498644367734313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5238bc4fe64ce4b87e25f694d0c051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
 --- !u!1 &4280100790896171273
 GameObject:
   m_ObjectHideFlags: 0

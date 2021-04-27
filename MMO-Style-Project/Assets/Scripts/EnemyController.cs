@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Declare variables for the enemy max and current health and mana
-    public int maxHealth;
-    public int currentHealth;
+    // Declare variables for the enemy max and current mana
     public int maxMana;
     public int currentMana;
     // Declare variable for hate and is aggro
@@ -17,8 +15,6 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the currentHealth to the maxHealth and currentMana to the maxMana
-        currentHealth = maxHealth;
         currentMana = maxMana;
         // Set hate to 0 and isAggro to false
         hate = 0;
@@ -34,44 +30,11 @@ public class EnemyController : MonoBehaviour
         // Call the Aggro method
         Aggro();
     }
-    // Create method to set the health and mana of the enemy based on its type
-    public void SetMaxHealthMana()
+    
+    // Create method to gain hate
+    public void GainHate(int damage)
     {
-        // Use a switch case statement to set the enemy health and mana based on the enemy name
-        string name = gameObject.name;
-        switch(name)
-        {
-            case "Warrior(Clone)":
-                maxHealth = 200;
-                maxMana = 50;
-                break;
-            case "Rogue(Clone)":
-                maxHealth = 175;
-                maxMana = 50;
-                break;
-            case "Wizard(Clone)":
-                maxHealth = 125;
-                maxMana = 150;
-                break;
-            case "Cleric(Clone)":
-                maxHealth = 150;
-                maxMana = 100;
-                break;
-            case "Captain(Clone)":
-                maxHealth = 250;
-                maxMana = 150;
-                break;
-            case "Key Master(Clone)":
-                maxHealth = 300;
-                maxMana = 200;
-                break;
-        }
-    }
-    // Create method to take damage based on the player attack damage and gain hate
-    public void TakeDamage(int damage)
-    {
-        // Decrease health and increase hate by the damage taken
-        currentHealth -= damage;
+        // Increase hate by the damage taken
         hate += damage;
     }
     // Create a method to test out targets using mana
@@ -86,7 +49,7 @@ public class EnemyController : MonoBehaviour
     private void Death()
     {
         // Check to see if health is equal or less than zero and destroy to the object
-        if (currentHealth <= 0)
+        if (transform.GetComponent<HealthController>().currentHealth <= 0)
         {
             Destroy(gameObject);
         }
