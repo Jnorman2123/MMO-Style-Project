@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Declare variables for the enemy max and current mana
-    public int maxMana;
-    public int currentMana;
     // Declare variable for hate and is aggro
     public int hate;
     public bool isAggro;
@@ -15,7 +12,6 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentMana = maxMana;
         // Set hate to 0 and isAggro to false
         hate = 0;
         isAggro = false;
@@ -25,8 +21,6 @@ public class EnemyController : MonoBehaviour
     {
         // Call the Death method
         Death();
-        // Call the UseMana method
-        UseMana();
         // Call the Aggro method
         Aggro();
     }
@@ -36,14 +30,6 @@ public class EnemyController : MonoBehaviour
     {
         // Increase hate by the damage taken
         hate += damage;
-    }
-    // Create a method to test out targets using mana
-    private void UseMana()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            currentMana -= 10;
-        }
     }
     // Create a method to destroy to object when health reaches zero
     private void Death()

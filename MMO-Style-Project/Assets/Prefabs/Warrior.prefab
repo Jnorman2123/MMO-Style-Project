@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 4366948557963135469}
   - component: {fileID: 7895497395886919439}
   - component: {fileID: -5592857780337946299}
+  - component: {fileID: -6705431819571420605}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -624,6 +625,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+--- !u!114 &-6705431819571420605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069920478278318186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d484067ac341aedf3c802bd3777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8309228320537320614
 GameObject:
   m_ObjectHideFlags: 0

@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 3857966433396342562}
   - component: {fileID: 3843387620791423782}
   - component: {fileID: 1291074089665930525}
+  - component: {fileID: 2502608966960687316}
   m_Layer: 8
   m_Name: Key Master
   m_TagString: Enemy
@@ -626,6 +627,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+--- !u!114 &2502608966960687316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412631821416101601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d484067ac341aedf3c802bd3777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8218825705440072412
 GameObject:
   m_ObjectHideFlags: 0

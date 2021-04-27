@@ -117,11 +117,11 @@ public class TargetWindowController : MonoBehaviour
         if (playerTarget == player)
         {
             // Set currentMana to the players current mana
-            currentManaValue = playerTarget.GetComponent<PlayerController>().currentMana;
+            currentManaValue = playerTarget.GetComponent<ManaController>().currentMana;
         } else
         {
             // Set currentMana to the player target current mana
-            currentManaValue = playerTarget.GetComponent<EnemyController>().currentMana;
+            currentManaValue = playerTarget.GetComponent<ManaController>().currentMana;
         }
         // Set the targetManaBar value to currentMana
         targetManaBar.value = currentManaValue;
@@ -132,11 +132,11 @@ public class TargetWindowController : MonoBehaviour
         if (playerTarget == player)
         {
             // Set maxMana to the player targets max mana
-            maxManaValue = player.GetComponent<PlayerController>().maxMana;
+            maxManaValue = player.GetComponent<ManaController>().maxMana;
         } else
         {
             // Set the max and current mana of the player target mana window
-            maxManaValue = playerTarget.GetComponent<EnemyController>().maxMana;
+            maxManaValue = playerTarget.GetComponent<ManaController>().maxMana;
         }
         // Set the playerManaBar max and current values to maxMana
         targetManaBar.maxValue = maxManaValue;
