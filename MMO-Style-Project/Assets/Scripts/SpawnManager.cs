@@ -37,18 +37,22 @@ public class SpawnManager : MonoBehaviour
     // Create a method to spawn an enemy if none is currently spawned
     private void SpawnEnemy()
     {
-        // Call the RandomizeEnemy method
-        RandomizeEnemy();
-        // Set the spawn position
-        Vector3 spawnPos = transform.position + new Vector3(0.0f, 1.0f, 0.0f);
-        // If there is no enemy spawn one at the spawnPos
-        enemy = Instantiate(enemies[spawnNumber], spawnPos, transform.rotation);
-        // Call the SetMaxHealth method
-        enemy.GetComponent<HealthController>().SetMaxHealth(); ;
-        // If the spawn point is a patrol spawn point tag the enemy that spawns there as a patrol
-        if (gameObject.CompareTag("Patrol Spawn Point"))
+        // Check if spawn point is a player spawn point
+        if (!transform.CompareTag("Player Spawn Point"))
         {
-            enemy.GetComponent<EnemyController>().isPatrol = true;
+            // Call the RandomizeEnemy method
+            RandomizeEnemy();
+            // Set the spawn position
+            Vector3 spawnPos = transform.position + new Vector3(0.0f, 1.0f, 0.0f);
+            // If there is no enemy spawn one at the spawnPos
+            enemy = Instantiate(enemies[spawnNumber], spawnPos, transform.rotation);
+            // Call the SetMaxHealth method
+            enemy.GetComponent<HealthController>().SetMaxHealth(); ;
+            // If the spawn point is a patrol spawn point tag the enemy that spawns there as a patrol
+            if (gameObject.CompareTag("Patrol Spawn Point"))
+            {
+                enemy.GetComponent<EnemyController>().isPatrol = true;
+            }
         }
     }
     // Create method to change spawned based on having an enemy spawned or not
