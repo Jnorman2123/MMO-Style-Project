@@ -13,6 +13,7 @@ TagManager:
   - Regular Spawn Point
   - Rare Spawn Point
   - Patrol Spawn Point
+  - Player Spawn Point
   layers:
   - Default
   - TransparentFX

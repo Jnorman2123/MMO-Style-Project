@@ -86,7 +86,7 @@ public class TargetWindowController : MonoBehaviour
         if (playerTarget == player)
         {
             // Set currentHealth to the player targets current health
-            currentHealthValue = player.GetComponent<PlayerController>().currentHealth;  
+            currentHealthValue = player.GetComponent<HealthController>().currentHealth;  
         } else
         {
             // Set currentHealth to the player targets current health
@@ -101,7 +101,7 @@ public class TargetWindowController : MonoBehaviour
         if (playerTarget == player)
         {
             // Set maxHealth to the player targets max health
-            maxHealthValue = player.GetComponent<PlayerController>().maxHealth;
+            maxHealthValue = player.GetComponent<HealthController>().maxHealth;
         } else
         {
             // Set maxHealthValue to the targets max health

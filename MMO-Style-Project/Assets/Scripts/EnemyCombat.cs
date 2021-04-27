@@ -86,12 +86,12 @@ public class EnemyCombat : MonoBehaviour
             if (inAttackRange)
             {
                 // Call the player take damage method and set the combatMessage
-                player.GetComponent<PlayerController>().TakeDamage(enemyAttackDamage);
+                player.GetComponent<HealthController>().TakeDamage(enemyAttackDamage);
                 combatMessage = transform.name.Replace("(Clone)", "").Trim() + " has hit you for " +
                                 enemyAttackDamage + " points of damage!";
                 // Call the SetChatLogText method
                 chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
-                if (player.GetComponent<PlayerController>().currentHealth <= 0)
+                if (player.GetComponent<HealthController>().currentHealth <= 0)
                 {
                     combatMessage = transform.name.Replace("(Clone)", "").Trim() + " has killed you!";
                     // Call the SetChatLogText method

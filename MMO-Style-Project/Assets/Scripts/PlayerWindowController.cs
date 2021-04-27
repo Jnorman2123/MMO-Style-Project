@@ -46,7 +46,7 @@ public class PlayerWindowController : MonoBehaviour
     private void SetPlayerHealthBarValue()
     {
         // Set currentHealth to the players current health
-        currentHealthValue = player.GetComponent<PlayerController>().currentHealth;
+        currentHealthValue = player.GetComponent<HealthController>().currentHealth;
         // Set the playerHealthBar value to currentHealth
         playerHealthBar.value = currentHealthValue;
     }
@@ -54,7 +54,7 @@ public class PlayerWindowController : MonoBehaviour
     public void SetPlayerMaxHealthBarValue()
     {
         // Set the max and current health of the player health window
-        maxHealthValue = player.GetComponent<PlayerController>().maxHealth;
+        maxHealthValue = player.GetComponent<HealthController>().maxHealth;
         // Set the playerHealthBar max and current values to maxHealth
         playerHealthBar.maxValue = maxHealthValue;
         playerHealthBar.value = maxHealthValue;
