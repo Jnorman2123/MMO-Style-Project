@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TargetingController : MonoBehaviour
 {
-    // Declare variable for target
+    // Declare variables for target and extended target
     public GameObject target;
-    // Declare variable for the target ui window
-    public GameObject targetUIWindow;
+    public GameObject extendedTarget;
+    // Declare variables for the target and extended target windows
+    public GameObject targetWindow;
+    public GameObject extendedTargetWindow;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,11 +64,11 @@ public class TargetingController : MonoBehaviour
         // Set the window to inactive if there is no player target and active when player has a valid target
         if (target != null)
         {
-            targetUIWindow.gameObject.SetActive(true);
+            targetWindow.gameObject.SetActive(true);
         }
         else
         {
-            targetUIWindow.gameObject.SetActive(false);
+            targetWindow.gameObject.SetActive(false);
         }
     }
 }

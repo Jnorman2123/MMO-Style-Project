@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    // Declare variable for hate list dictionary
+    public Dictionary<GameObject, int> hateList = new Dictionary<GameObject, int>();
     // Declare variable for hate and is aggro
-    public int hate;
+    //public int hate;
     public bool isAggro;
     // Declare variable for enemy is patrol
     public bool isPatrol;
     // Start is called before the first frame update
     void Start()
     {
-        // Set hate to 0 and isAggro to false
-        hate = 0;
+        // Set isAggro to false
         isAggro = false;
     }
     // Update is called once per frame
@@ -26,10 +27,15 @@ public class EnemyController : MonoBehaviour
     }
     
     // Create method to gain hate
-    public void GainHate(int damage)
+    public void GainHate(int hate, GameObject target)
     {
-        // Increase hate by the damage taken
-        hate += damage;
+        if (hateList.ContainsKey(target))
+        {
+            hateList[target] += hate;
+        } else
+        {
+            hateList.Add(target, hate);
+        }
     }
     // Create a method to destroy to object when health reaches zero
     private void Death()
@@ -43,7 +49,7 @@ public class EnemyController : MonoBehaviour
     // Create a method to make the enemy aggro if he receives a hate gaining action
     private void Aggro()
     {
-        if (hate > 0)
+        if (hateList.Count > 0)
         {
             isAggro = true;
         } else

@@ -69,7 +69,7 @@ public class HealthController : MonoBehaviour
         // If the game object is an enemy call the gain hate method
         if (transform.CompareTag("Enemy"))
         {
-            transform.GetComponent<EnemyController>().GainHate(damage);
+            transform.GetComponent<EnemyController>().GainHate(damage, transform.gameObject);
         }
     }
     // Create a coroutine to regen the health of the player over time
