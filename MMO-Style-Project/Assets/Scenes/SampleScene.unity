@@ -1008,6 +1008,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Tent Spawn 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7826072992446889124, guid: 601332006409ade4aa0f1b76429d6664,
+        type: 3}
+      propertyPath: m_TagString
+      value: Regular Spawn Point
+      objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1046,7 +1051,7 @@ PrefabInstance:
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
@@ -2635,7 +2640,7 @@ Transform:
   - {fileID: 1494104975}
   - {fileID: 1366502947}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &889804382
 MonoBehaviour:
@@ -2957,7 +2962,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
+  near clip plane: 0.6
   far clip plane: 5000
   field of view: 40
   orthographic: 0
@@ -2984,12 +2989,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.02571269, y: -0.0000007061285, z: 0.000000018162467, w: 0.9996694}
-  m_LocalPosition: {x: 0, y: 3.5, z: -95}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.75, z: -75}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -3386,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976607, y: 0.000000017214436, z: -4.3022574e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976607, y: 0.000000017214436, z: -4.302267e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3494,10 +3499,12 @@ GameObject:
   - component: {fileID: 1051825978}
   - component: {fileID: 1051825980}
   - component: {fileID: 1051825976}
-  - component: {fileID: 1051825977}
   - component: {fileID: 1051825979}
   - component: {fileID: 1051825981}
+  - component: {fileID: 1051825983}
   - component: {fileID: 1051825982}
+  - component: {fileID: 1051825984}
+  - component: {fileID: 1051825977}
   m_Layer: 0
   m_Name: Zidgog
   m_TagString: Player
@@ -3527,11 +3534,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051825975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5ba34822246ce44b32b93373c6a3f6, type: 3}
+  m_Script: {fileID: 11500000, guid: b1b60be52ba31ad419de339127be4962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetUIWindow: {fileID: 1883090137}
 --- !u!4 &1051825978
 Transform:
   m_ObjectHideFlags: 0
@@ -3598,8 +3603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05565468d8801d45a40932434849cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMana: 0
-  maxMana: 0
   currentExp: 0
   maxExp: 0
   playerLevel: 0
@@ -3620,6 +3623,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+--- !u!114 &1051825983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d484067ac341aedf3c802bd3777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMana: 0
+  maxMana: 0
+--- !u!114 &1051825984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c84c8ef3d3a8a42b292a1e09e54e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameCanvas: {fileID: 1614837273}
+  nameText: {fileID: 905517816}
 --- !u!1 &1076962654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4548,7 +4579,7 @@ PrefabInstance:
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
@@ -4578,6 +4609,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Left Tent Spawn 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826072992446889124, guid: 601332006409ade4aa0f1b76429d6664,
+        type: 3}
+      propertyPath: m_TagString
+      value: Regular Spawn Point
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
@@ -4617,7 +4653,7 @@ PrefabInstance:
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
@@ -5145,6 +5181,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Tent Spawn 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7826072992446889124, guid: 601332006409ade4aa0f1b76429d6664,
+        type: 3}
+      propertyPath: m_TagString
+      value: Regular Spawn Point
+      objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5268,7 +5309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064034364, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.000000006403591, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5472,7 +5513,6 @@ GameObject:
   - component: {fileID: 1614837273}
   - component: {fileID: 1614837272}
   - component: {fileID: 1614837271}
-  - component: {fileID: 1614837274}
   m_Layer: 0
   m_Name: Player Name Canvas
   m_TagString: Untagged
@@ -5560,20 +5600,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1614837274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614837269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2552308306dfa394f8a4e03abe6997c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerName: {fileID: 905517816}
-  player: {fileID: 1051825975}
 --- !u!1 &1623193504
 GameObject:
   m_ObjectHideFlags: 0
@@ -7318,7 +7344,7 @@ PrefabInstance:
     - target: {fileID: 8281718183961363729, guid: 013ce56d6471c284ca98100e5a328605,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8281718183961363729, guid: 013ce56d6471c284ca98100e5a328605,
         type: 3}
@@ -7354,6 +7380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Right Tent Spawn 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826072992446889124, guid: 601332006409ade4aa0f1b76429d6664,
+        type: 3}
+      propertyPath: m_TagString
+      value: Regular Spawn Point
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
@@ -7393,7 +7424,7 @@ PrefabInstance:
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8433945523154913938, guid: 601332006409ade4aa0f1b76429d6664,
         type: 3}

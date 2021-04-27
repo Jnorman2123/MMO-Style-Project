@@ -38,7 +38,7 @@ public class PlayerCombat : MonoBehaviour
     private void DamageTarget()
     {
         // Set the playerTarget to the game object benig targeted
-        playerTarget = GetComponent<PlayerTargeting>().target;
+        playerTarget = GetComponent<TargetingController>().target;
         // Call the enemy TakeDamage method with the damage 
         playerTarget.GetComponent<HealthController>().TakeDamage(playerAttackDamage);
         // Set the combat message to reflect how much damage you deal to the enemy
@@ -79,7 +79,7 @@ public class PlayerCombat : MonoBehaviour
         // Set the layer mask to the targetable layer only
         int layerMask = (1 << 8);
         // Set the playerTarget to the game object benig targeted
-        playerTarget = GetComponent<PlayerTargeting>().target;
+        playerTarget = GetComponent<TargetingController>().target;
         if (playerTarget != null)
         {
             RaycastHit hit;
@@ -107,7 +107,7 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator Attack()
     {
         // Set the playerTarget to the game object being targeted
-        playerTarget = GetComponent<PlayerTargeting>().target;
+        playerTarget = GetComponent<TargetingController>().target;
         // Repeat while autoAttacking is true
         while(autoAttacking)
         {

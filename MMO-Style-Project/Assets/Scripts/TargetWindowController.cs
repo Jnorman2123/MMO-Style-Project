@@ -34,7 +34,7 @@ public class TargetWindowController : MonoBehaviour
     void Update()
     {
         // Set the playerTarget
-        playerTarget = player.GetComponent<PlayerTargeting>().target;
+        playerTarget = player.GetComponent<TargetingController>().target;
         // Check that the playerTarget is not null
         if (playerTarget != null)
         {
