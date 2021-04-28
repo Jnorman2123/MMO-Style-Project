@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3364485977322174980}
   - component: {fileID: 9144776583024133369}
   - component: {fileID: -3710413958622005328}
+  - component: {fileID: -3961562500826685063}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -72,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hate: 0
   isAggro: 0
   isPatrol: 0
 --- !u!114 &7379378211180312993
@@ -146,6 +146,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCanvas: {fileID: 6009972762336695291}
   nameText: {fileID: 312414061486044295}
+--- !u!114 &-3961562500826685063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b60be52ba31ad419de339127be4962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  extendedTarget: {fileID: 0}
+  targetWindow: {fileID: 0}
+  extendedTargetWindow: {fileID: 0}
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0

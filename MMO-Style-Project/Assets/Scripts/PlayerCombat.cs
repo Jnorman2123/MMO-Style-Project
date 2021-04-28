@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
         // Set the playerTarget to the game object benig targeted
         playerTarget = GetComponent<TargetingController>().target;
         // Call the enemy TakeDamage method with the damage 
-        playerTarget.GetComponent<HealthController>().TakeDamage(playerAttackDamage);
+        playerTarget.GetComponent<HealthController>().TakeDamage(playerAttackDamage, transform.gameObject);
         // Set the combat message to reflect how much damage you deal to the enemy
         combatMessage = "You hit " + playerTarget.name.Replace("(Clone)", "").Trim() + " for " + playerAttackDamage + " points of damage!";
         // Call the SetChatLogText method

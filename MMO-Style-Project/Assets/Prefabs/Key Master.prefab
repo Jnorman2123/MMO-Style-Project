@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 1291074089665930525}
   - component: {fileID: 2502608966960687316}
   - component: {fileID: 488311616025133460}
+  - component: {fileID: 2151589754471807427}
   m_Layer: 8
   m_Name: Key Master
   m_TagString: Enemy
@@ -580,7 +581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hate: 0
   isAggro: 0
   isPatrol: 0
 --- !u!114 &3857966433396342562
@@ -654,6 +654,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCanvas: {fileID: 5889752070687665812}
   nameText: {fileID: 9203618245921831969}
+--- !u!114 &2151589754471807427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412631821416101601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b60be52ba31ad419de339127be4962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  extendedTarget: {fileID: 0}
+  targetWindow: {fileID: 0}
+  extendedTargetWindow: {fileID: 0}
 --- !u!1 &8218825705440072412
 GameObject:
   m_ObjectHideFlags: 0

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: -2154396916944575294}
   - component: {fileID: -6841560999252923013}
   - component: {fileID: -3693619864395572558}
+  - component: {fileID: -8498099029596540135}
   m_Layer: 8
   m_Name: Cleric
   m_TagString: Enemy
@@ -165,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hate: 0
   isAggro: 0
   isPatrol: 0
 --- !u!114 &-1511233414279379751
@@ -239,6 +239,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCanvas: {fileID: 2310484357874853108}
   nameText: {fileID: 3696305441955660529}
+--- !u!114 &-8498099029596540135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216498644367734313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b60be52ba31ad419de339127be4962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  extendedTarget: {fileID: 0}
+  targetWindow: {fileID: 0}
+  extendedTargetWindow: {fileID: 0}
 --- !u!1 &4280100790896171273
 GameObject:
   m_ObjectHideFlags: 0

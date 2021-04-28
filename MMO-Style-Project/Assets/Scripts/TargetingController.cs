@@ -8,12 +8,12 @@ public class TargetingController : MonoBehaviour
     public GameObject target;
     public GameObject extendedTarget;
     // Declare variables for the target and extended target windows
-    public GameObject targetWindow;
+    private GameObject targetWindow;
     public GameObject extendedTargetWindow;
     // Start is called before the first frame update
     void Start()
     {
-
+        targetWindow = GameObject.Find("Target UI Window");
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class TargetingController : MonoBehaviour
         ClearTarget();
         // Call the ActivateTargetWindow method
         ActivateTargetWindow();
+        // Call the EnemyTarget method
+        EnemyTarget();
     }
     // Create method that targets the object the player left clicks on
     private void MouseTarget()
@@ -57,18 +59,33 @@ public class TargetingController : MonoBehaviour
             target = null;
         }
     }
+    // Create a method to set the enemy target
+    private void EnemyTarget()
+    {
+        if (transform.CompareTag("Enemy"))
+        {
+            if (transform.GetComponent<EnemyController>().enemyTarget != null)
+            {
+                extendedTarget = transform.GetComponent<EnemyController>().enemyTarget;
+            }
+        }
+    }
     // Create a method to only set the target window to active if the player has a valid target
     private void ActivateTargetWindow()
     {
 
-        // Set the window to inactive if there is no player target and active when player has a valid target
-        if (target != null)
+        // Set the window to inactive if there is no player target 
+        // Set the window to active when player has a valid target
+        if (transform.CompareTag("Player"))
         {
-            targetWindow.gameObject.SetActive(true);
-        }
-        else
-        {
-            targetWindow.gameObject.SetActive(false);
+            if (target != null)
+            {
+                targetWindow.gameObject.SetActive(true);
+            }
+            else
+            {
+                targetWindow.gameObject.SetActive(false);
+            }
         }
     }
 }

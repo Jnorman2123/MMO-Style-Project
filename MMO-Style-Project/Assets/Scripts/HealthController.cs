@@ -63,13 +63,13 @@ public class HealthController : MonoBehaviour
         }
     }
     // Create a method to damage the player to test the health bar
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject attacker)
     {
         currentHealth -= damage;
         // If the game object is an enemy call the gain hate method
         if (transform.CompareTag("Enemy"))
         {
-            transform.GetComponent<EnemyController>().GainHate(damage, transform.gameObject);
+            transform.GetComponent<EnemyController>().GainHate(damage, attacker);
         }
     }
     // Create a coroutine to regen the health of the player over time

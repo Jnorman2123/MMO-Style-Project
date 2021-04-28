@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2317363983008039900}
   - component: {fileID: -3429556486052941826}
   - component: {fileID: 6687693098610071643}
+  - component: {fileID: 8172672320308396438}
   m_Layer: 8
   m_Name: Captain
   m_TagString: Enemy
@@ -72,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345be02d41061b48814dae5efcb7c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hate: 0
   isAggro: 0
   isPatrol: 0
 --- !u!114 &-3960725822203030978
@@ -146,6 +146,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCanvas: {fileID: 3501328338575330981}
   nameText: {fileID: 5980735359924635156}
+--- !u!114 &8172672320308396438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249743119782243925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b60be52ba31ad419de339127be4962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  extendedTarget: {fileID: 0}
+  targetWindow: {fileID: 0}
+  extendedTargetWindow: {fileID: 0}
 --- !u!1 &2649832095695775733
 GameObject:
   m_ObjectHideFlags: 0
