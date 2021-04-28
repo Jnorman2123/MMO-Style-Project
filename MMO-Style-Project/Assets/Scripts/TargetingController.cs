@@ -62,11 +62,11 @@ public class TargetingController : MonoBehaviour
     // Create a method to set the enemy target
     private void EnemyTarget()
     {
-        if (transform.CompareTag("Enemy"))
+        if (CompareTag("Enemy"))
         {
-            if (transform.GetComponent<EnemyController>().enemyTarget != null)
+            if (GetComponent<EnemyController>().enemyTarget != null)
             {
-                extendedTarget = transform.GetComponent<EnemyController>().enemyTarget;
+                extendedTarget = GetComponent<EnemyController>().enemyTarget;
             }
         }
     }
@@ -76,7 +76,7 @@ public class TargetingController : MonoBehaviour
 
         // Set the window to inactive if there is no player target 
         // Set the window to active when player has a valid target
-        if (transform.CompareTag("Player"))
+        if (CompareTag("Player"))
         {
             if (target != null)
             {

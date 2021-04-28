@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
     public int currentExp;
     public int maxExp;
     public int playerLevel;
-    // Declare variables for the player ui window, exp ui window, and chat ui window
+    // Declare variables for the player ui window, exp ui window, chat ui window. and player spawn point
     public GameObject playerUIWindow;
     public GameObject expUIWindow;
     public GameObject chatUIwindow;
+    public GameObject playerSpawnPoint;
+    // Declare variable for the player respawn pos
+    private Vector3 respawnPos;
+    private Quaternion respawnRot;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,9 @@ public class PlayerController : MonoBehaviour
         maxExp = 100;
         currentExp = 0;
         playerLevel = 1;
+        // Set the respawnPos
+        respawnPos = playerSpawnPoint.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
+        respawnRot = playerSpawnPoint.transform.rotation;
         // Call the SetMaxHealthManaBarValue method
         playerUIWindow.GetComponent<PlayerWindowController>().SetPlayerMaxResourceBarValues();
         // Call the SetExpBarMaxValue method
@@ -54,11 +61,12 @@ public class PlayerController : MonoBehaviour
         }
     } 
     // Create a method to kill the player when it reaches zero health
-    private void PlayerDeath()
+    public void PlayerDeath()
     {
-        if (GetComponent<HealthController>().currentHealth <= 0)
-        {
-            currentExp -= 20;
-        }
+        // Player loses experience on death
+        currentExp -= 20;
+        // Return the player to the respawn position
+        transform.position = respawnPos;
+        transform.rotation = respawnRot;
     }
 }

@@ -127,10 +127,4 @@ public class SpawnManager : MonoBehaviour
         SpawnEnemy();
         StopCoroutine("RespawnEnemy");
     }
-    // Create a method to respawn the player on death
-    public void PlayerRespawn()
-    {
-
-    }
-
 }
