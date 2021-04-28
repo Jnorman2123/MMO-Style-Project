@@ -8,8 +8,11 @@ public class EnemyController : MonoBehaviour
 {
     // Declare variable for hate list dictionary
     public Dictionary<GameObject, int> hateList = new Dictionary<GameObject, int>();
-    // Declare variable for the enemy target
+    // Declare variable for the chat ui window
+    private GameObject chatUIWindow;
+    // Declare variable for the enemy target and previous target
     public GameObject enemyTarget;
+    private GameObject previousTarget;
     // Declare variable for is aggro
     public bool isAggro;
     // Declare variable for enemy is patrol
@@ -19,6 +22,8 @@ public class EnemyController : MonoBehaviour
     {
         // Set isAggro to false
         isAggro = false;
+        // Set the chatUIWindow
+        chatUIWindow = GameObject.Find("Chat UI Window");
     }
     // Update is called once per frame
     void Update()
@@ -65,10 +70,15 @@ public class EnemyController : MonoBehaviour
     // Create a method to set the enemyTarget
     private void SetTarget()
     {
+        previousTarget = enemyTarget;
         if (hateList.Count > 0)
         {
             enemyTarget = hateList.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
-            Debug.Log(enemyTarget.name);
+            if (previousTarget != enemyTarget)
+            {
+                string aggroMessage = "You will pay for that " + enemyTarget.name + "!";
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(aggroMessage);
+            }
         } else
         {
             enemyTarget = null;
