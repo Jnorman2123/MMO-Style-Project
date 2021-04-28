@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public int currentExp;
     public int maxExp;
     public int playerLevel;
+    // Declare variable for alive and respawn timer
+    public bool alive;
+    private float respawnTimer = 1.0f;
     // Declare variables for the player ui window, exp ui window, chat ui window. and player spawn point
     public GameObject playerUIWindow;
     public GameObject expUIWindow;
@@ -23,6 +26,8 @@ public class PlayerController : MonoBehaviour
         maxExp = 100;
         currentExp = 0;
         playerLevel = 1;
+        // Set the alive variable
+        alive = true;
         // Set the respawnPos
         respawnPos = playerSpawnPoint.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
         respawnRot = playerSpawnPoint.transform.rotation;
@@ -37,6 +42,11 @@ public class PlayerController : MonoBehaviour
     {
         // Call the LevelUp method
         LevelUp();
+        // Start the PlayerDeath coroutine if the players health drops to zero
+        if (GetComponent<HealthController>().currentHealth <= 0)
+        {
+            StartCoroutine("PlayerDeath");
+        }
     }
     // Create a method to gain experience
     public void GainExp()
@@ -61,12 +71,19 @@ public class PlayerController : MonoBehaviour
         }
     } 
     // Create a method to kill the player when it reaches zero health
-    public void PlayerDeath()
+    IEnumerator PlayerDeath()
     {
-        // Player loses experience on death
-        currentExp -= 20;
+        // Set alive to false
+        alive = false;
         // Return the player to the respawn position
         transform.position = respawnPos;
         transform.rotation = respawnRot;
+        // Wait for respawn timer and set to alive again
+        yield return new WaitForSeconds(respawnTimer);
+        alive = true;
+        // Player loses experience on death
+        currentExp -= 20;
+        GetComponent<HealthController>().currentHealth = GetComponent<HealthController>().maxHealth / 2;
+        StopCoroutine("PlayerDeath");
     }
 }

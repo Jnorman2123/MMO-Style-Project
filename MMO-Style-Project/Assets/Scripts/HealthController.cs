@@ -34,11 +34,6 @@ public class HealthController : MonoBehaviour
         {
             StartCoroutine("RegenHealth");
         }
-        if (CompareTag("Player") & currentHealth <= 0)
-        {
-            GetComponent<PlayerController>().PlayerDeath();
-            currentHealth = maxHealth / 2;
-        }
     }
     // Create method to set the health and mana of the enemy based on its type
     public void SetMaxHealth()

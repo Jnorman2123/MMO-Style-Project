@@ -34,6 +34,8 @@ public class EnemyController : MonoBehaviour
         Aggro();
         // Call the SetTarget method
         SetTarget();
+        // Call the RemoveDeadKeys method
+        RemoveDeadKeys();
     }
     
     // Create method to gain hate
@@ -83,5 +85,16 @@ public class EnemyController : MonoBehaviour
         {
             enemyTarget = null;
         } 
+    }
+    // Create a method to remove a key from the hateList if the object is dead
+    private void RemoveDeadKeys()
+    {
+        foreach (GameObject key in hateList.Keys)
+        {
+            if (key.CompareTag("Player") & !key.GetComponent<PlayerController>().alive)
+            {
+                hateList.Remove(key);
+            }
+        }
     }
 }
