@@ -28,10 +28,7 @@ public class EnemyMovement : MonoBehaviour
         offPath = false;
         // Set the spawn position and rotation
         spawnPos = transform.position;
-        Debug.Log(spawnPos);
         spawnRot = transform.rotation;
-        // Set the initial moveSpeed to walking speed
-        enemyMoveSpeed = 2.5f;
         // Set the player game object
         player = GameObject.Find("Zidgog");
     }
@@ -59,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
     private void Patrol()
     {
         // If the enemy is a patrol begin to move the character forward slowly
-        if (gameObject.GetComponent<EnemyController>().isPatrol == true)
+        if (GetComponent<EnemyController>().isPatrol == true)
         {
             // Set the turnDirection
             turnDirection = new Vector3(0.0f, 180.0f, 0.0f);
@@ -77,6 +74,7 @@ public class EnemyMovement : MonoBehaviour
     // Create an ienumerator to wait a few seconds then move again
     IEnumerator WaitToMove()
     {
+        Debug.Log("waiting");
         yield return new WaitForSeconds(stationaryTime);
         enemyMoveSpeed = 2.5f;
     }
@@ -105,11 +103,14 @@ public class EnemyMovement : MonoBehaviour
         enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, spawnPos) < 0.15f)
         {
-            Debug.Log("at start position");
             offPath = false;
             enemyCharacterController.transform.position = spawnPos;
             enemyCharacterController.transform.rotation = spawnRot;
             enemyMoveSpeed = 0.0f;
+            if (GetComponent<EnemyController>().isPatrol == true)
+            {
+                StartCoroutine("WaitToMove");
+            }
         }
     }
     // Create Fall method to simulate gravity
