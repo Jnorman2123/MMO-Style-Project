@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     // Create a method to make the enemy aggro if he receives a hate gaining action
-    private void Aggro()
+    public void Aggro()
     {
         if (hateList.Count > 0)
         {

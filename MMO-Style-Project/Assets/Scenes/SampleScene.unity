@@ -2962,7 +2962,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.6
+  near clip plane: 0.5
   far clip plane: 5000
   field of view: 40
   orthographic: 0
@@ -2989,8 +2989,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.75, z: -75}
+  m_LocalRotation: {x: 0.02571269, y: -0.0000007061285, z: 0.000000018162467, w: 0.9996694}
+  m_LocalPosition: {x: 0, y: 3.5, z: -95}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3391,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976587, y: -0.0000000171943, z: 4.294537e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976607, y: 0.000000017214436, z: -4.302292e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3609,10 +3609,11 @@ MonoBehaviour:
   currentExp: 0
   maxExp: 0
   playerLevel: 0
+  alive: 0
   playerUIWindow: {fileID: 653575372}
   expUIWindow: {fileID: 996593667}
   chatUIwindow: {fileID: 975192266}
-  spawnManager: {fileID: 0}
+  playerSpawnPoint: {fileID: 1723047343}
 --- !u!114 &1051825982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,7 +5314,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064037504, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064040333, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5845,56 +5846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!1 &1664212243
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1664212245}
-  - component: {fileID: 1664212244}
-  m_Layer: 5
-  m_Name: Spawn Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1664212244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664212243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a3154891caa134cb62ef4e2897cbbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawned: 0
-  enemies: []
---- !u!224 &1664212245
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664212243}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 29
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 519}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1666472705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6019,6 +5970,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666472705}
   m_CullTransparentMesh: 0
+--- !u!1 &1723047343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7826072992446889124, guid: 601332006409ade4aa0f1b76429d6664,
+    type: 3}
+  m_PrefabInstance: {fileID: 1315454126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1794714706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6757,7 +6714,7 @@ RectTransform:
   - {fileID: 1420604053}
   - {fileID: 996593668}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

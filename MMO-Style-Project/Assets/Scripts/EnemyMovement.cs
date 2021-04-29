@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Declare variable for move speed
+    // Declare variable for move speed and off path
     private float enemyMoveSpeed;
+    private bool offPath;
+    // Declare variable for gravity and fallDirection
+    private float gravity = 10.0f;
+    private Vector3 fallDirection;
+    // Declare variables for spawn position and rotation
+    private Vector3 spawnPos;
+    private Quaternion spawnRot;
     // Declare variable for the character controller
     public CharacterController enemyCharacterController;
     // Declare variable for the player game object
@@ -17,6 +24,12 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set offPath
+        offPath = false;
+        // Set the spawn position and rotation
+        spawnPos = transform.position;
+        Debug.Log(spawnPos);
+        spawnRot = transform.rotation;
         // Set the initial moveSpeed to walking speed
         enemyMoveSpeed = 2.5f;
         // Set the player game object
@@ -26,12 +39,17 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Call the Fall method
+        Fall();
         // Call the ChaseTarget method if the enemy has hate towards the player
         if (GetComponent<EnemyController>().isAggro)
         {
             ChaseTarget();
-        } else
+        } else if (offPath == true & !GetComponent<EnemyController>().isAggro)
+        {
+            // Call the ReturnToSpawn method
+            ReturnToSpawn();
+        } else if (offPath == false & !GetComponent<EnemyController>().isAggro)
         {
             // Call the Patrol method
             Patrol();
@@ -40,11 +58,11 @@ public class EnemyMovement : MonoBehaviour
     // Create method to move the character if he is a patrol
     private void Patrol()
     {
-        // Set the turnDirection
-        turnDirection = new Vector3(0.0f, 180.0f, 0.0f);
         // If the enemy is a patrol begin to move the character forward slowly
         if (gameObject.GetComponent<EnemyController>().isPatrol == true)
         {
+            // Set the turnDirection
+            turnDirection = new Vector3(0.0f, 180.0f, 0.0f);
             enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
             // If the enemy reaches the end points of its route it will stop, turn around and then begin moving again after a few seconds
             if ((transform.position.x <= -15 & enemyMoveSpeed > 0.0f) || (transform.position.x >= 15 & enemyMoveSpeed > 0.0f))
@@ -77,5 +95,35 @@ public class EnemyMovement : MonoBehaviour
         // Have the enemy face the player and then move forward
         transform.LookAt(player.transform);
         enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
+        offPath = true;
+    }
+    // Create a method to return to start position if no aggro
+    private void ReturnToSpawn()
+    {
+        enemyMoveSpeed = 2.5f;
+        transform.LookAt(spawnPos + new Vector3(0.0f, 0.1f, 0.0f));
+        enemyCharacterController.Move(transform.forward * enemyMoveSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, spawnPos) < 0.15f)
+        {
+            Debug.Log("at start position");
+            offPath = false;
+            enemyCharacterController.transform.position = spawnPos;
+            enemyCharacterController.transform.rotation = spawnRot;
+            enemyMoveSpeed = 0.0f;
+        }
+    }
+    // Create Fall method to simulate gravity
+    private void Fall()
+    {
+        // Check to see if the player is on the ground
+        if (!enemyCharacterController.isGrounded)
+        {
+            // Set the gravity
+            gravity = -10.0f;
+            // Set the fallDirection
+            fallDirection = transform.up * gravity;
+            // Move the player based on the fallDirection and gravity
+            enemyCharacterController.Move(fallDirection * Time.deltaTime);
+        }
     }
 }
