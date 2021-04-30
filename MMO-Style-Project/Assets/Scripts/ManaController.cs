@@ -24,10 +24,10 @@ public class ManaController : MonoBehaviour
     private void SetMaxMana()
     {
         // Set variables for each stat
-        int strength = GetComponent<StatsController>().currentStrength;
-        int intelligence = GetComponent<StatsController>().currentIntelligence;
-        int wisdom = GetComponent<StatsController>().currentWisdom;
-        int agility = GetComponent<StatsController>().currentAgility;
+        int strength = GetComponent<StatsController>().strength;
+        int intelligence = GetComponent<StatsController>().intelligence;
+        int wisdom = GetComponent<StatsController>().wisdom;
+        int agility = GetComponent<StatsController>().agility;
         // Set mana according to different stat based on character type
         if (CompareTag("Player"))
         {

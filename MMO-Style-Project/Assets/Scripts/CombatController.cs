@@ -46,7 +46,7 @@ public class CombatController : MonoBehaviour
     // Create method to set the attackDamage, attackDelay, and AttackRange
     private void SetAttackValues()
     {
-        int strength = GetComponent<StatsController>().currentStrength;
+        int strength = GetComponent<StatsController>().strength;
         attackDamage = Mathf.RoundToInt(strength * 0.1f);
         attackDelay = 2.0f;
         attackRange = 5.0f;
@@ -57,12 +57,7 @@ public class CombatController : MonoBehaviour
         // Set the target to the game object being targeted
         target = GetComponent<TargetingController>().target;
         // Call the TakeDamage method with the damage 
-        target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject);
-        // Set the combat message to reflect how much damage you deal to the enemy
-        combatMessage = "You hit " + target.name.Replace("(Clone)", "").Trim() + " for "
-                        + attackDamage + " points of damage!";
-        // Call the SetChatLogText method
-        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+        target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject, target.gameObject);
     }
     // Create method to toggle auto attack
     private void AutoAttack()
@@ -235,12 +230,8 @@ public class CombatController : MonoBehaviour
                 target = GetComponent<EnemyController>().enemyTarget;
                 if (inAttackRange)
                 {
-                    // Call the player take damage method and set the combatMessage
-                    target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject);
-                    combatMessage = transform.name.Replace("(Clone)", "").Trim() + " has hit you for " +
-                                    attackDamage + " points of damage!";
-                    // Call the SetChatLogText method
-                    chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+                    // Call the player take damage method
+                    target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject, target.gameObject); 
                     if (target.GetComponent<HealthController>().currentHealth <= 0)
                     {
                         combatMessage = transform.name.Replace("(Clone)", "").Trim() + " has killed you!";

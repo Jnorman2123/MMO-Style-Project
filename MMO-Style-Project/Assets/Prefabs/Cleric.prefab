@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: -8498099029596540135}
   - component: {fileID: -5461751407780873353}
   - component: {fileID: -5223753405111283231}
+  - component: {fileID: -1884334707825663411}
   m_Layer: 8
   m_Name: Cleric
   m_TagString: Enemy
@@ -252,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 0
   inAttackRange: 0
   inCombat: 0
 --- !u!114 &-5223753405111283231
@@ -266,8 +268,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2404e560f6bafc43a459e1caf2fdc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 0
-  currentStamina: 0
+  stamina: 0
+  strength: 0
+  intelligence: 0
+  wisdom: 0
+  agility: 0
+  dexterity: 0
+  charisma: 0
+  willpower: 0
+--- !u!114 &-1884334707825663411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216498644367734313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f9b26e5b33d824f814143b5ca4a03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
 --- !u!1 &4280100790896171273
 GameObject:
   m_ObjectHideFlags: 0

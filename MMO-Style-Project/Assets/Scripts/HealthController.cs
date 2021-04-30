@@ -11,9 +11,14 @@ public class HealthController : MonoBehaviour
     private int healthRegen;
     private int regenDelay = 2;
     private bool isRegeningHealth;
+    // Declare variable for chat ui window and combatMessage
+    private string combatMessage;
+    private GameObject chatUIWindow;
     // Start is called before the first frame update
     void Start()
     {
+        // Set the ChatUIWindow
+        chatUIWindow = GameObject.Find("Chat UI Window");
         // Set the maxHealth
         SetMaxHealth();
         // Set the currentHealth and regening false
@@ -34,17 +39,41 @@ public class HealthController : MonoBehaviour
     public void SetMaxHealth()
     {
         // Set the maxHealth based on the currentStamina
-        int stamina = GetComponent<StatsController>().currentStamina;
+        int stamina = GetComponent<StatsController>().stamina;
         maxHealth = Mathf.RoundToInt(stamina * 1.5f);
     }
     // Create a method to damage the player to test the health bar
-    public void TakeDamage(int damage, GameObject attacker)
+    public void TakeDamage(int damage, GameObject attacker, GameObject target)
     {
-        currentHealth -= damage;
-        // If the game object is an enemy call the gain hate method
-        if (transform.CompareTag("Enemy"))
+        // Randomize damage
+        int minDamage = 1;
+        int maxDamage = damage;
+        int randomDamage = Random.Range(minDamage, maxDamage);
+        // Account for armor
+        int armor = GetComponent<ArmorController>().armor;
+        int netDamage = randomDamage - Mathf.RoundToInt(armor / 2);
+        if (netDamage <= 0)
         {
-            transform.GetComponent<EnemyController>().GainHate(damage, attacker);
+            netDamage = 1;
+        }
+        currentHealth -= netDamage;
+        // If the game object is an enemy call the gain hate method
+        if (CompareTag("Enemy"))
+        {
+            GetComponent<EnemyController>().GainHate(netDamage, attacker);
+            
+            // Set the combat message to reflect how much damage you deal to the enemy
+            combatMessage = "You hit " + target.name.Replace("(Clone)", "").Trim() + " for "
+                            + netDamage + " points of damage!";
+            // Call the SetChatLogText method
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+        } else if (CompareTag("Player"))
+        {
+            // Set the combat message to reflect how much damage the enemy does to you
+            combatMessage = attacker.name.Replace("(Clone)", "").Trim() + " has hit you for " +
+                                    netDamage + " points of damage!";
+            // Call the SetChatLogText method
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
     }
     // Create a coroutine to regen the health of the player over time

@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: -3585577829397157517}
   - component: {fileID: 3321474421463996072}
   - component: {fileID: -5434631107441884518}
+  - component: {fileID: -8563364378302652594}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -766,6 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 0
   inAttackRange: 0
   inCombat: 0
 --- !u!114 &-5434631107441884518
@@ -780,5 +782,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2404e560f6bafc43a459e1caf2fdc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 0
-  currentStamina: 0
+  stamina: 0
+  strength: 0
+  intelligence: 0
+  wisdom: 0
+  agility: 0
+  dexterity: 0
+  charisma: 0
+  willpower: 0
+--- !u!114 &-8563364378302652594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f9b26e5b33d824f814143b5ca4a03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
