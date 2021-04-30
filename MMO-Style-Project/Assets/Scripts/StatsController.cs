@@ -7,9 +7,27 @@ public class StatsController : MonoBehaviour
     // Declare variables for max and current stamina
     public int maxStamina;
     public int currentStamina;
-    // Declare variables for max ans current strength
+    // Declare variables for max and current strength
     public int maxStrength;
     public int currentStrength;
+    // Declare variables for max and current intelligence
+    public int maxIntelligence;
+    public int currentIntelligence;
+    // Declare variables for max and current wisdom
+    public int maxWisdom;
+    public int currentWisdom;
+    // Declare variables for max and current agility
+    public int maxAgility;
+    public int currentAgility;
+    // Declare variables for max and current dexterity
+    public int maxDexterity;
+    public int currentDexterity;
+    // Declare variables for max and current charisma
+    public int maxCharisma;
+    public int currentCharisma;
+    // Declare variables for max and current willpower
+    public int maxWillpower;
+    public int currentWillpower;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +50,12 @@ public class StatsController : MonoBehaviour
             // Set player stats
             maxStamina = 75;
             maxStrength = 80;
+            maxIntelligence = 40;
+            maxWisdom = 40;
+            maxAgility = 60;
+            maxDexterity = 60;
+            maxCharisma = 50;
+            maxWillpower = 50;
         }
         else if (CompareTag("Enemy"))
         {
@@ -42,26 +66,62 @@ public class StatsController : MonoBehaviour
                 case "Warrior(Clone)":
                     maxStamina = 75;
                     maxStrength = 60;
+                    maxIntelligence = 40;
+                    maxWisdom = 40;
+                    maxAgility = 60;
+                    maxDexterity = 60;
+                    maxCharisma = 50;
+                    maxWillpower = 50;
                     break;
                 case "Rogue(Clone)":
                     maxStamina = 60;
                     maxStrength = 60;
+                    maxIntelligence = 40;
+                    maxWisdom = 40;
+                    maxAgility = 70;
+                    maxDexterity = 70;
+                    maxCharisma = 60;
+                    maxWillpower = 50;
                     break;
                 case "Wizard(Clone)":
                     maxStamina = 50;
                     maxStrength = 40;
+                    maxIntelligence = 80;
+                    maxWisdom = 50;
+                    maxAgility = 50;
+                    maxDexterity = 40;
+                    maxCharisma = 50;
+                    maxWillpower = 60;
                     break;
                 case "Cleric(Clone)":
                     maxStamina = 60;
                     maxStrength = 50;
+                    maxIntelligence = 50;
+                    maxWisdom = 80;
+                    maxAgility = 50;
+                    maxDexterity = 40;
+                    maxCharisma = 50;
+                    maxWillpower = 60;
                     break;
                 case "Captain(Clone)":
                     maxStamina = 100;
                     maxStrength = 75;
+                    maxIntelligence = 40;
+                    maxWisdom = 40;
+                    maxAgility = 60;
+                    maxDexterity = 60;
+                    maxCharisma = 50;
+                    maxWillpower = 50;
                     break;
                 case "Key Master(Clone)":
                     maxStamina = 125;
                     maxStrength = 80;
+                    maxIntelligence = 40;
+                    maxWisdom = 40;
+                    maxAgility = 60;
+                    maxDexterity = 60;
+                    maxCharisma = 50;
+                    maxWillpower = 50;
                     break;
             }
         }
