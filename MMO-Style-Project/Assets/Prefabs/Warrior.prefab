@@ -518,11 +518,12 @@ GameObject:
   - component: {fileID: 8952291124249949213}
   - component: {fileID: 6651837660862639487}
   - component: {fileID: 4366948557963135469}
-  - component: {fileID: 7895497395886919439}
   - component: {fileID: -5592857780337946299}
   - component: {fileID: -6705431819571420605}
   - component: {fileID: 1794942307325117180}
   - component: {fileID: 1485196482973192245}
+  - component: {fileID: 7917745620508713984}
+  - component: {fileID: 5298481507989162456}
   m_Layer: 8
   m_Name: Warrior
   m_TagString: Enemy
@@ -595,22 +596,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 8952291124249949213}
---- !u!114 &7895497395886919439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069920478278318186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAttackDamage: 0
-  enemyAttackDelay: 0
-  enemyAttackRange: 0
-  inAttackRange: 0
 --- !u!114 &-5592857780337946299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +653,34 @@ MonoBehaviour:
   target: {fileID: 0}
   extendedTarget: {fileID: 0}
   extendedTargetWindow: {fileID: 0}
+--- !u!114 &7917745620508713984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069920478278318186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAttackRange: 0
+  inCombat: 0
+--- !u!114 &5298481507989162456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069920478278318186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c4227567eb6ce4aa74d19f3d06d192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 0
+  currentStamina: 0
 --- !u!1 &8309228320537320614
 GameObject:
   m_ObjectHideFlags: 0

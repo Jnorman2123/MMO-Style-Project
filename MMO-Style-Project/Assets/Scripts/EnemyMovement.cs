@@ -82,7 +82,7 @@ public class EnemyMovement : MonoBehaviour
     private void ChaseTarget()
     {
         // Set the moveSpeed based on if the enemy is in attack range
-        if (GetComponent<EnemyCombat>().inAttackRange)
+        if (GetComponent<CombatController>().inAttackRange)
         {
             enemyMoveSpeed = 0.0f;
         } else

@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 1438732343807578807}
   - component: {fileID: 8454886067955291855}
   - component: {fileID: 7379378211180312993}
-  - component: {fileID: -1395835998409651256}
   - component: {fileID: 3364485977322174980}
   - component: {fileID: 9144776583024133369}
   - component: {fileID: -3710413958622005328}
   - component: {fileID: -3961562500826685063}
+  - component: {fileID: 5178677198923952207}
+  - component: {fileID: -3909063057723232254}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -89,22 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 1438732343807578807}
---- !u!114 &-1395835998409651256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15085034119962304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAttackDamage: 0
-  enemyAttackDelay: 0
-  enemyAttackRange: 0
-  inAttackRange: 0
 --- !u!114 &3364485977322174980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +147,34 @@ MonoBehaviour:
   target: {fileID: 0}
   extendedTarget: {fileID: 0}
   extendedTargetWindow: {fileID: 0}
+--- !u!114 &5178677198923952207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAttackRange: 0
+  inCombat: 0
+--- !u!114 &-3909063057723232254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c4227567eb6ce4aa74d19f3d06d192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 0
+  currentStamina: 0
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0

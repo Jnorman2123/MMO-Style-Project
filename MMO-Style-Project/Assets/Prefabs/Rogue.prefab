@@ -619,11 +619,12 @@ GameObject:
   - component: {fileID: 8443436588112791248}
   - component: {fileID: 1542379155821368510}
   - component: {fileID: 7616067916477874167}
-  - component: {fileID: 8452049331246231454}
   - component: {fileID: -6265091670737374777}
   - component: {fileID: 6880563215085076270}
   - component: {fileID: -7764510917070943238}
   - component: {fileID: -3585577829397157517}
+  - component: {fileID: 3321474421463996072}
+  - component: {fileID: 5045709311618821217}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -696,22 +697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacterController: {fileID: 8443436588112791248}
---- !u!114 &8452049331246231454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7417407029408352935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a7daec969c30c47a7eb5112dcb7e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAttackDamage: 0
-  enemyAttackDelay: 0
-  enemyAttackRange: 0
-  inAttackRange: 0
 --- !u!114 &-6265091670737374777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,3 +754,31 @@ MonoBehaviour:
   target: {fileID: 0}
   extendedTarget: {fileID: 0}
   extendedTargetWindow: {fileID: 0}
+--- !u!114 &3321474421463996072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAttackRange: 0
+  inCombat: 0
+--- !u!114 &5045709311618821217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c4227567eb6ce4aa74d19f3d06d192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 0
+  currentStamina: 0

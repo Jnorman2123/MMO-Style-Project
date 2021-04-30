@@ -14,14 +14,9 @@ public class HealthController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the max and current health and regen delay and is regening health
-        if (transform.CompareTag("Player"))
-        {
-            maxHealth = 100;
-        } else if (transform.CompareTag("Enemy")) {
-            SetMaxHealth();
-        }
-        
+        // Set the maxHealth
+        SetMaxHealth();
+        // Set the currentHealth and regening false
         currentHealth = maxHealth;
         isRegeningHealth = false;
     }
@@ -35,32 +30,12 @@ public class HealthController : MonoBehaviour
             StartCoroutine("RegenHealth");
         }
     }
-    // Create method to set the health and mana of the enemy based on its type
+    // Create method to set the health of the character based on its stamina
     public void SetMaxHealth()
     {
-        // Use a switch case statement to set the enemy health and mana based on the enemy name
-        string name = gameObject.name;
-        switch (name)
-        {
-            case "Warrior(Clone)":
-                maxHealth = 200;
-                break;
-            case "Rogue(Clone)":
-                maxHealth = 175;
-                break;
-            case "Wizard(Clone)":
-                maxHealth = 125;
-                break;
-            case "Cleric(Clone)":
-                maxHealth = 150;
-                break;
-            case "Captain(Clone)":
-                maxHealth = 250;
-                break;
-            case "Key Master(Clone)":
-                maxHealth = 300;
-                break;
-        }
+        // Set the maxHealth based on the currentStamina
+        int stamina = GetComponent<StaminaController>().currentStamina;
+        maxHealth = Mathf.RoundToInt(stamina * 1.5f);
     }
     // Create a method to damage the player to test the health bar
     public void TakeDamage(int damage, GameObject attacker)
@@ -79,7 +54,7 @@ public class HealthController : MonoBehaviour
         while (currentHealth < maxHealth)
         {
             // Set the healthRegen based on in combat or not
-            if (GetComponent<PlayerCombat>().inCombat)
+            if (GetComponent<CombatController>().inCombat)
             {
                 healthRegen = 1;
             }
