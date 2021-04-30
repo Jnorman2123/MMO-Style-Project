@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: -3693619864395572558}
   - component: {fileID: -8498099029596540135}
   - component: {fileID: -5461751407780873353}
-  - component: {fileID: -3265459511999621000}
+  - component: {fileID: -5223753405111283231}
   m_Layer: 8
   m_Name: Cleric
   m_TagString: Enemy
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inAttackRange: 0
   inCombat: 0
---- !u!114 &-3265459511999621000
+--- !u!114 &-5223753405111283231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4216498644367734313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c4227567eb6ce4aa74d19f3d06d192, type: 3}
+  m_Script: {fileID: 11500000, guid: e2404e560f6bafc43a459e1caf2fdc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 0

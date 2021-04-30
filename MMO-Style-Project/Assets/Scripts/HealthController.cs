@@ -34,7 +34,7 @@ public class HealthController : MonoBehaviour
     public void SetMaxHealth()
     {
         // Set the maxHealth based on the currentStamina
-        int stamina = GetComponent<StaminaController>().currentStamina;
+        int stamina = GetComponent<StatsController>().currentStamina;
         maxHealth = Mathf.RoundToInt(stamina * 1.5f);
     }
     // Create a method to damage the player to test the health bar

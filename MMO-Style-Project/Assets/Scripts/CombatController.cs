@@ -6,7 +6,7 @@ public class CombatController : MonoBehaviour
 {
     // Declare variables for attack delay, attack damage, and attack range
     private float attackDelay;
-    private int attackDamage;
+    public int attackDamage;
     private float attackRange;
     // Declare variable for the target
     private GameObject target;
@@ -46,18 +46,10 @@ public class CombatController : MonoBehaviour
     // Create method to set the attackDamage, attackDelay, and AttackRange
     private void SetAttackValues()
     {
-        if (CompareTag("Player"))
-        {
-            attackDelay = 2.0f;
-            attackDamage = 50;
-            attackRange = 5.0f;
-
-        } else if (CompareTag("Enemy"))
-        {
-            attackDelay = 2.0f;
-            attackDamage = 25;
-            attackRange = 5.0f;
-        }
+        int strength = GetComponent<StatsController>().currentStrength;
+        attackDamage = Mathf.RoundToInt(strength * 0.1f);
+        attackDelay = 2.0f;
+        attackRange = 5.0f;
     }
     // Create method to attack the target if it is an enemy
     private void DamageTarget()

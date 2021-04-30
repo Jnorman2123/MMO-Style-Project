@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: -7764510917070943238}
   - component: {fileID: -3585577829397157517}
   - component: {fileID: 3321474421463996072}
-  - component: {fileID: 5045709311618821217}
+  - component: {fileID: -5434631107441884518}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inAttackRange: 0
   inCombat: 0
---- !u!114 &5045709311618821217
+--- !u!114 &-5434631107441884518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7417407029408352935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c4227567eb6ce4aa74d19f3d06d192, type: 3}
+  m_Script: {fileID: 11500000, guid: e2404e560f6bafc43a459e1caf2fdc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 0
