@@ -60,10 +60,10 @@ public class StatsController : MonoBehaviour
         else if (CompareTag("Enemy"))
         {
             // Use a switch case statement to set the enemy stamina based on the enemy name
-            string name = gameObject.name;
+            string name = gameObject.name.Replace("(Clone)", "").Trim();
             switch (name)
             {
-                case "Warrior(Clone)":
+                case "Warrior":
                     maxStamina = 75;
                     maxStrength = 60;
                     maxIntelligence = 40;
@@ -73,7 +73,7 @@ public class StatsController : MonoBehaviour
                     maxCharisma = 50;
                     maxWillpower = 50;
                     break;
-                case "Rogue(Clone)":
+                case "Rogue":
                     maxStamina = 60;
                     maxStrength = 60;
                     maxIntelligence = 40;
@@ -83,7 +83,7 @@ public class StatsController : MonoBehaviour
                     maxCharisma = 60;
                     maxWillpower = 50;
                     break;
-                case "Wizard(Clone)":
+                case "Wizard":
                     maxStamina = 50;
                     maxStrength = 40;
                     maxIntelligence = 80;
@@ -93,7 +93,7 @@ public class StatsController : MonoBehaviour
                     maxCharisma = 50;
                     maxWillpower = 60;
                     break;
-                case "Cleric(Clone)":
+                case "Cleric":
                     maxStamina = 60;
                     maxStrength = 50;
                     maxIntelligence = 50;
@@ -103,7 +103,7 @@ public class StatsController : MonoBehaviour
                     maxCharisma = 50;
                     maxWillpower = 60;
                     break;
-                case "Captain(Clone)":
+                case "Captain":
                     maxStamina = 100;
                     maxStrength = 75;
                     maxIntelligence = 40;
@@ -113,7 +113,7 @@ public class StatsController : MonoBehaviour
                     maxCharisma = 50;
                     maxWillpower = 50;
                     break;
-                case "Key Master(Clone)":
+                case "Key Master":
                     maxStamina = 125;
                     maxStrength = 80;
                     maxIntelligence = 40;
@@ -131,5 +131,11 @@ public class StatsController : MonoBehaviour
     {
         currentStamina = maxStamina;
         currentStrength = maxStrength;
+        currentAgility = maxAgility;
+        currentIntelligence = maxIntelligence;
+        currentWisdom = maxWisdom;
+        currentDexterity = maxDexterity;
+        currentCharisma = maxCharisma;
+        currentWillpower = maxWillpower;
     }
 }

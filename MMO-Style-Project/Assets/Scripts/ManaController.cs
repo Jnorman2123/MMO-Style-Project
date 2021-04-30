@@ -11,22 +11,52 @@ public class ManaController : MonoBehaviour
     void Start()
     {
         // Set the max and current mana
-        maxMana = 100;
+        SetMaxMana();
         currentMana = maxMana;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Call the UseMana method if the player presses the g key
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            UseMana();
-        }
+
     }
-    // Create method to simulate using mana to test mana bar
-    private void UseMana()
+    // Create method to set the mana based on stat
+    private void SetMaxMana()
     {
-        currentMana -= 10;
+        // Set variables for each stat
+        int strength = GetComponent<StatsController>().currentStrength;
+        int intelligence = GetComponent<StatsController>().currentIntelligence;
+        int wisdom = GetComponent<StatsController>().currentWisdom;
+        int agility = GetComponent<StatsController>().currentAgility;
+        // Set mana according to different stat based on character type
+        if (CompareTag("Player"))
+        {
+            maxMana = Mathf.RoundToInt(strength * 1.25f);
+        } else if (CompareTag("Enemy"))
+        {
+            // Use switch case statement to determine which stat to base mana off
+            string name = gameObject.name.Replace("(Clone)", "").Trim();
+            switch(name)
+            {
+                case "Warrior":
+                    maxMana = Mathf.RoundToInt(strength * 1.25f);
+                    break;
+                case "Wizard":
+                    maxMana = Mathf.RoundToInt(intelligence * 1.25f);
+                    break;
+                case "Rogue":
+                    maxMana = Mathf.RoundToInt(agility * 1.25f);
+                    break;
+                case "Cleric":
+                    maxMana = Mathf.RoundToInt(wisdom * 1.25f);
+                    break;
+                case "Key Master":
+                    maxMana = Mathf.RoundToInt(strength * 1.25f);
+                    break;
+                case "Captain":
+                    maxMana = Mathf.RoundToInt(strength * 1.25f);
+                    break;
+            }
+        }
     }
 }
