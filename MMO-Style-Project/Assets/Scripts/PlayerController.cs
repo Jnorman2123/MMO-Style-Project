@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     // Create a method to kill the player when it reaches zero health
     IEnumerator PlayerDeath()
     {
+        GetComponent<CombatController>().autoAttacking = false;
         // Set alive to false
         alive = false;
         // Return the player to the respawn position

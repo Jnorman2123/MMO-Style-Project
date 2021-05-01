@@ -5,17 +5,18 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     // Declare variables for attack delay, attack damage, and attack range
-    private float attackDelay;
+    public float attackDelay;
     public int attackDamage;
     private float attackRange;
     // Declare variable for the target
     private GameObject target;
     // Declare variable for chat window ui
     private GameObject chatUIWindow;
-    // Declare variables for auto attacking and inAttackRange and inCombat
-    private bool autoAttacking;
+    // Declare variables for auto attacking and inAttackRange and inCombat and isTauntingStrike
+    public bool autoAttacking;
     public bool inAttackRange;
     public bool inCombat;
+    public bool isTauntingStrike;
     // Declare variable for combat message
     private string combatMessage;
     // Start is called before the first frame update
@@ -46,9 +47,11 @@ public class CombatController : MonoBehaviour
     // Create method to set the attackDamage, attackDelay, and AttackRange
     private void SetAttackValues()
     {
+        // Get strength and agility
         int strength = GetComponent<StatsController>().strength;
-        attackDamage = Mathf.RoundToInt(strength * 0.1f);
-        attackDelay = 2.0f;
+        int agility = GetComponent<StatsController>().agility;
+        attackDamage = Mathf.RoundToInt(strength * 0.25f);
+        attackDelay = 3.0f - (agility * 0.01f);
         attackRange = 5.0f;
     }
     // Create method to attack the target if it is an enemy

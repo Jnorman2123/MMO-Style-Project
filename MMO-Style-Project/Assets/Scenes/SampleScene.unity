@@ -3391,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976607, y: 0.000000017214436, z: -4.3022974e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976589, y: -0.000000017174184, z: 4.2894768e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3505,6 +3505,9 @@ GameObject:
   - component: {fileID: 1051825984}
   - component: {fileID: 1051825977}
   - component: {fileID: 1051825979}
+  - component: {fileID: 1051825985}
+  - component: {fileID: 1051825986}
+  - component: {fileID: 1051825987}
   m_Layer: 0
   m_Name: Zidgog
   m_TagString: Player
@@ -3573,7 +3576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatUIWindow: {fileID: 0}
+  attackDelay: 0
+  attackDamage: 0
+  autoAttacking: 0
   inAttackRange: 0
   inCombat: 0
 --- !u!143 &1051825980
@@ -3628,6 +3633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  isTauntingStrike: 0
 --- !u!114 &1051825983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3656,6 +3662,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCanvas: {fileID: 1614837273}
   nameText: {fileID: 905517816}
+--- !u!114 &1051825985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2404e560f6bafc43a459e1caf2fdc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  strength: 0
+  intelligence: 0
+  wisdom: 0
+  agility: 0
+  dexterity: 0
+  charisma: 0
+  willpower: 0
+--- !u!114 &1051825986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f9b26e5b33d824f814143b5ca4a03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
+--- !u!114 &1051825987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42633f0f7acd1e44a9b156b731c01631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1076962654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4743,7 +4794,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366502945}
-  m_LocalRotation: {x: -0.011353497, y: -5.3766486e-10, z: -6.107769e-12, w: 0.99993557}
+  m_LocalRotation: {x: -0.011353497, y: 5.3766475e-10, z: 6.1017697e-12, w: 0.99993557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5314,7 +5365,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064041545, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064044308, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

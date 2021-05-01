@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     public int maxHealth;
     // Declare variables for healthRegen and regenDelay and isRegeningHealth
     private int healthRegen;
-    private int regenDelay = 2;
+    private int regenDelay = 5;
     private bool isRegeningHealth;
     // Declare variable for chat ui window and combatMessage
     private string combatMessage;
@@ -46,12 +46,12 @@ public class HealthController : MonoBehaviour
     public void TakeDamage(int damage, GameObject attacker, GameObject target)
     {
         // Randomize damage
-        int minDamage = 1;
+        int minDamage = damage/2;
         int maxDamage = damage;
         int randomDamage = Random.Range(minDamage, maxDamage);
         // Account for armor
         int armor = GetComponent<ArmorController>().armor;
-        int netDamage = randomDamage - Mathf.RoundToInt(armor / 2);
+        int netDamage = randomDamage - Mathf.RoundToInt(armor / 4);
         if (netDamage <= 0)
         {
             netDamage = 1;
@@ -61,7 +61,6 @@ public class HealthController : MonoBehaviour
         if (CompareTag("Enemy"))
         {
             GetComponent<EnemyController>().GainHate(netDamage, attacker);
-            
             // Set the combat message to reflect how much damage you deal to the enemy
             combatMessage = "You hit " + target.name.Replace("(Clone)", "").Trim() + " for "
                             + netDamage + " points of damage!";

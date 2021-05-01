@@ -24,6 +24,8 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set enemy move speed to walk
+        enemyMoveSpeed = 2.5f;
         // Set offPath
         offPath = false;
         // Set the spawn position and rotation
@@ -74,7 +76,6 @@ public class EnemyMovement : MonoBehaviour
     // Create an ienumerator to wait a few seconds then move again
     IEnumerator WaitToMove()
     {
-        Debug.Log("waiting");
         yield return new WaitForSeconds(stationaryTime);
         enemyMoveSpeed = 2.5f;
     }

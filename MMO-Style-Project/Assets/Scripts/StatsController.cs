@@ -38,14 +38,14 @@ public class StatsController : MonoBehaviour
         if (CompareTag("Player"))
         {
             // Set player stats
-            stamina = 75;
-            strength = 80;
-            intelligence = 40;
-            wisdom = 40;
-            agility = 60;
-            dexterity = 60;
-            charisma = 50;
-            willpower = 50;
+            stamina = 25;
+            strength = 30;
+            intelligence = 15;
+            wisdom = 15;
+            agility = 20;
+            dexterity = 20;
+            charisma = 15;
+            willpower = 20;
         }
         else if (CompareTag("Enemy"))
         {
@@ -54,64 +54,64 @@ public class StatsController : MonoBehaviour
             switch (name)
             {
                 case "Warrior":
-                    stamina = 75;
-                    strength = 60;
-                    intelligence = 40;
-                    wisdom = 40;
-                    agility = 60;
-                    dexterity = 60;
-                    charisma = 50;
-                    willpower = 50;
+                    stamina = 25;
+                    strength = 30;
+                    intelligence = 15;
+                    wisdom = 15;
+                    agility = 20;
+                    dexterity = 20;
+                    charisma = 15;
+                    willpower = 20;
                     break;
                 case "Rogue":
-                    stamina = 60;
-                    strength = 60;
-                    intelligence = 40;
-                    wisdom = 40;
-                    agility = 70;
-                    dexterity = 70;
-                    charisma = 60;
-                    willpower = 50;
+                    stamina = 20;
+                    strength = 20;
+                    intelligence = 15;
+                    wisdom = 15;
+                    agility = 30;
+                    dexterity = 30;
+                    charisma = 25;
+                    willpower = 20;
                     break;
                 case "Wizard":
-                    stamina = 50;
-                    strength = 40;
-                    intelligence = 80;
-                    wisdom = 50;
-                    agility = 50;
-                    dexterity = 40;
-                    charisma = 50;
-                    willpower = 60;
+                    stamina = 15;
+                    strength = 15;
+                    intelligence = 30;
+                    wisdom = 20;
+                    agility = 15;
+                    dexterity = 15;
+                    charisma = 20;
+                    willpower = 25;
                     break;
                 case "Cleric":
-                    stamina = 60;
-                    strength = 50;
-                    intelligence = 50;
-                    wisdom = 80;
-                    agility = 50;
-                    dexterity = 40;
-                    charisma = 50;
-                    willpower = 60;
+                    stamina = 20;
+                    strength = 15;
+                    intelligence = 20;
+                    wisdom = 30;
+                    agility = 15;
+                    dexterity = 15;
+                    charisma = 20;
+                    willpower = 25;
                     break;
                 case "Captain":
-                    stamina = 100;
-                    strength = 75;
-                    intelligence = 40;
-                    wisdom = 40;
-                    agility = 60;
-                    dexterity = 60;
-                    charisma = 50;
-                    willpower = 50;
+                    stamina = 40;
+                    strength = 30;
+                    intelligence = 15;
+                    wisdom = 15;
+                    agility = 25;
+                    dexterity = 25;
+                    charisma = 20;
+                    willpower = 20;
                     break;
                 case "Key Master":
-                    stamina = 125;
-                    strength = 80;
-                    intelligence = 40;
-                    wisdom = 40;
-                    agility = 60;
-                    dexterity = 60;
-                    charisma = 50;
-                    willpower = 50;
+                    stamina = 50;
+                    strength = 35;
+                    intelligence = 15;
+                    wisdom = 15;
+                    agility = 25;
+                    dexterity = 25;
+                    charisma = 20;
+                    willpower = 20;
                     break;
             }
         }
