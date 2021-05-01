@@ -55,12 +55,21 @@ public class CombatController : MonoBehaviour
         attackRange = 5.0f;
     }
     // Create method to attack the target if it is an enemy
-    private void DamageTarget()
+    private void DamageTarget(GameObject target)
     {
-        // Set the target to the game object being targeted
-        target = GetComponent<TargetingController>().target;
+        // Randomize damage
+        int minDamage = attackDamage / 2;
+        int maxDamage = attackDamage;
+        int randomDamage = Random.Range(minDamage, maxDamage);
+        // Account for armor
+        int armor = target.GetComponent<ArmorController>().armor;
+        int netDamage = randomDamage - Mathf.RoundToInt(armor / 4);
+        if (netDamage <= 0)
+        {
+            netDamage = 1;
+        }
         // Call the TakeDamage method with the damage 
-        target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject, target.gameObject);
+        target.GetComponent<HealthController>().TakeDamage(netDamage, gameObject, target.gameObject);
     }
     // Create method to toggle auto attack
     private void AutoAttack()
@@ -208,7 +217,7 @@ public class CombatController : MonoBehaviour
                             {
                                 // Set inCombat to true and call the DamageTarget method
                                 inCombat = true;
-                                DamageTarget();
+                                DamageTarget(target);
                                 if (target.GetComponent<HealthController>().currentHealth <= 0)
                                 {
                                     combatMessage = "You have defeated " + target.name.Replace("(Clone)", "").Trim() + "!" +
@@ -232,9 +241,9 @@ public class CombatController : MonoBehaviour
                 // Set the enemy target
                 target = GetComponent<EnemyController>().enemyTarget;
                 if (inAttackRange)
-                {
+                { 
                     // Call the player take damage method
-                    target.GetComponent<HealthController>().TakeDamage(attackDamage, transform.gameObject, target.gameObject); 
+                    DamageTarget(target);
                     if (target.GetComponent<HealthController>().currentHealth <= 0)
                     {
                         combatMessage = transform.name.Replace("(Clone)", "").Trim() + " has killed you!";

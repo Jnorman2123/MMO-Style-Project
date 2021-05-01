@@ -45,32 +45,21 @@ public class HealthController : MonoBehaviour
     // Create a method to damage the player to test the health bar
     public void TakeDamage(int damage, GameObject attacker, GameObject target)
     {
-        // Randomize damage
-        int minDamage = damage/2;
-        int maxDamage = damage;
-        int randomDamage = Random.Range(minDamage, maxDamage);
-        // Account for armor
-        int armor = GetComponent<ArmorController>().armor;
-        int netDamage = randomDamage - Mathf.RoundToInt(armor / 4);
-        if (netDamage <= 0)
-        {
-            netDamage = 1;
-        }
-        currentHealth -= netDamage;
+        currentHealth -= damage;
         // If the game object is an enemy call the gain hate method
         if (CompareTag("Enemy"))
         {
-            GetComponent<EnemyController>().GainHate(netDamage, attacker);
+            GetComponent<EnemyController>().GainHate(damage, attacker);
             // Set the combat message to reflect how much damage you deal to the enemy
             combatMessage = "You hit " + target.name.Replace("(Clone)", "").Trim() + " for "
-                            + netDamage + " points of damage!";
+                            + damage + " points of damage!";
             // Call the SetChatLogText method
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         } else if (CompareTag("Player"))
         {
             // Set the combat message to reflect how much damage the enemy does to you
             combatMessage = attacker.name.Replace("(Clone)", "").Trim() + " has hit you for " +
-                                    netDamage + " points of damage!";
+                                    damage + " points of damage!";
             // Call the SetChatLogText method
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
