@@ -111,14 +111,14 @@ public class SpellsController : MonoBehaviour
             {
                 target.GetComponent<HealthController>().TakeDamage(netDamagePower, gameObject, target);
                 // Set combat message
-                combatMessage = "Your damage spell has hit " + target.name.Replace("(Clone)", "").Trim()
-                                + " for " + netDamagePower + " points of damage!";
+                combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + "'s damage spell has hit " 
+                                + target.name.Replace("(Clone)", "").Trim() + " for " + netDamagePower + " points of damage!";
             } else if (spellType == "heal")
             {
                 target.GetComponent<HealthController>().TakeDamage(-netHealPower, gameObject, target);
                 // Set combat message
-                combatMessage = "Your heal spell has healed " + target.name.Replace("(Clone)", "").Trim()
-                                + " for " + netHealPower + " points of damage!";
+                combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + "'s heal spell has healed " 
+                                + target.name.Replace("(Clone)", "").Trim() + " for " + netHealPower + " points of damage!";
             }
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
