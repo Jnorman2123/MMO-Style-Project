@@ -8,8 +8,9 @@ public class EnemyController : MonoBehaviour
 {
     // Declare variable for hate list dictionary
     public Dictionary<GameObject, int> hateList = new Dictionary<GameObject, int>();
-    // Declare variable for the chat ui window
+    // Declare variable for the chat ui window and combatMessage
     private GameObject chatUIWindow;
+    private string combatMessage;
     // Declare variable for the enemy target and previous target
     public GameObject enemyTarget;
     private GameObject previousTarget;
@@ -44,7 +45,11 @@ public class EnemyController : MonoBehaviour
         // Set the hate gain based on taunting strike or not
         if (attacker.GetComponent<CombatController>().isTauntingStrike)
         {
-            hate *= 2;
+            hate *= 4;
+            // Log a message to say it is a taunting strike and how much hate is gained
+            combatMessage = attacker.name + "'s taunting strike angers " + gameObject.name.Replace("(Clone)", "").Trim()
+                            + " for " + hate + " points of hate!";
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             attacker.GetComponent<CombatController>().isTauntingStrike = false;
         }
         // If the attacker doesn't exist in the hate list add it otherwise just add the hate to the attacker
@@ -85,8 +90,8 @@ public class EnemyController : MonoBehaviour
             enemyTarget = hateList.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
             if (previousTarget != enemyTarget)
             {
-                string aggroMessage = "You will pay for that " + enemyTarget.name + "!";
-                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(aggroMessage);
+                combatMessage = "You will pay for that " + enemyTarget.name + "!";
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             }
         } else
         {

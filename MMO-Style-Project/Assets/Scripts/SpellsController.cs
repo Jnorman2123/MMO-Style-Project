@@ -34,12 +34,12 @@ public class SpellsController : MonoBehaviour
     void Update()
     {
         // Cast damage spell method when 2 is pressed and not currently casting
-        if (Input.GetKeyDown(KeyCode.Alpha2) & !casting)
+        if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha2) & !casting)
         {
             StartCoroutine(CastSpell("damage"));
         }
         // Cast heal spell method when 3 is pressed and not currently casting
-        if (Input.GetKeyDown(KeyCode.Alpha3) & !casting)
+        if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha3) & !casting)
         {
             StartCoroutine(CastSpell("heal"));
         }

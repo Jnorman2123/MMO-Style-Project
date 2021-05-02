@@ -627,6 +627,8 @@ GameObject:
   - component: {fileID: -5434631107441884518}
   - component: {fileID: -8563364378302652594}
   - component: {fileID: -6550626069047196590}
+  - component: {fileID: -1025041951548983313}
+  - component: {fileID: -6674377530383608887}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -820,3 +822,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
+--- !u!114 &-1025041951548983313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42633f0f7acd1e44a9b156b731c01631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6674377530383608887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c1ad5be0d2ace48bbdd65134c9fa71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  casting: 0
+  manaCost: 0
