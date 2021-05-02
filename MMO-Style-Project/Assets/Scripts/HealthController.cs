@@ -46,8 +46,13 @@ public class HealthController : MonoBehaviour
     public void TakeDamage(int damage, GameObject attacker, GameObject target)
     {
         currentHealth -= damage;
+        // Make sure current health does not exceed max health
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         // If the game object is an enemy call the gain hate method
-        if (CompareTag("Enemy"))
+        if (CompareTag("Enemy") & damage > 0)
         {
             GetComponent<EnemyController>().GainHate(damage, attacker);
         }
