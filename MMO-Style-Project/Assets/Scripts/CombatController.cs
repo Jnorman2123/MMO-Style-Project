@@ -39,8 +39,12 @@ public class CombatController : MonoBehaviour
         {
             IsAutoAttacking();
         }
-        // Call the AutoAttack method
-        AutoAttack();
+        // If player presses tilde the player will start or stop autoattacking
+        if (CompareTag("Player") & Input.GetKeyDown("`"))
+        {
+            autoAttacking = !autoAttacking;
+            AutoAttack();
+        }
         // Call the InAttackRange method
         InAttackRange();
     }
@@ -72,12 +76,11 @@ public class CombatController : MonoBehaviour
         target.GetComponent<HealthController>().TakeDamage(netDamage, gameObject, target.gameObject);
     }
     // Create method to toggle auto attack
-    private void AutoAttack()
+    public void AutoAttack()
     {
-        // If player is targeting an enemy and presses tilde toggle auto attack
-        if (CompareTag("Player") & Input.GetKeyDown("`"))
+        // If player presses tilde toggle auto attack
+        if (CompareTag("Player"))
         {
-            autoAttacking = !autoAttacking;
             // Check to see if autoAttacking and start or stop the attack coroutine
             if (autoAttacking)
             {
@@ -167,6 +170,7 @@ public class CombatController : MonoBehaviour
         if (GetComponent<EnemyController>().isAggro)
         {
             autoAttacking = true;
+            AutoAttack();
         }
         else
         {

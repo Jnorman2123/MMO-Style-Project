@@ -32,9 +32,12 @@ public class SpellsController : MonoBehaviour
     // Create coroutine to cast a damage spell when 2 is pressed
     IEnumerator DamageSpell()
     {
-        // Set casting to true and autoAttacking to false
+        // Set casting to true and stop auto attacking
         casting = true;
-        GetComponent<CombatController>().autoAttacking = false;
+        if (GetComponent<CombatController>().autoAttacking == true)
+        {
+            GetComponent<CombatController>().autoAttacking = false;
+        }
         // Log you are casting to the chat window
         chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText("You beging to cast!");
         // Set the target
@@ -48,9 +51,11 @@ public class SpellsController : MonoBehaviour
         combatMessage = "Your damage spell has hit " + target.name.Replace("(Clone)", "").Trim()
                         + " for " + damage + " points of damage!";
         chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
-        // Set casting to false and autoAttacking to true
+        // Set casting to false and autoAttacking to true and inCombat to true
         casting = false;
+        GetComponent<CombatController>().inCombat = true;
         GetComponent<CombatController>().autoAttacking = true;
         StopCoroutine("DamageSpell");
+        GetComponent<CombatController>().AutoAttack();
     }
 }

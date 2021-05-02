@@ -2962,7 +2962,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.6
+  near clip plane: 0.5
   far clip plane: 5000
   field of view: 40
   orthographic: 0
@@ -2989,8 +2989,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.75, z: -75}
+  m_LocalRotation: {x: 0.02571269, y: -0.0000007061285, z: 0.000000018162467, w: 0.9996694}
+  m_LocalPosition: {x: 0, y: 3.5, z: -95}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3391,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976589, y: -0.000000017174184, z: 4.2894768e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976589, y: -0.000000017174184, z: 4.28947e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3508,6 +3508,7 @@ GameObject:
   - component: {fileID: 1051825985}
   - component: {fileID: 1051825986}
   - component: {fileID: 1051825987}
+  - component: {fileID: 1051825988}
   m_Layer: 0
   m_Name: Zidgog
   m_TagString: Player
@@ -3581,6 +3582,7 @@ MonoBehaviour:
   autoAttacking: 0
   inAttackRange: 0
   inCombat: 0
+  isTauntingStrike: 0
 --- !u!143 &1051825980
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3633,7 +3635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
-  isTauntingStrike: 0
 --- !u!114 &1051825983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3707,6 +3708,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42633f0f7acd1e44a9b156b731c01631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1051825988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c1ad5be0d2ace48bbdd65134c9fa71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  casting: 0
 --- !u!1 &1076962654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,7 +4808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366502945}
-  m_LocalRotation: {x: -0.011353497, y: 5.3766475e-10, z: 6.1017697e-12, w: 0.99993557}
+  m_LocalRotation: {x: -0.011353497, y: -5.3766486e-10, z: -6.107769e-12, w: 0.99993557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5365,7 +5379,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064044308, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.000000006404559, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
