@@ -32,14 +32,18 @@ public class SpellsController : MonoBehaviour
     // Create coroutine to cast a damage spell when 2 is pressed
     IEnumerator DamageSpell()
     {
-        // Set the target
+        // Set the target and target resistance
         GameObject target = GetComponent<TargetingController>().target;
+        int targetResistance = target.GetComponent<ResistanceController>().resistance;
+        Debug.Log("resistance " + targetResistance);
         // Set the damage and manaCost
         int minDamage = 5;
         int maxDamage = 10;
         int baseDamage = Random.Range(minDamage, maxDamage);
-        int damageModifier = Mathf.RoundToInt(GetComponent<StatsController>().intelligence / 100);
-        int netDamage = baseDamage + damageModifier;
+        Debug.Log("base damage " + baseDamage);
+        int damageModifier = Mathf.RoundToInt(GetComponent<StatsController>().intelligence / 10);
+        Debug.Log("damage modifier " + damageModifier);
+        int netDamage = baseDamage + damageModifier - targetResistance;
         int manaCost = 10;
         // Don't cast and give message if no proper target
         if (target == null)

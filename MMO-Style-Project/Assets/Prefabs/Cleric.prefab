@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: -5461751407780873353}
   - component: {fileID: -5223753405111283231}
   - component: {fileID: -1884334707825663411}
+  - component: {fileID: -6876811915630951345}
   m_Layer: 8
   m_Name: Cleric
   m_TagString: Enemy
@@ -253,9 +254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDelay: 0
   attackDamage: 0
+  autoAttacking: 0
   inAttackRange: 0
   inCombat: 0
+  isTauntingStrike: 0
 --- !u!114 &-5223753405111283231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +293,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armor: 0
+--- !u!114 &-6876811915630951345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216498644367734313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b81cfddaafa75247ab4e5f34c36d8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4280100790896171273
 GameObject:
   m_ObjectHideFlags: 0
