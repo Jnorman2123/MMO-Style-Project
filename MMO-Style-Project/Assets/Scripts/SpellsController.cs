@@ -7,9 +7,19 @@ public class SpellsController : MonoBehaviour
     // Declare variable for casting time and casting
     private float castingTime;
     public bool casting;
+    // Declare variable for the target and target resistance
+    private GameObject target;
+    private int targetResistance;
     // Declare variable for the chat ui window and combatMessage
     private GameObject chatUIWindow;
     private string combatMessage;
+    // Declare variables for damage and damage modifier
+    private int minSpellDamage;
+    private int maxSpellDamage;
+    private int baseSpellDamage;
+    private int spellDamageModifier;
+    // Declare variable for the mana cost
+    public int manaCost;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,33 +43,41 @@ public class SpellsController : MonoBehaviour
     IEnumerator DamageSpell()
     {
         // Set the target and target resistance
-        GameObject target = GetComponent<TargetingController>().target;
-        int targetResistance = target.GetComponent<ResistanceController>().resistance;
+        target = GetComponent<TargetingController>().target;
+        targetResistance = target.GetComponent<ResistanceController>().resistance;
         Debug.Log("resistance " + targetResistance);
         // Set the damage and manaCost
-        int minDamage = 5;
-        int maxDamage = 10;
-        int baseDamage = Random.Range(minDamage, maxDamage);
-        Debug.Log("base damage " + baseDamage);
-        int damageModifier = Mathf.RoundToInt(GetComponent<StatsController>().intelligence / 10);
-        Debug.Log("damage modifier " + damageModifier);
-        int netDamage = baseDamage + damageModifier - targetResistance;
-        int manaCost = 10;
+        minSpellDamage = 5;
+        maxSpellDamage = 10;
+        baseSpellDamage = Random.Range(minSpellDamage, maxSpellDamage);
+        Debug.Log("base damage " + baseSpellDamage);
+        spellDamageModifier = Mathf.RoundToInt(GetComponent<StatsController>().intelligence / 10);
+        Debug.Log("damage modifier " + spellDamageModifier);
+        int netDamage = baseSpellDamage + spellDamageModifier - targetResistance;
+        manaCost = 10;
         // Don't cast and give message if no proper target
         if (target == null)
         {
             combatMessage = "You have no target.";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         } else if (target == gameObject)
         {
             combatMessage = "You can not use this spell on yourself";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         } else if (target.CompareTag("Interactable"))
         {
             combatMessage = "You can not use this spell on your target.";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
         // Don't cast and give message if insufficient mana
         else if (manaCost > GetComponent<ManaController>().currentMana)
         {
             combatMessage = "You have insufficient mana!";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         } else if (manaCost < GetComponent<ManaController>().currentMana)
         {
             // Set casting to true and stop auto attacking
@@ -79,14 +97,15 @@ public class SpellsController : MonoBehaviour
             // Set combat message
             combatMessage = "Your damage spell has hit " + target.name.Replace("(Clone)", "").Trim()
                             + " for " + netDamage + " points of damage!";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // Set casting to false and autoAttacking to true and inCombat to true
             casting = false;
             GetComponent<CombatController>().inCombat = true;
             GetComponent<CombatController>().autoAttacking = true;
+            // Stop damage spell coroutine and start auto attacking again
             StopCoroutine("DamageSpell");
             GetComponent<CombatController>().AutoAttack();
-        }
-        // Log the combat message
-        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+        }    
     }
 }
