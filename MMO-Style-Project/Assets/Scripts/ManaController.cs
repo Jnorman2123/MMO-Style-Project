@@ -59,4 +59,9 @@ public class ManaController : MonoBehaviour
             }
         }
     }
+    // Create a method to use mana
+    public void UseMana(int manaCost)
+    {
+        currentMana -= manaCost;
+    }
 }

@@ -42,10 +42,12 @@ public class SpellsController : MonoBehaviour
         chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText("You beging to cast!");
         // Set the target
         GameObject target = GetComponent<TargetingController>().target;
-        // Set the damage
+        // Set the damage and manaCost
         int damage = 10;
+        int manaCost = 10;
         // After casting time deal damage to the target
         yield return new WaitForSeconds(castingTime);
+        GetComponent<ManaController>().UseMana(manaCost);
         target.GetComponent<HealthController>().TakeDamage(damage, gameObject, target);
         // Set combat message and log it to the chat window
         combatMessage = "Your damage spell has hit " + target.name.Replace("(Clone)", "").Trim()

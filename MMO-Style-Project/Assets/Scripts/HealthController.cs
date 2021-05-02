@@ -50,18 +50,6 @@ public class HealthController : MonoBehaviour
         if (CompareTag("Enemy"))
         {
             GetComponent<EnemyController>().GainHate(damage, attacker);
-            // Set the combat message to reflect how much damage you deal to the enemy
-            combatMessage = "You hit " + target.name.Replace("(Clone)", "").Trim() + " for "
-                            + damage + " points of damage!";
-            // Call the SetChatLogText method
-            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
-        } else if (CompareTag("Player"))
-        {
-            // Set the combat message to reflect how much damage the enemy does to you
-            combatMessage = attacker.name.Replace("(Clone)", "").Trim() + " has hit you for " +
-                                    damage + " points of damage!";
-            // Call the SetChatLogText method
-            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
     }
     // Create a coroutine to regen the health of the player over time

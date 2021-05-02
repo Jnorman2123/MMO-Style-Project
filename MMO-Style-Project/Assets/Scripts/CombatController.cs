@@ -74,6 +74,12 @@ public class CombatController : MonoBehaviour
         }
         // Call the TakeDamage method with the damage 
         target.GetComponent<HealthController>().TakeDamage(netDamage, gameObject, target.gameObject);
+        // Set the combat message based on the attacker and target
+        // Set the combat message to reflect how much damage you deal to the enemy
+        combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + " hit " + target.name.Replace("(Clone)", "").Trim()
+            + " for " + netDamage + " points of damage!";
+        // Call the SetChatLogText method
+        chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
     }
     // Create method to toggle auto attack
     public void AutoAttack()
