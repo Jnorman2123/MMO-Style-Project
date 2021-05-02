@@ -47,7 +47,6 @@ public class EnemyController : MonoBehaviour
             hate *= 2;
             attacker.GetComponent<CombatController>().isTauntingStrike = false;
         }
-        Debug.Log(hate);
         // If the attacker doesn't exist in the hate list add it otherwise just add the hate to the attacker
         if (hateList.ContainsKey(attacker))
         {
