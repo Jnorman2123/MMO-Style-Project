@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 8789771541023148533}
   - component: {fileID: -2767553604776013819}
   - component: {fileID: -2539942734696707215}
-  - component: {fileID: 5021356687392150082}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -227,20 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42633f0f7acd1e44a9b156b731c01631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5021356687392150082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15085034119962304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c1ad5be0d2ace48bbdd65134c9fa71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  casting: 0
-  manaCost: 0
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0

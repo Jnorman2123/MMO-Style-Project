@@ -74,8 +74,8 @@ public class CombatController : MonoBehaviour
         }
         // Call the TakeDamage method with the damage 
         target.GetComponent<HealthController>().TakeDamage(netDamage, gameObject, target.gameObject);
-        // Set the combat message based on the attacker and target
-        // Set the combat message to reflect how much damage you deal to the enemy
+        // If the attack is a taunting strike
+        // Set the combat message based on the attacker, target, and damage
         combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + " hit " + target.name.Replace("(Clone)", "").Trim()
             + " for " + netDamage + " points of damage!";
         // Call the SetChatLogText method
