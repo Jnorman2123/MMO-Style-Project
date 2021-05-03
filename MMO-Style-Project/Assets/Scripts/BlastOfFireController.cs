@@ -98,15 +98,19 @@ public class BlastOfFireController : MonoBehaviour
             if (CompareTag("Player"))
             {
                 GetComponent<SpellsController>().casting = true;
+                if (GetComponent<CombatController>().autoAttacking == true)
+                {
+                    GetComponent<CombatController>().autoAttacking = false;
+                    GetComponent<CombatController>().AutoAttack();
+                }
             } else if (CompareTag("Enemy"))
             {
                 GetComponent<EnemySpellsController>().casting = true;
-            }
-            
-            if (GetComponent<CombatController>().autoAttacking == true)
-            {
-                GetComponent<CombatController>().autoAttacking = false;
-                GetComponent<CombatController>().AutoAttack();
+                if (GetComponent<EnemyCombatController>().autoAttacking == true)
+                {
+                    GetComponent<EnemyCombatController>().autoAttacking = false;
+                    GetComponent<EnemyCombatController>().AutoAttack();
+                }
             }
             // Log you are casting to the chat window
             combatMessage = casterName + " begins to cast Blast of Fire on " + targetName + ".";
@@ -124,16 +128,20 @@ public class BlastOfFireController : MonoBehaviour
             if (CompareTag("Player"))
             {
                 GetComponent<SpellsController>().casting = false;
+                GetComponent<CombatController>().inCombat = true;
+                GetComponent<CombatController>().autoAttacking = true;
+                // Stop damage spell coroutine and start auto attacking again
+                StopCoroutine(BeginCasting());
+                GetComponent<CombatController>().AutoAttack();
             } else if (CompareTag("Enemy"))
             {
                 GetComponent<EnemySpellsController>().casting = false;
+                GetComponent<EnemyCombatController>().inCombat = true;
+                GetComponent<EnemyCombatController>().autoAttacking = true;
+                // Stop damage spell coroutine and start auto attacking again
+                StopCoroutine(BeginCasting());
+                GetComponent<EnemyCombatController>().AutoAttack();
             }
-            
-            GetComponent<CombatController>().inCombat = true;
-            GetComponent<CombatController>().autoAttacking = true;
-            // Stop damage spell coroutine and start auto attacking again
-            StopCoroutine(BeginCasting());
-            GetComponent<CombatController>().AutoAttack();
         }
     }
 }

@@ -63,14 +63,28 @@ public class HealthController : MonoBehaviour
         // While less than max health start regening health
         while (currentHealth < maxHealth)
         {
-            // Set the healthRegen based on in combat or not
-            if (GetComponent<CombatController>().inCombat)
+            if (CompareTag("Player"))
             {
-                healthRegen = 1;
-            }
-            else
+                // Set the healthRegen based on in combat or not
+                if (GetComponent<CombatController>().inCombat)
+                {
+                    healthRegen = 1;
+                }
+                else
+                {
+                    healthRegen = 2;
+                }
+            } else if (CompareTag("Enemy"))
             {
-                healthRegen = 2;
+                // Set the healthRegen based on in combat or not
+                if (GetComponent<EnemyCombatController>().inCombat)
+                {
+                    healthRegen = 1;
+                }
+                else
+                {
+                    healthRegen = 2;
+                }
             }
             isRegeningHealth = true;
             currentHealth += healthRegen;

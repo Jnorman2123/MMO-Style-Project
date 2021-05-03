@@ -47,10 +47,11 @@ public class EnemyController : MonoBehaviour
         {
             hate *= 4;
             // Log a message to say it is a taunting strike and how much hate is gained
-            combatMessage = attacker.name + "'s taunting strike angers " + gameObject.name.Replace("(Clone)", "").Trim()
+            combatMessage = attacker.name + "'s Taunting Strike angers " + gameObject.name.Replace("(Clone)", "").Trim()
                             + " for " + hate + " points of hate!";
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             attacker.GetComponent<CombatController>().isTauntingStrike = false;
+            attacker.GetComponent<AbilitiesController>().usingAbility = false;
         }
         // If the attacker doesn't exist in the hate list add it otherwise just add the hate to the attacker
         if (hateList.ContainsKey(attacker))

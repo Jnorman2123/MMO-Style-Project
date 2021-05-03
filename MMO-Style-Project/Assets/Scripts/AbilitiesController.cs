@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class AbilitiesController : MonoBehaviour
 {
-    // Declare variable for chat ui window and combat message
-    private GameObject chatUIWindow;
-    private string combatMessage;
+    // Declare variable for using ability
+    public bool usingAbility;
     // Start is called before the first frame update
     void Start()
     {
-        // Set the chatUIWindow
-        chatUIWindow = GameObject.Find("Chat UI Window");
+        // Set usingAbility to false
+        usingAbility = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Call the TauntingStrike method
-        TauntingStrike();
-    }
-    // Create a method for the taunting strike ability
-    public void TauntingStrike()
-    {
-        if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha1)
-            & GetComponent<CombatController>().isTauntingStrike == false)
+        if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha1) & usingAbility == false)
         {
-            // Set the combat message and log it to the chat window
-            combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + " prepares to use Taunting Strike!";
-            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
-            // Set taunting strike to true
-            GetComponent<CombatController>().isTauntingStrike = true;
+            // Call the TauntingStrike method
+            GetComponent<TauntingStrikeController>().TauntingStrike();
         }
     }
 }

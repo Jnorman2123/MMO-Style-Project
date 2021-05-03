@@ -101,15 +101,21 @@ public class MinorHealingController : MonoBehaviour
             if (CompareTag("Player"))
             {
                 GetComponent<SpellsController>().casting = true;
+                if (GetComponent<CombatController>().autoAttacking == true)
+                {
+                    alreadyAttacking = true;
+                    GetComponent<CombatController>().autoAttacking = false;
+                    GetComponent<CombatController>().AutoAttack();
+                }
             } else if (CompareTag("Enemy"))
             {
                 GetComponent<EnemySpellsController>().casting = true;
-            }
-            if (GetComponent<CombatController>().autoAttacking == true)
-            {
-                alreadyAttacking = true;
-                GetComponent<CombatController>().autoAttacking = false;
-                GetComponent<CombatController>().AutoAttack();
+                if (GetComponent<EnemyCombatController>().autoAttacking == true)
+                {
+                    alreadyAttacking = true;
+                    GetComponent<EnemyCombatController>().autoAttacking = false;
+                    GetComponent<EnemyCombatController>().AutoAttack();
+                }
             }
             // Log you are casting to the chat window
             combatMessage = casterName + " begins to cast Minor Healing on " + targetName + ".";
@@ -126,18 +132,26 @@ public class MinorHealingController : MonoBehaviour
             if (CompareTag("Player"))
             {
                 GetComponent<SpellsController>().casting = false;
+                if (alreadyAttacking == true)
+                {
+                    GetComponent<CombatController>().inCombat = true;
+                    GetComponent<CombatController>().autoAttacking = true;
+                }
+                // Stop damage spell coroutine and start auto attacking again
+                StopCoroutine(BeginCasting());
+                GetComponent<CombatController>().AutoAttack();
             } else if (CompareTag("Enemy"))
             {
                 GetComponent<EnemySpellsController>().casting = false;
+                if (alreadyAttacking == true)
+                {
+                    GetComponent<EnemyCombatController>().inCombat = true;
+                    GetComponent<EnemyCombatController>().autoAttacking = true;
+                }
+                // Stop damage spell coroutine and start auto attacking again
+                StopCoroutine(BeginCasting());
+                GetComponent<EnemyCombatController>().AutoAttack();
             }
-            if (alreadyAttacking == true)
-            {
-                GetComponent<CombatController>().inCombat = true;
-                GetComponent<CombatController>().autoAttacking = true;
-            }
-            // Stop damage spell coroutine and start auto attacking again
-            StopCoroutine(BeginCasting());
-            GetComponent<CombatController>().AutoAttack();
         }
     }
 }

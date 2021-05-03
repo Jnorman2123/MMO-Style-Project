@@ -16,12 +16,12 @@ GameObject:
   - component: {fileID: 9144776583024133369}
   - component: {fileID: -3710413958622005328}
   - component: {fileID: -3961562500826685063}
-  - component: {fileID: 5178677198923952207}
   - component: {fileID: -7673273382075875119}
   - component: {fileID: 8789771541023148533}
   - component: {fileID: -2767553604776013819}
   - component: {fileID: -3420046886025917048}
   - component: {fileID: 50757675853195753}
+  - component: {fileID: 1061417728123865387}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -151,24 +151,6 @@ MonoBehaviour:
   target: {fileID: 0}
   extendedTarget: {fileID: 0}
   extendedTargetWindow: {fileID: 0}
---- !u!114 &5178677198923952207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15085034119962304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 0
-  attackDamage: 0
-  autoAttacking: 0
-  inAttackRange: 0
-  inCombat: 0
-  isTauntingStrike: 0
 --- !u!114 &-7673273382075875119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +223,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manaCost: 0
+--- !u!114 &1061417728123865387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60069410a7d7a0d44b1b882fd7e5e2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDelay: 0
+  attackDamage: 0
+  autoAttacking: 0
+  inAttackRange: 0
+  inCombat: 0
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0

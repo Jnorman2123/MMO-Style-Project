@@ -623,10 +623,10 @@ GameObject:
   - component: {fileID: 6880563215085076270}
   - component: {fileID: -7764510917070943238}
   - component: {fileID: -3585577829397157517}
-  - component: {fileID: 3321474421463996072}
   - component: {fileID: -5434631107441884518}
   - component: {fileID: -8563364378302652594}
   - component: {fileID: -6550626069047196590}
+  - component: {fileID: -6915132135843907121}
   m_Layer: 8
   m_Name: Rogue
   m_TagString: Enemy
@@ -756,24 +756,6 @@ MonoBehaviour:
   target: {fileID: 0}
   extendedTarget: {fileID: 0}
   extendedTargetWindow: {fileID: 0}
---- !u!114 &3321474421463996072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7417407029408352935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef9d85b62dd91a1499cd33768e72701e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelay: 0
-  attackDamage: 0
-  autoAttacking: 0
-  inAttackRange: 0
-  inCombat: 0
-  isTauntingStrike: 0
 --- !u!114 &-5434631107441884518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,3 +802,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
+--- !u!114 &-6915132135843907121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417407029408352935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60069410a7d7a0d44b1b882fd7e5e2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDelay: 0
+  attackDamage: 0
+  autoAttacking: 0
+  inAttackRange: 0
+  inCombat: 0
