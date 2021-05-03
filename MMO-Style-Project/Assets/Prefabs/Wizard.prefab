@@ -20,7 +20,9 @@ GameObject:
   - component: {fileID: -7673273382075875119}
   - component: {fileID: 8789771541023148533}
   - component: {fileID: -2767553604776013819}
-  - component: {fileID: -2539942734696707215}
+  - component: {fileID: -3420046886025917048}
+  - component: {fileID: 50757675853195753}
+  - component: {fileID: -9209044297773733425}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Enemy
@@ -214,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
---- !u!114 &-2539942734696707215
+--- !u!114 &-3420046886025917048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,9 +225,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 15085034119962304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42633f0f7acd1e44a9b156b731c01631, type: 3}
+  m_Script: {fileID: 11500000, guid: 4abf1dbcf4138784a94714375968802a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  casting: 0
+--- !u!114 &50757675853195753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c40ddf9c602a74d8fdac37e6c175d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaCost: 0
+--- !u!114 &-9209044297773733425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15085034119962304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb4e21400da0a3478419ff7e385be50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaCost: 0
 --- !u!1 &3862543622837079309
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class MinorHealingController : MonoBehaviour
 {
     // Declare variables for cast time and mana cost
     private float castingTime;
-    private int manaCost;
+    public int manaCost;
     // Declare variables for min, max, and base spell power, and spell power modifier
     private int minSpellPower;
     private int maxSpellPower;
@@ -68,7 +68,6 @@ public class MinorHealingController : MonoBehaviour
         }
         else if (manaCost < GetComponent<ManaController>().currentMana)
         {
-            Debug.Log("casting");
             // Set the target and caster name
             string targetName = target.name.Replace("(Clone)", "").Trim();
             string casterName = gameObject.name;

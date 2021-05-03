@@ -6,7 +6,7 @@ public class BlastOfFireController : MonoBehaviour
 {
     // Declare variables for cast time and mana cost
     private float castingTime;
-    private int manaCost;
+    public int manaCost;
     // Declare variables for min, max, and base spell power, and spell power modifier
     private int minSpellPower;
     private int maxSpellPower;
@@ -18,6 +18,9 @@ public class BlastOfFireController : MonoBehaviour
     // Declare variable for the chat ui window and combatMessage
     private GameObject chatUIWindow;
     private string combatMessage;
+    // Declare variables for the target and caster names
+    private string targetName;
+    private string casterName;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +44,13 @@ public class BlastOfFireController : MonoBehaviour
     // Create coroutine to begin casting
     IEnumerator BeginCasting()
     {
-        // Set the target
-        target = GetComponent<TargetingController>().target;
+        // Set the target based on character type
+        if (CompareTag("Player"))
+        {
+            target = GetComponent<TargetingController>().target;
+        } else if (CompareTag("Enemy")) {
+            target = GetComponent<EnemyController>().enemyTarget;
+        }
         // Don't cast and give message if no proper target
         if (target == null)
         {
@@ -68,8 +76,15 @@ public class BlastOfFireController : MonoBehaviour
             // Set the target resistance
             targetResistance = target.GetComponent<ResistanceController>().resistance;
             // Set the target and caster name
-            string targetName = target.name.Replace("(Clone)", "").Trim();
-            string casterName = gameObject.name;
+            if (CompareTag("Player"))
+            {
+                targetName = target.name.Replace("(Clone)", "").Trim();
+                casterName = gameObject.name;
+            } else if (CompareTag("Enemy"))
+            {
+                targetName = target.name;
+                casterName = gameObject.name.Replace("(Clone)", "").Trim();
+            }
             // Set the power and manaCost
             minSpellPower = 5;
             maxSpellPower = 10;
@@ -80,26 +95,40 @@ public class BlastOfFireController : MonoBehaviour
             int netDamagePower = Mathf.RoundToInt(spellPowerModifier) + baseSpellPower - targetResistance;
             manaCost = 10;
             // Set casting to true and stop auto attacking
-            GetComponent<SpellsController>().casting = true;
+            if (CompareTag("Player"))
+            {
+                GetComponent<SpellsController>().casting = true;
+            } else if (CompareTag("Enemy"))
+            {
+                GetComponent<EnemySpellsController>().casting = true;
+            }
+            
             if (GetComponent<CombatController>().autoAttacking == true)
             {
                 GetComponent<CombatController>().autoAttacking = false;
                 GetComponent<CombatController>().AutoAttack();
             }
             // Log you are casting to the chat window
-            combatMessage = casterName + " begins to cast damage spell on " + targetName + ".";
+            combatMessage = casterName + " begins to cast Blast of Fire on " + targetName + ".";
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // After casting time deal damage to the target
             yield return new WaitForSeconds(castingTime);
             GetComponent<ManaController>().UseMana(manaCost);
             target.GetComponent<HealthController>().TakeDamage(netDamagePower, gameObject, target);
             // Set combat message
-            combatMessage = casterName + "'s damage spell has hit "
+            combatMessage = casterName + "'s Blast of Fire has hit "
                             + targetName + " for " + netDamagePower + " points of damage!";
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // Set casting to false and autoAttacking to true and inCombat to true
-            GetComponent<SpellsController>().casting = false;
+            if (CompareTag("Player"))
+            {
+                GetComponent<SpellsController>().casting = false;
+            } else if (CompareTag("Enemy"))
+            {
+                GetComponent<EnemySpellsController>().casting = false;
+            }
+            
             GetComponent<CombatController>().inCombat = true;
             GetComponent<CombatController>().autoAttacking = true;
             // Stop damage spell coroutine and start auto attacking again

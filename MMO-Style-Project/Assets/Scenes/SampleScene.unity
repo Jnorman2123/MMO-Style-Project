@@ -3391,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022893502}
-  m_LocalRotation: {x: -0.024976589, y: -0.000000017174184, z: 4.289459e-10, w: -0.9996881}
+  m_LocalRotation: {x: -0.024976587, y: -0.0000000171943, z: 4.2944798e-10, w: -0.9996881}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3510,6 +3510,8 @@ GameObject:
   - component: {fileID: 1051825987}
   - component: {fileID: 1051825988}
   - component: {fileID: 1051825989}
+  - component: {fileID: 1051825991}
+  - component: {fileID: 1051825990}
   m_Layer: 0
   m_Name: Zidgog
   m_TagString: Player
@@ -3722,7 +3724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   casting: 0
-  manaCost: 0
 --- !u!114 &1051825989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3736,6 +3737,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
+--- !u!114 &1051825990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c40ddf9c602a74d8fdac37e6c175d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaCost: 0
+--- !u!114 &1051825991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051825975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb4e21400da0a3478419ff7e385be50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaCost: 0
 --- !u!1 &1076962654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4823,7 +4850,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366502945}
-  m_LocalRotation: {x: -0.011353497, y: -5.3766486e-10, z: -6.107769e-12, w: 0.99993557}
+  m_LocalRotation: {x: -0.011353497, y: 5.3766475e-10, z: 6.1017697e-12, w: 0.99993557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5394,7 +5421,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494104973}
-  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.000000006404815, w: -0.99966943}
+  m_LocalRotation: {x: -0.025712684, y: 0.000000705826, z: -0.0000000064049237, w: -0.99966943}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
