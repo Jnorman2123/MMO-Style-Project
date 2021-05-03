@@ -64,8 +64,17 @@ public class SpellsController : MonoBehaviour
     IEnumerator CastSpell(string spellType)
     {
         // Set the target and target resistance
-        target = GetComponent<TargetingController>().target;
+        if (CompareTag("Player"))
+        {
+            target = GetComponent<TargetingController>().target;
+        } else if (CompareTag("Enemy")) 
+        {
+            target = GetComponent<EnemyController>().enemyTarget;
+        }
         targetResistance = target.GetComponent<ResistanceController>().resistance;
+        // Set names for target and caster
+        string targetName = target.name.Replace("(Clone)", "").Trim();
+        string casterName = gameObject.name.Replace("(Clone)", "").Trim();
         // Set the power and manaCost
         minSpellPower = 5;
         maxSpellPower = 10;
@@ -113,11 +122,11 @@ public class SpellsController : MonoBehaviour
             if (spellType == "damage")
             {
                 // Log you are casting to the chat window
-                combatMessage = "You begin to cast damage spell!";
+                combatMessage = casterName + " begins to cast damage spell on " + targetName + ".";
             } else if (spellType == "heal")
             {
                 // Log you are casting to the chat window
-                combatMessage = "You begin to cast heal spell!";
+                combatMessage = "You begins to cast heal spell on !";
             }
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // After casting time deal damage to the target or heal the target
@@ -127,14 +136,14 @@ public class SpellsController : MonoBehaviour
             {
                 target.GetComponent<HealthController>().TakeDamage(netDamagePower, gameObject, target);
                 // Set combat message
-                combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + "'s damage spell has hit " 
-                                + target.name.Replace("(Clone)", "").Trim() + " for " + netDamagePower + " points of damage!";
+                combatMessage = casterName + "'s damage spell has hit " 
+                                + targetName + " for " + netDamagePower + " points of damage!";
             } else if (spellType == "heal")
             {
                 target.GetComponent<HealthController>().TakeDamage(-netHealPower, gameObject, target);
                 // Set combat message
-                combatMessage = gameObject.name.Replace("(Clone)", "").Trim() + "'s heal spell has healed " 
-                                + target.name.Replace("(Clone)", "").Trim() + " for " + netHealPower + " points of damage!";
+                combatMessage = casterName + "'s heal spell has healed " 
+                                + targetName + " for " + netHealPower + " points of damage!";
             }
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
