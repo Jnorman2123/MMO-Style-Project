@@ -33,15 +33,31 @@ public class SpellsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Cast damage spell method when 2 is pressed and not currently casting
+        // Player casts damage spell method when 2 is pressed and not currently casting
         if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha2) & !casting)
         {
             StartCoroutine(CastSpell("damage"));
         }
-        // Cast heal spell method when 3 is pressed and not currently casting
+        // Player casts heal spell method when 3 is pressed and not currently casting
         if (CompareTag("Player") & Input.GetKeyDown(KeyCode.Alpha3) & !casting)
         {
             StartCoroutine(CastSpell("heal"));
+        }
+        // If the character is an enemy use spells accordingly
+        if (CompareTag("Enemy"))
+        {
+            // Cast the damage spell if the enemy is a wizard
+            if (GetComponent<EnemyController>().isAggro & gameObject.name == "Wizard(Clone)" & !casting)
+            {
+                StartCoroutine(CastSpell("damage"));
+            }
+            // Cast the heal spell if the enemy is a cleric and is below half health
+            if (GetComponent<EnemyController>().isAggro & gameObject.name == "Cleric(Clone)"
+                & GetComponent<HealthController>().currentHealth < (GetComponent<HealthController>().maxHealth / 2)
+                & !casting)
+            {
+                StartCoroutine(CastSpell("heal"));
+            }
         }
     }
     // Create coroutine to cast a damage spell when 2 is pressed
