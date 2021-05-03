@@ -19,6 +19,9 @@ public class MinorHealingController : MonoBehaviour
     private string combatMessage;
     // Declare variable for already attacking
     private bool alreadyAttacking;
+    // Declare variables for the target and caster names
+    private string targetName;
+    private string casterName;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,13 @@ public class MinorHealingController : MonoBehaviour
     IEnumerator BeginCasting()
     {
         // Set the target
-        target = GetComponent<TargetingController>().target;
+        if (CompareTag("Player"))
+        {
+            target = GetComponent<TargetingController>().target;
+        } else if (CompareTag("Enemy"))
+        {
+            target = gameObject;
+        }
         // Don't cast and give message if no proper target
         if (target == null)
         {
@@ -69,8 +78,16 @@ public class MinorHealingController : MonoBehaviour
         else if (manaCost < GetComponent<ManaController>().currentMana)
         {
             // Set the target and caster name
-            string targetName = target.name.Replace("(Clone)", "").Trim();
-            string casterName = gameObject.name;
+            if (CompareTag("Player"))
+            {
+                targetName = target.name.Replace("(Clone)", "").Trim();
+                casterName = gameObject.name;
+            } else if (CompareTag("Enemy"))
+            {
+                targetName = gameObject.name.Replace("(Clone)", "").Trim();
+                casterName = targetName;
+            }
+            
             // Set the power and manaCost
             minSpellPower = 5;
             maxSpellPower = 10;
@@ -81,7 +98,13 @@ public class MinorHealingController : MonoBehaviour
             int netHealPower = Mathf.RoundToInt(spellPowerModifier) + baseSpellPower;
             manaCost = 10;
             // Set casting to true and stop auto attacking
-            GetComponent<SpellsController>().casting = true;
+            if (CompareTag("Player"))
+            {
+                GetComponent<SpellsController>().casting = true;
+            } else if (CompareTag("Enemy"))
+            {
+                GetComponent<EnemySpellsController>().casting = true;
+            }
             if (GetComponent<CombatController>().autoAttacking == true)
             {
                 alreadyAttacking = true;
@@ -89,17 +112,24 @@ public class MinorHealingController : MonoBehaviour
                 GetComponent<CombatController>().AutoAttack();
             }
             // Log you are casting to the chat window
-            combatMessage = casterName + " begins to cast heal spell on " + targetName + ".";
+            combatMessage = casterName + " begins to cast Minor Healing on " + targetName + ".";
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // Wait for casting time and then heal the target
             yield return new WaitForSeconds(castingTime);
+            GetComponent<ManaController>().UseMana(manaCost);
             target.GetComponent<HealthController>().TakeDamage(-netHealPower, gameObject, target);
             // Set combat message
-            combatMessage = casterName + "'s heal spell has healed "
+            combatMessage = casterName + "'s Minor Healing has healed "
                             + targetName + " for " + netHealPower + " points of damage!";
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
             // Set casting to false and autoAttacking to true and inCombat to true
-            GetComponent<SpellsController>().casting = false;
+            if (CompareTag("Player"))
+            {
+                GetComponent<SpellsController>().casting = false;
+            } else if (CompareTag("Enemy"))
+            {
+                GetComponent<EnemySpellsController>().casting = false;
+            }
             if (alreadyAttacking == true)
             {
                 GetComponent<CombatController>().inCombat = true;
