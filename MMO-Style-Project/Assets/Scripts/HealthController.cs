@@ -11,14 +11,9 @@ public class HealthController : MonoBehaviour
     private int healthRegen;
     private int regenDelay = 5;
     private bool isRegeningHealth;
-    // Declare variable for chat ui window and combatMessage
-    private string combatMessage;
-    private GameObject chatUIWindow;
     // Start is called before the first frame update
     void Start()
     {
-        // Set the ChatUIWindow
-        chatUIWindow = GameObject.Find("Chat UI Window");
         // Set the maxHealth
         SetMaxHealth();
         // Set the currentHealth and regening false

@@ -98,7 +98,6 @@ public class EnemyCombatController : MonoBehaviour
         {
             if (inAttackRange)
             {
-                Debug.Log("attack");
                 // Call the player take damage method
                 DamageTarget(target);
                 if (target.GetComponent<HealthController>().currentHealth <= 0)
