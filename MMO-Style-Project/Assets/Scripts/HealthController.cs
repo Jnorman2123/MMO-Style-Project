@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     public int maxHealth;
     // Declare variables for healthRegen and regenDelay and isRegeningHealth
     private int healthRegen;
-    private int regenDelay = 5;
+    private float regenDelay = 5.0f;
     private bool isRegeningHealth;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class HealthController : MonoBehaviour
         // Start the RegenHealth coroutine if the current health is less than the max health and not already regening
         if (currentHealth < maxHealth & !isRegeningHealth)
         {
-            StartCoroutine("RegenHealth");
+            StartCoroutine(RegenHealth());
         }
     }
     // Create method to set the health of the character based on its stamina
@@ -91,7 +91,7 @@ public class HealthController : MonoBehaviour
             // If health is equal to the max then stop regening health
             if (currentHealth == maxHealth)
             {
-                StopCoroutine("RegenHealth");
+                StopCoroutine(RegenHealth());
                 isRegeningHealth = false;
             }
             yield return new WaitForSeconds(regenDelay);

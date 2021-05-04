@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MinorHealingController : MonoBehaviour
 {
-    // Declare variables for cast time, mana cost, cooldownTime, and cooldown
+    // Declare variables for cast time, mana cost, cooldownTime, and  minor healing cooldown
     private float castingTime;
     public int manaCost;
     private float cooldownTime;
-    private bool cooldown;
+    private bool mhCooldown;
     // Declare variables for min, max, and base spell power, and spell power modifier
     private int minSpellPower;
     private int maxSpellPower;
@@ -27,11 +27,11 @@ public class MinorHealingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set casting time and cooldown
+        // Set casting time and cooldown time
         castingTime = 3.0f;
         cooldownTime = 5.0f;
         // Set cooldown to false
-        cooldown = false;
+        mhCooldown = false;
         // Set chatUIWindow
         chatUIWindow = GameObject.Find("Chat UI Window");
         // Set already atacking to false
@@ -80,7 +80,7 @@ public class MinorHealingController : MonoBehaviour
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         } 
-        else if (cooldown)
+        else if (mhCooldown)
         {
             combatMessage = "Minor Healing cannot be used at this time!";
             // Log the combat message
@@ -109,7 +109,7 @@ public class MinorHealingController : MonoBehaviour
             int netHealPower = Mathf.RoundToInt(spellPowerModifier) + baseSpellPower;
             manaCost = 10;
             // Set cooldown to true
-            cooldown = true;
+            mhCooldown = true;
             // Set casting to true and stop auto attacking
             if (CompareTag("Player"))
             {
@@ -175,7 +175,7 @@ public class MinorHealingController : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownTime);
         // Set cooldown to false
-        cooldown = false;
+        mhCooldown = false;
         // Stop the OnCooldown coroutine
         StopCoroutine(OnCooldown());
     }

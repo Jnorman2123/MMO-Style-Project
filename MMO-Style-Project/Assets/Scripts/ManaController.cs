@@ -114,7 +114,7 @@ public class ManaController : MonoBehaviour
             // If health is equal to the max then stop regening health
             if (currentMana == maxMana)
             {
-                StopCoroutine("RegenHealth");
+                StopCoroutine(RegenMana());
                 isRegeningMana = false;
             }
             yield return new WaitForSeconds(regenDelay);
