@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MinorHealingController : MonoBehaviour
 {
-    // Declare variables for cast time and mana cost
+    // Declare variables for cast time, mana cost, cooldownTime, and cooldown
     private float castingTime;
     public int manaCost;
+    private float cooldownTime;
+    private bool cooldown;
     // Declare variables for min, max, and base spell power, and spell power modifier
     private int minSpellPower;
     private int maxSpellPower;
@@ -25,8 +27,11 @@ public class MinorHealingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set casting time
+        // Set casting time and cooldown
         castingTime = 3.0f;
+        cooldownTime = 5.0f;
+        // Set cooldown to false
+        cooldown = false;
         // Set chatUIWindow
         chatUIWindow = GameObject.Find("Chat UI Window");
         // Set already atacking to false
@@ -74,8 +79,14 @@ public class MinorHealingController : MonoBehaviour
             combatMessage = "You have insufficient mana!";
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+        } 
+        else if (cooldown)
+        {
+            combatMessage = "Minor Healing cannot be used at this time!";
+            // Log the combat message
+            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
-        else if (manaCost < GetComponent<ManaController>().currentMana)
+        else if (manaCost <= GetComponent<ManaController>().currentMana)
         {
             // Set the target and caster name
             if (CompareTag("Player"))
@@ -97,6 +108,8 @@ public class MinorHealingController : MonoBehaviour
             spellPowerModifier *= baseSpellPower;
             int netHealPower = Mathf.RoundToInt(spellPowerModifier) + baseSpellPower;
             manaCost = 10;
+            // Set cooldown to true
+            cooldown = true;
             // Set casting to true and stop auto attacking
             if (CompareTag("Player"))
             {
@@ -124,6 +137,8 @@ public class MinorHealingController : MonoBehaviour
             yield return new WaitForSeconds(castingTime);
             GetComponent<ManaController>().UseMana(manaCost);
             target.GetComponent<HealthController>().TakeDamage(-netHealPower, gameObject, target);
+            // Start the OnCooldown coroutine
+            StartCoroutine(OnCooldown());
             // Set combat message
             combatMessage = casterName + "'s Minor Healing has healed "
                             + targetName + " for " + netHealPower + " points of damage!";
@@ -148,10 +163,20 @@ public class MinorHealingController : MonoBehaviour
                     GetComponent<EnemyCombatController>().inCombat = true;
                     GetComponent<EnemyCombatController>().autoAttacking = true;
                 }
-                // Stop damage spell coroutine and start auto attacking again
-                StopCoroutine(BeginCasting());
+                // Start auto attacking again
                 GetComponent<EnemyCombatController>().AutoAttack();
+                // Stop the begin casting coroutine
+                StopCoroutine(BeginCasting());
             }
         }
+    }
+    // Create a coroutine to put the spell on cooldown
+    IEnumerator OnCooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        // Set cooldown to false
+        cooldown = false;
+        // Stop the OnCooldown coroutine
+        StopCoroutine(OnCooldown());
     }
 }

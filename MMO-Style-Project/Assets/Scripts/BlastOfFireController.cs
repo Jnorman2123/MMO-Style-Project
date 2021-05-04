@@ -71,7 +71,7 @@ public class BlastOfFireController : MonoBehaviour
             // Log the combat message
             chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
         }
-        else if (manaCost < GetComponent<ManaController>().currentMana)
+        else if (manaCost <= GetComponent<ManaController>().currentMana)
         {
             // Set the target resistance
             targetResistance = target.GetComponent<ResistanceController>().resistance;
