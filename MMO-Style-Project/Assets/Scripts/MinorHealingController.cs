@@ -82,9 +82,15 @@ public class MinorHealingController : MonoBehaviour
         } 
         else if (mhCooldown)
         {
-            combatMessage = "Minor Healing cannot be used at this time!";
-            // Log the combat message
-            chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+            if (CompareTag("Player"))
+            {
+                combatMessage = "Minor Healing cannot be used at this time!";
+                // Log the combat message
+                chatUIWindow.GetComponent<ChatWindowController>().SetChatLogText(combatMessage);
+            } else if (CompareTag("Enemy"))
+            {
+                StopCoroutine(BeginCasting());
+            }
         }
         else if (manaCost <= GetComponent<ManaController>().currentMana)
         {
